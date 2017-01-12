@@ -30,11 +30,9 @@
     <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-
-
     <link rel="stylesheet" href="css/leaflet.css" />
     <link rel="stylesheet" href="css/L.Control.Locate.css" />
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="//rawgithub.com/domoritz/leaflet-locatecontrol/gh-pages/dist/L.Control.Locate.ie.min.css"/>
     <![endif]-->
@@ -51,11 +49,6 @@
     <!-- Notre feuille de styles -->
     <link rel="stylesheet" href="css/app.css">
 </head>
-
-
-
-
-
 
 <body>
     <!--------  Écran de chargement  -------->
@@ -74,13 +67,11 @@
     </div>
     <!-- #loading -->
 
-
     <script>
         // Système de chargement
         $("#loading #content").css("margin-top", function () {
             return ($(window).height() / 2) - ($(this).height() / 2);
         });
-
 
         var pourcentageProgres = 0;
 
@@ -103,7 +94,6 @@
         }, 200);
 
         var progressBar = $(".progress-bar");
-
 
         // Charge toutes les images d'avance
         $.when(
@@ -201,7 +191,6 @@
             })
         ).then(function () {});
     </script>
-
 
     <!--------  ÉCRAN PRINCIPAL  -------->
     <div class="container-fluid">
@@ -376,7 +365,7 @@
                                         <h3 class="nomLocal">Piscine</h3>
                                         <br>
                                         <h6 class="etage">Sous-Sol</h6>
-                                        <i class="material-icons pull-right">&#xE903;</i>
+                                        <i class="material-icons pull-right">&#xEB48;</i>
                                     </a>
                                 </li>
                             </ul>
@@ -464,11 +453,34 @@
 
         var markersList = [];
         var redIcon = L.icon({
-            iconUrl: "images/marker-icon_rouge.png"
+            iconUrl: "images/marker-icon_rouge.png",
+            iconAnchor: [12.5, 41],
+            popupAnchor: [0, -41]
         });
 
         var blueIcon = L.icon({
-            iconUrl: "images/marker-icon.png"
+            iconUrl: "images/marker-icon.png",
+            iconAnchor: [12.5, 41],
+            popupAnchor: [0, -41]
+        });
+
+        var greenIcon = L.icon({
+            iconUrl: "images/marker-icon_green.png",
+            iconAnchor: [12.5, 41],
+            popupAnchor: [0, -41]
+        });
+
+        map.on("popupopen", function (e) {
+            var marker = e.popup._source;
+            var waypoint = getWaypoint(marker._leaflet_id);
+
+            if (waypoint instanceof FloorWaypoint) {
+                console.log("Floor");
+            } else if (waypoint instanceof VerticalWaypoint) {
+                console.log("Vertical");
+            } else {
+
+            }
         });
 
         function addMarker(e) {
@@ -487,21 +499,6 @@
 
             marker.bindPopup("<button onClick=\"setWaypointType(" + marker._leaflet_id + ", 1)\">Vertical</button> or <button onClick=\"setWaypointType(" + marker._leaflet_id + ", 2)\">Floor</button>").openPopup();
 
-            // marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\"><input type=\"checkbox\" name=\"" + marker._leaflet_id + "\" id=\"" + marker._leaflet_id + "\" value=\"first_checkbox\" checked>Vertical <input type=\"submit\" value=\"Submit\"></label>");
-
-            map.on("popupopen", function (e) {
-                var marker = e.popup._source;
-                var waypoint = getWaypoint(marker._leaflet_id);
-
-                if (waypoint instanceof FloorWaypoint) {
-                    console.log("Floor");
-                } else if (waypoint instanceof VerticalWaypoint) {
-                    console.log("Vertical");
-                } else {
-
-                }
-            });
-
             var waypoint = new Waypoint(marker);
             markersList.push(waypoint);
         }
@@ -516,13 +513,13 @@
             for (var i = 0; i < markersList.length; i++) {
 
                 if (markersList[i] instanceof FloorWaypoint) {
-                    console.log("Floor");
+                    console.log("Floor-export");
                     if (floorWaypoints !== "") {
                         floorWaypoints += ", ";
                     }
                     floorWaypoints += markersList[i].toJSON;
                 } else if (markersList[i] instanceof VerticalWaypoint) {
-                    console.log("Vertical");
+                    console.log("Vertical-export");
                     if (verticalWaypoints !== "") {
                         verticalWaypoints += ", ";
                     }
@@ -553,16 +550,31 @@
 
             var waypoint = getWaypoint(id);
             console.log(waypoint.getMarker);
-            waypoint.getMarker.setIcon(blueIcon);
             console.log(type);
 
             switch (type) {
             case 1:
                 var vertical = new VerticalWaypoint(waypoint.getMarker);
+                var marker = waypoint.getMarker;
+
+
+                marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
+                                 "<input type=\"checkbox\" name=\"enable" + marker._leaflet_id + "\" id=\"enabled" + marker._leaflet_id + "\" value=\"enabled\" checked> Enable <br>" +
+                                 "<input type=\"checkbox\" name=\"elevator" + marker._leaflet_id + "\" id=\"elevator" + marker._leaflet_id + "\" value=\"elevator\"> Elevator <br>" +
+                                 "<input type=\"text\" name=\"floors" + marker._leaflet_id + "\" id=\"floors" + marker._leaflet_id + "\">" +
+                                 "<input type=\"submit\" value=\"Save\"></label></form>");
+                waypoint.getMarker.setIcon(greenIcon);
                 swapWaypoint(waypoint, vertical);
                 break;
             case 2:
                 var floor = new FloorWaypoint(waypoint.getMarker, etageActuel);
+                var marker = waypoint.getMarker;
+
+                marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
+                    "<input type=\"checkbox\" name=\"enabled" + marker._leaflet_id + "\" id=\"enabled" + marker._leaflet_id + "\" value=\"enabled\" " + (waypoint.isEnabled ? "checked" : "") + "> Enable <br>" +
+                    "<input type=\"submit\" value=\"Save\"></label></form>");
+
+                waypoint.getMarker.setIcon(blueIcon);
                 swapWaypoint(waypoint, floor);
                 break;
             default:
@@ -579,16 +591,19 @@
             }
         }
 
-        function updateWaypoint(oldWaypoint) {
-            console.log(markerForm);
-            console.log($("#" + id).val);
-            if ($('#' + id).is(":checked")) {
+        function updateWaypoint(id) {
+            var waypoint = getWaypoint(id);
+            waypoint.enabled = $("#enabled" + id).is(':checked');
+            if (waypoint instanceof FloorWaypoint) {
 
-            } else {
+            } else if (waypoint instanceof VerticalWaypoint) {
+                waypoint.elevator = $("#elevator" + id).is(':checked');
+                var floors = $("#floors" + id).val();
+                floors = floors.toString().replace(/\s/g, '');
+                floors = floors.split(",");
+                waypoint.setFloors = floors;
 
             }
-
-
         }
     </script>
 
