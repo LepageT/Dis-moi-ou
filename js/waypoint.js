@@ -1,8 +1,10 @@
 class Waypoint {
-    constructor(marker) {
+    constructor(marker, floor) {
         //console.log(marker);
         this.marker = marker;
         this.enable = false;
+        this.floor = floor;
+
     }
 
     get id() {
@@ -20,19 +22,22 @@ class Waypoint {
     set enabled(enabled) {
         this.enable = enabled;
     }
+
+    get getFloor() {
+        return this.floor;
+    }
 }
 
 class FloorWaypoint extends Waypoint {
     constructor(marker, floor) {
-        super(marker);
-        this.floor = floor;
+        super(marker, floor);
     }
 
     get toJSON() {
-        return "{\"latitude:\": " + this.marker._latlng.lat +
-            ", \"longitude:\": " + this.marker._latlng.lng +
-            ", \"floor:\": " + this.floor +
-            ", \"enabled:\": " + this.enable +
+        return "{\"latitude\": " + this.marker._latlng.lat +
+            ", \"longitude\": " + this.marker._latlng.lng +
+            ", \"floor\": " + this.floor +
+            ", \"enabled\": " + this.enable +
             "}";
     }
 
@@ -42,17 +47,18 @@ class FloorWaypoint extends Waypoint {
 }
 
 class VerticalWaypoint extends Waypoint {
-    constructor(marker) {
-        super(marker);
+    constructor(marker, floor) {
+        super(marker, floor);
         this.accessibleFloors = [1, 2, 3];
         this.elevator = false;
     }
 
     get toJSON() {
-        return "{\"latitude:\": " + this.marker._latlng.lat +
-            ", \"longitude:\": " + this.marker._latlng.lng +
-            ", \"elevator:\": " + this.elevator +
-            ", \"enabled:\": " + this.enable +
+        return "{\"latitude\": " + this.marker._latlng.lat +
+            ", \"longitude\": " + this.marker._latlng.lng +
+            ", \"elevator\": " + this.elevator +
+            ", \"floor\": " + this.floor +
+            ", \"enabled\": " + this.enable +
             ", \"accessibleFloors\": [" + this.accessibleFloors +
             "]}";
     }
