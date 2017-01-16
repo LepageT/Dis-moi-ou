@@ -1,14 +1,18 @@
 class Waypoint {
-    constructor(marker, floor) {
+    constructor(marker, floor, id) {
         //console.log(marker);
         this.marker = marker;
         this.enable = false;
         this.floor = floor;
+        this.id = id;
+    }
 
+    get idMarker() {
+        return this.marker._leaflet_id;
     }
 
     get id() {
-        return this.marker._leaflet_id;
+        return this.id;
     }
 
     get getMarker() {
@@ -29,8 +33,8 @@ class Waypoint {
 }
 
 class FloorWaypoint extends Waypoint {
-    constructor(marker, floor) {
-        super(marker, floor);
+    constructor(marker, floor, id) {
+        super(marker, floor, id);
     }
 
     get toJSON() {
@@ -47,10 +51,11 @@ class FloorWaypoint extends Waypoint {
 }
 
 class VerticalWaypoint extends Waypoint {
-    constructor(marker, floor) {
-        super(marker, floor);
+    constructor(marker, floor, id) {
+        super(marker, floor, id);
         this.accessibleFloors = [1, 2, 3];
         this.elevator = false;
+        this.connectedWaypoint = [];
     }
 
     get toJSON() {
@@ -73,5 +78,21 @@ class VerticalWaypoint extends Waypoint {
 
     set setFloors(floors) {
         this.accessibleFloors = floors;
+    }
+
+    get getConnectedWaypoints() {
+        return this.connectedWaypoint;
+    }
+
+    addConnectedWaypoints(id) {
+        this.push(id);
+    }
+
+    removeConnectedWaypoints() {
+        for(var i = 0; i < this.connectedWaypoint.length; i++) {
+            if(this.connectedWaypoint[i] === id) {
+                this.connectedWaypoint.splice(i, 1);
+            }
+        }
     }
 }

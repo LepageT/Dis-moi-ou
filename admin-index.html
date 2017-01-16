@@ -445,7 +445,6 @@
     <!-- Pour faire bondir les petit markeur lors de leur ajout sur la carte -->
     <script src="js/bouncemarker.js"></script>
 
-
     <!---------------------------------------------------------------------->
     <!------------------ Les scripts de notre application ------------------>
     <!---------------------------------------------------------------------->
@@ -457,6 +456,7 @@
 
         var myMarkers = L.layerGroup();
         map.addLayer(myMarkers);
+        var nextId = 1;
 
         var markersList = [];
         var redIcon = L.icon({
@@ -464,13 +464,11 @@
             iconAnchor: [12.5, 41],
             popupAnchor: [0, -41]
         });
-
         var blueIcon = L.icon({
             iconUrl: "images/marker-icon.png",
             iconAnchor: [12.5, 41],
             popupAnchor: [0, -41]
         });
-
         var greenIcon = L.icon({
             iconUrl: "images/marker-icon_green.png",
             iconAnchor: [12.5, 41],
@@ -506,8 +504,9 @@
 
             marker.bindPopup("<button onClick=\"setWaypointType(" + marker._leaflet_id + ", 1)\">Vertical</button> or <button onClick=\"setWaypointType(" + marker._leaflet_id + ", 2)\">Floor</button>").openPopup();
 
-            var waypoint = new Waypoint(marker, etageActuel);
+            var waypoint = new Waypoint(marker, etageActuel, nextId);
             markersList.push(waypoint);
+            nextId += 1;
         }
 
         $("#export").on("click", function () {
@@ -548,7 +547,7 @@
 
         function getWaypoint(id) {
             for (var i = 0; i < markersList.length; i++) {
-                if (markersList[i].id === id) {
+                if (markersList[i].idMarker === id) {
                     return markersList[i];
                 }
             }
@@ -565,7 +564,7 @@
 
             switch (type) {
             case 1:
-                var vertical = new VerticalWaypoint(waypoint.getMarker, waypoint.getFloor);
+                var vertical = new VerticalWaypoint(waypoint.getMarker, waypoint.getFloor, waypoint.id);
                 var marker = waypoint.getMarker;
 
                 marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
@@ -577,7 +576,7 @@
                 swapWaypoint(waypoint, vertical);
                 break;
             case 2:
-                var floor = new FloorWaypoint(waypoint.getMarker, waypoint.getFloor);
+                var floor = new FloorWaypoint(waypoint.getMarker, waypoint.getFloor, waypoint.id);
                 var marker = waypoint.getMarker;
 
                 marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
@@ -594,7 +593,7 @@
 
         function swapWaypoint(oldWaypoint, newWaypoint) {
             for (var i = 0; i < markersList.length; i++) {
-                if (markersList[i].id === oldWaypoint.id) {
+                if (markersList[i].idMarker === oldWaypoint.idMarker) {
                     markersList[i] = newWaypoint;
                     return;
                 }
@@ -687,6 +686,9 @@
                 }
             }, 'json');
 
+        }
+
+        function calculateRoute(start, finish) {
 
         }
     </script>
