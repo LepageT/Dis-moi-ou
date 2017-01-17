@@ -303,7 +303,7 @@
                 changerEtage(etage);
                 
                 // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
-                var button = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage">Default</button>';
+                var button = '<hr/> <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage">Visualiser</button>';
 
                 marqueur = L.marker(positionMarqueur, {bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 200}}).bindPopup(message + button);
 
@@ -321,7 +321,7 @@
 
 
                // Modifie la source de l'image
-                $('#imgModal').attr("src","images/logo-dismoiou.png");
+                $('#imgModal').attr("src","images/exemple_image.png");
 
                 //source pour titre message
                 $('#labelMessage').html(message);
@@ -438,6 +438,13 @@
                             event.preventDefault();
                             $("#modalInformations").modal('show');
                         });
+
+                 // Ouvre la fenêtre modale itineraire avec le bouton dans le menu de navigation
+                        $("#boutonItineraire").click(function(event){
+                            event.preventDefault();
+                            $("#modalItineraire").modal('show');
+                        });
+
 
                         // Pour améliorer les performances avec jQuery
                         var listeLocaux = $("#listeLocaux");

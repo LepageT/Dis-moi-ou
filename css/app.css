@@ -460,6 +460,26 @@
           pointer-events: none;
         }
 
+#imgModal{
+    border-radius: 10px;
+}
+
+.contenu{
+    background-color: #fff;
+    padding-top: 15px;
+}
+
+h2{
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    background-color: #e26d4d;
+    border-bottom: solid 8px black;
+    padding: 15px;
+    margin: 20px -20px 0 -20px;
+
+}
+
 
         /* Pour mobile - Footer*/
         .no-margin
