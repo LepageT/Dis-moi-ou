@@ -102,13 +102,21 @@ class Zone {
     constructor(id) {
         this.id = id;
         this.points = [];
+        this.waypoints = [];
         this.removeLast = function () {
             this.points.pop();
+        }
+        this.removeLastWaypoints = function () {
+            this.waypoints.pop();
         }
     }
 
     addPointToZone(point) {
         this.points.push(point);
+    }
+
+    addWaypoints(point) {
+        this.waypoints.push(point);
     }
 
     get getPoints() {
@@ -118,21 +126,30 @@ class Zone {
     get toJSON() {
         var jsonString = "{\"id\":" + this.id + ",\"points\":[";
         var points = "";
-        for(var i = 0; i < this.points.length; i++) {
-            if(points !== "") {
+        for (var i = 0; i < this.points.length; i++) {
+            if (points !== "") {
                 points += ", ";
             }
 
             points += this.points[i].toJSON;
         }
 
-        jsonString += points + "]}";
+        jsonString += points + "],";
+        var waypointsString = "";
+        for (var i = 0; i < this.waypoints.length; i++) {
+            if (waypointsString !== "") {
+                waypointsString += ", ";
+            }
+
+            waypointsString += this.waypoints[i].toJSON;
+        }
+        jsonString += "\"waypoints\":[" + waypointsString + "]}";
         return jsonString;
     }
 
     get formatedPoints() {
         var newPoints = [];
-        for(var i = 0; i < this.points.length; i++) {
+        for (var i = 0; i < this.points.length; i++) {
             newPoints.push([this.points[i].point.lat, this.points[i].point.lng]);
         }
 
@@ -141,6 +158,10 @@ class Zone {
 
     get getId() {
         return this.id;
+    }
+
+    get getWaypoints() {
+        return this.waypoints;
     }
 }
 

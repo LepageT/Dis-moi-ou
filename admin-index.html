@@ -229,7 +229,8 @@
                                 <div class="col-xs-2">
                                     <!-- Ouvre la fenêtre modale de recherche de locaux -->
                                     <li>
-                                        <a id="boutonRechercher" href="javascript:"><img src="images/loupe.png"></a>
+                                        <!--                                        <a id="boutonRechercher" href="javascript:"><img src="images/loupe.png"></a>-->
+                                        <a id="startWaypoints" href="javascript:"><img src="images/loupe.png">add way</a>
                                     </li>
                                 </div>
                                 <!-- .col-xs-3 -->
@@ -454,9 +455,9 @@
     <script src="js/waypoint.js"></script>
 
     <script>
-        //map.on("click", addMarker);
+        map.on("click", addMarker);
 
-        var zone = new Zone();
+        var zone = new Zone(1);
         var zoneId = 1;
 
         var polyLayer = L.layerGroup();
@@ -465,16 +466,34 @@
         var nextId = 1;
         var myZones = [];
 
-        function addMarker(e) {
-            marker = new L.marker(e.latlng, {}).addTo(polyLayer);
+        var waypointsAdd = false;
 
-            var position = marker.getLatLng();
-            var point = new Point(nextId, new L.LatLng(position.lat, position.lng));
-            zone.addPointToZone(point);
-            nextId++;
-            if (zone.getPoints.length >= 3) {
-                //draw/redraw the polygon
-                redrawZone(zone);
+        var waypointsId = 1;
+
+        function addMarker(e) {
+            if (!waypointsAdd) {
+                marker = new L.marker(e.latlng, {}).addTo(polyLayer);
+
+                var position = marker.getLatLng();
+                var point = new Point(nextId, new L.LatLng(position.lat, position.lng));
+                zone.addPointToZone(point);
+                nextId++;
+                if (zone.getPoints.length >= 3) {
+                    //draw/redraw the polygon
+                    redrawZone(zone);
+                }
+            } else {
+                marker = new L.marker(e.latlng, {}).addTo(polyLayer);
+
+                var position = marker.getLatLng();
+                var point = new Point(waypointsId, new L.LatLng(position.lat, position.lng));
+                zone.addWaypoints(point);
+                //new L.marker(point.getCoord, {}).addTo(polyLayer);
+                waypointsId++;
+                if (zone.getPoints.length >= 3) {
+                    //draw/redraw the polygon
+                    redrawZone(zone);
+                }
             }
         }
 
@@ -489,6 +508,10 @@
         $("#remove").on("click", function () {
             removeLastMarker();
         });
+
+        $("#startWaypoints").on("click", function () {
+            waypointsAdd = true;
+        })
 
         function exportWaypoints() {
             var zones = "";
@@ -509,11 +532,10 @@
 
         function changeZone() {
             myZones.push(zone);
-            zone = new Zone();
-        }
-
-        function calculateRoute(start, finish) {
-
+            zoneId++;
+            zone = new Zone(zoneId);
+            nextId = 1;
+            waypointsId = 1;
         }
 
         function drawAllZones(marker = true) {
@@ -537,9 +559,13 @@
             var points = [];
             for (var i = 0; i < zone.getPoints.length; i++) {
                 points.push(zone.getPoints[i].getCoord);
-                if(marker){
+                if (marker) {
                     new L.marker(zone.getPoints[i].getCoord, {}).addTo(polyLayer);
                 }
+            }
+
+            for (var i = 0; i < zone.getWaypoints.length; i++) {
+                new L.marker(zone.getWaypoints[i].getCoord, {}).addTo(polyLayer);
             }
 
             if (zone.getPoints.length < 3) {
@@ -552,7 +578,12 @@
         }
 
         function removeLastMarker() {
-            zone.removeLast();
+            console.log(zone);
+            if(waypointsAdd) {
+                zone.removeLastWaypoints();
+            } else {
+                zone.removeLast();
+            }
             redrawZone(zone);
         }
 
@@ -579,7 +610,7 @@
 
         function findZoneForLocation(location) {
             for (var i = 0; i < myZones.length; i++) {
-                if(isInside(location, myZones[i].formatedPoints)) {
+                if (isInside(location, myZones[i].formatedPoints)) {
                     console.log("Location in zone: " + myZones[i].getId);
                     return;
                 }
