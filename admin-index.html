@@ -479,7 +479,7 @@
         }
 
         $("#export").on("click", function () {
-            drawAllZones();
+            drawAllZones(false);
         });
 
         $("#import").on("click", function () {
@@ -516,28 +516,30 @@
 
         }
 
-        function drawAllZones() {
+        function drawAllZones(marker = true) {
             map.removeLayer(polyLayer);
             polyLayer = L.layerGroup();
             map.addLayer(polyLayer);
 
             for (var i = 0; i < myZones.length; i++) {
-                drawZone(myZones[i]);
+                drawZone(myZones[i], marker);
             }
         }
 
-        function redrawZone(zone) {
+        function redrawZone(zone, marker = true) {
             map.removeLayer(polyLayer);
             polyLayer = L.layerGroup();
             map.addLayer(polyLayer);
-            drawZone(zone);
+            drawZone(zone, marker);
         }
 
-        function drawZone(zone) {
+        function drawZone(zone, marker = true) {
             var points = [];
             for (var i = 0; i < zone.getPoints.length; i++) {
                 points.push(zone.getPoints[i].getCoord);
-                new L.marker(zone.getPoints[i].getCoord, {}).addTo(polyLayer);
+                if(marker){
+                    new L.marker(zone.getPoints[i].getCoord, {}).addTo(polyLayer);
+                }
             }
 
             if (zone.getPoints.length < 3) {
@@ -560,10 +562,10 @@
                 context: document.body,
                 dataType: "json"
             }).success(function (data) {
-                for(var i = 0; i < data.zones.length; i++) {
+                for (var i = 0; i < data.zones.length; i++) {
                     var zone = new Zone(data.zones[i].id);
-                    for(var j = 0; j < data.zones[i].points.length; j++) {
-                        var point = new Point(data.zones[i].points[j].id,  new L.LatLng(data.zones[i].points[j].coords[0], data.zones[i].points[j].coords[1]));
+                    for (var j = 0; j < data.zones[i].points.length; j++) {
+                        var point = new Point(data.zones[i].points[j].id, new L.LatLng(data.zones[i].points[j].coords[0], data.zones[i].points[j].coords[1]));
                         zone.addPointToZone(point);
                     }
                     myZones.push(zone);
@@ -576,7 +578,30 @@
         }
 
         function findZoneForLocation(location) {
+            for (var i = 0; i < myZones.length; i++) {
+                if(isInside(location, myZones[i].formatedPoints)) {
+                    console.log("Location in zone: " + myZones[i].getId);
+                    return;
+                }
+            }
+        }
 
+        function isInside(point, poly) {
+            var x = point[0],
+                y = point[1];
+
+            var inside = false;
+            for (var i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+                var xi = poly[i][0],
+                    yi = poly[i][1];
+                var xj = poly[j][0],
+                    yj = poly[j][1];
+
+                var intersect = ((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+                if (intersect) inside = !inside;
+            }
+
+            return inside;
         }
     </script>
 

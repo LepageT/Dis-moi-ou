@@ -130,6 +130,15 @@ class Zone {
         return jsonString;
     }
 
+    get formatedPoints() {
+        var newPoints = [];
+        for(var i = 0; i < this.points.length; i++) {
+            newPoints.push([this.points[i].point.lat, this.points[i].point.lng]);
+        }
+
+        return newPoints;
+    }
+
     get getId() {
         return this.id;
     }
