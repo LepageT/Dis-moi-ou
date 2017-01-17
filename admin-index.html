@@ -454,7 +454,7 @@
     <script src="js/waypoint.js"></script>
 
     <script>
-        map.on("click", addMarker);
+        //map.on("click", addMarker);
 
         var zone = new Zone();
         var zoneId = 1;
@@ -493,7 +493,7 @@
         function exportWaypoints() {
             var zones = "";
             for (var i = 0; i < myZones.length; i++) {
-                if(zones !== "") {
+                if (zones !== "") {
                     zones += ", ";
                 }
                 zones += myZones[i].toJSON;
@@ -545,6 +545,7 @@
             }
 
             var polygon = L.polygon(points);
+            polygon.bindPopup("Test " + zone.getId);
             polygon.addTo(polyLayer);
         }
 
@@ -553,10 +554,30 @@
             redrawZone(zone);
         }
 
-        function findZoneForLocation() {
+        function loadZones() {
+            $.ajax({
+                url: "data/zones.json",
+                context: document.body,
+                dataType: "json"
+            }).success(function (data) {
+                for(var i = 0; i < data.zones.length; i++) {
+                    var zone = new Zone(data.zones[i].id);
+                    for(var j = 0; j < data.zones[i].points.length; j++) {
+                        var point = new Point(data.zones[i].points[j].id,  new L.LatLng(data.zones[i].points[j].coords[0], data.zones[i].points[j].coords[1]));
+                        zone.addPointToZone(point);
+                    }
+                    myZones.push(zone);
+                }
 
+
+            }).complete(function () {
+
+            });
         }
 
+        function findZoneForLocation(location) {
+
+        }
     </script>
 
     </script>

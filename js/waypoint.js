@@ -129,6 +129,10 @@ class Zone {
         jsonString += points + "]}";
         return jsonString;
     }
+
+    get getId() {
+        return this.id;
+    }
 }
 
 class Point {
