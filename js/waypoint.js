@@ -156,6 +156,15 @@ class Zone {
         return newPoints;
     }
 
+    get formatedWaypoints() {
+        var newPoints = [];
+        for (var i = 0; i < this.waypoints.length; i++) {
+            newPoints.push(new L.LatLng(this.waypoints[i].point.lat, this.waypoints[i].point.lng));
+        }
+
+        return newPoints;
+    }
+
     get getId() {
         return this.id;
     }

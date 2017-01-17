@@ -325,6 +325,10 @@
 
                 //source pour titre message
                 $('#labelMessage').html(message);
+
+                position = position.replace("[", "");
+                position = position.replace("]", "");
+                findZoneForLocation(position.split(","));
             };
 
 
