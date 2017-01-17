@@ -99,7 +99,8 @@ class VerticalWaypoint extends Waypoint {
 
 
 class Zone {
-    constructor() {
+    constructor(id) {
+        this.id = id;
         this.points = [];
         this.removeLast = function () {
             this.points.pop();
@@ -114,7 +115,20 @@ class Zone {
         return this.points;
     }
 
+    get toJSON() {
+        var jsonString = "{\"id\":" + this.id + ",\"points\":[";
+        var points = "";
+        for(var i = 0; i < this.points.length; i++) {
+            if(points !== "") {
+                points += ", ";
+            }
 
+            points += this.points[i].toJSON;
+        }
+
+        jsonString += points + "]}";
+        return jsonString;
+    }
 }
 
 class Point {
@@ -133,5 +147,10 @@ class Point {
 
     get getCoord() {
         return this.point;
+    }
+
+    get toJSON() {
+        return "{\"id\": " + this.id +
+            ", \"coords\": [" + this.point.lat + ", " + this.point.lng + "]}";
     }
 }

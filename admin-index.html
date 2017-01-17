@@ -457,6 +457,7 @@
         map.on("click", addMarker);
 
         var zone = new Zone();
+        var zoneId = 1;
 
         var polyLayer = L.layerGroup();
         map.addLayer(polyLayer);
@@ -470,6 +471,7 @@
             var position = marker.getLatLng();
             var point = new Point(nextId, new L.LatLng(position.lat, position.lng));
             zone.addPointToZone(point);
+            nextId++;
             if (zone.getPoints.length >= 3) {
                 //draw/redraw the polygon
                 redrawZone(zone);
@@ -489,31 +491,20 @@
         });
 
         function exportWaypoints() {
-            var floorWaypoints = "";
-            var verticalWaypoints = "";
-            for (var i = 0; i < markersList.length; i++) {
-
-                if (markersList[i] instanceof FloorWaypoint) {
-                    console.log("Floor-export");
-                    if (floorWaypoints !== "") {
-                        floorWaypoints += ", ";
-                    }
-                    floorWaypoints += markersList[i].toJSON;
-                } else if (markersList[i] instanceof VerticalWaypoint) {
-                    console.log("Vertical-export");
-                    if (verticalWaypoints !== "") {
-                        verticalWaypoints += ", ";
-                    }
-                    verticalWaypoints += markersList[i].toJSON;
+            var zones = "";
+            for (var i = 0; i < myZones.length; i++) {
+                if(zones !== "") {
+                    zones += ", ";
                 }
+                zones += myZones[i].toJSON;
             }
 
-            var myJson = "{\"verticalWaypoints\": [" + verticalWaypoints + "], \"floorWaypoints\": [" + floorWaypoints + "]}";
+            var myJson = "{\"zones\": [" + zones + "]}";
 
             var a = document.createElement('a');
             a.setAttribute('href', 'data:text/plain;charset=utf-u,' + encodeURIComponent(myJson));
             a.setAttribute('download', "waypoints.json");
-            a.click()
+            a.click();
         }
 
         function changeZone() {
@@ -547,7 +538,6 @@
             for (var i = 0; i < zone.getPoints.length; i++) {
                 points.push(zone.getPoints[i].getCoord);
                 new L.marker(zone.getPoints[i].getCoord, {}).addTo(polyLayer);
-
             }
 
             if (zone.getPoints.length < 3) {
@@ -562,6 +552,11 @@
             zone.removeLast();
             redrawZone(zone);
         }
+
+        function findZoneForLocation() {
+
+        }
+
     </script>
 
     </script>
