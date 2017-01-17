@@ -96,3 +96,37 @@ class VerticalWaypoint extends Waypoint {
         }
     }
 }
+
+
+class Zone {
+    constructor() {
+        this.points = [];
+    }
+
+    addPointToZone(point) {
+        this.points.push(point);
+    }
+
+    get getPoints() {
+        return this.points;
+    }
+}
+
+class Point {
+    constructor(id, point) {
+        this.id = id;
+        this.point = point;
+    }
+
+    set setCoords(coords) {
+        this.point = coords;
+    }
+
+    get getId() {
+        return this.id;
+    }
+
+    get getCoord() {
+        return this.point;
+    }
+}

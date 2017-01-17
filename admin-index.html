@@ -432,15 +432,11 @@
         </div>
     </div>
     <!--------  .modal  -------->
-
-
-
     <!-- Bootstrap -->
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Système de recherche dans une liste -->
     <script src="js/jquery.liveFilter.js"></script>
-
 
     <!-- Pour faire bondir les petit markeur lors de leur ajout sur la carte -->
     <script src="js/bouncemarker.js"></script>
@@ -456,7 +452,6 @@
 
         var myMarkers = L.layerGroup();
         map.addLayer(myMarkers);
-        var nextId = 1;
 
         var markersList = [];
         var redIcon = L.icon({
@@ -475,23 +470,14 @@
             popupAnchor: [0, -41]
         });
 
-        map.on("popupopen", function (e) {
-            var marker = e.popup._source;
-            var waypoint = getWaypoint(marker._leaflet_id);
+        var zone = new Zone();
+        var polygon = null;
 
-            if (waypoint instanceof FloorWaypoint) {
-                console.log("Floor");
-            } else if (waypoint instanceof VerticalWaypoint) {
-                console.log("Vertical");
-            } else {
-
-            }
-        });
+        var nextId = 1;
 
         function addMarker(e) {
             marker = new L.marker(e.latlng, {
-                draggable: 'true',
-                icon: redIcon
+                draggable: 'true'
             }).addTo(myMarkers);
             marker.on('dragend', function (event) {
                 var marker = event.target;
@@ -499,14 +485,17 @@
                 marker.setLatLng(new L.LatLng(position.lat, position.lng), {
                     draggable: 'true'
                 });
-                map.panTo(new L.LatLng(position.lat, position.lng))
+                map.panTo(new L.LatLng(position.lat, position.lng));
             });
 
-            marker.bindPopup("<button onClick=\"setWaypointType(" + marker._leaflet_id + ", 1)\">Vertical</button> or <button onClick=\"setWaypointType(" + marker._leaflet_id + ", 2)\">Floor</button>").openPopup();
 
-            var waypoint = new Waypoint(marker, etageActuel, nextId);
-            markersList.push(waypoint);
-            nextId += 1;
+            var position = marker.getLatLng();
+            var point = new Point(nextId, new L.LatLng(position.lat, position.lng));
+            zone.addPointToZone(point);
+            if(zone.getPoints.length >= 3) {
+                //draw/redraw the polygon
+                drawZone(zone);
+            }
         }
 
         $("#export").on("click", function () {
@@ -545,152 +534,29 @@
             a.click()
         }
 
-        function getWaypoint(id) {
-            for (var i = 0; i < markersList.length; i++) {
-                if (markersList[i].idMarker === id) {
-                    return markersList[i];
-                }
-            }
-
-            return null;
-        }
-
-        function setWaypointType(id, type) {
-            map.closePopup();
-
-            var waypoint = getWaypoint(id);
-            console.log(waypoint.getMarker);
-            console.log(type);
-
-            switch (type) {
-            case 1:
-                var vertical = new VerticalWaypoint(waypoint.getMarker, waypoint.getFloor, waypoint.id);
-                var marker = waypoint.getMarker;
-
-                marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
-                    "<input type=\"checkbox\" name=\"enabled" + marker._leaflet_id + "\" id=\"enabled" + marker._leaflet_id + "\" value=\"enabled\" checked> Enable <br>" +
-                    "<input type=\"checkbox\" name=\"elevator" + marker._leaflet_id + "\" id=\"elevator" + marker._leaflet_id + "\" value=\"elevator\"> Elevator <br>" +
-                    "<input type=\"text\" name=\"floors" + marker._leaflet_id + "\" id=\"floors" + marker._leaflet_id + "\">" +
-                    "<input type=\"submit\" value=\"Save\"></label></form>");
-                waypoint.getMarker.setIcon(greenIcon);
-                swapWaypoint(waypoint, vertical);
-                break;
-            case 2:
-                var floor = new FloorWaypoint(waypoint.getMarker, waypoint.getFloor, waypoint.id);
-                var marker = waypoint.getMarker;
-
-                marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
-                    "<input type=\"checkbox\" name=\"enabled" + marker._leaflet_id + "\" id=\"enabled" + marker._leaflet_id + "\" value=\"enabled\" " + (waypoint.isEnabled ? "checked" : "") + "> Enable <br>" +
-                    "<input type=\"submit\" value=\"Save\"></label></form>");
-
-                waypoint.getMarker.setIcon(blueIcon);
-                swapWaypoint(waypoint, floor);
-                break;
-            default:
-                break;
-            }
-        }
-
-        function swapWaypoint(oldWaypoint, newWaypoint) {
-            for (var i = 0; i < markersList.length; i++) {
-                if (markersList[i].idMarker === oldWaypoint.idMarker) {
-                    markersList[i] = newWaypoint;
-                    return;
-                }
-            }
-        }
-
-        function updateWaypoint(id) {
-            var waypoint = getWaypoint(id);
-            waypoint.enabled = $("#enabled" + id).is(':checked');
-            if (waypoint instanceof FloorWaypoint) {
-
-            } else if (waypoint instanceof VerticalWaypoint) {
-                waypoint.elevator = $("#elevator" + id).is(':checked');
-                var floors = $("#floors" + id).val();
-                floors = floors.toString().replace(/\s/g, '');
-                floors = floors.split(",");
-                waypoint.setFloors = floors;
-
-            }
-        }
-
         function importWayPointForFloor(floor) {
-            //Load waypoint from JSON
-
-            var floorWaypoints = [];
-            var verticalWaypoints = [];
-
-            $.get("data/waypoints.json", function (data) {
-
-                floorWaypoints = data.floorWaypoints;
-                verticalWaypoints = data.verticalWaypoints;
-
-                for (var i = 0; i < floorWaypoints.length; i++) {
-                    if (etageActuel === floorWaypoints[i].floor) {
-                        var latlng = new L.LatLng(parseFloat(floorWaypoints[i].latitude), parseFloat(floorWaypoints[i].longitude));
-                        marker = new L.marker(latlng, {
-                            draggable: 'true',
-                            icon: blueIcon
-                        }).addTo(myMarkers);
-                        marker.on('dragend', function (event) {
-                            var marker = event.target;
-                            var position = marker.getLatLng();
-                            marker.setLatLng(new L.LatLng(position.lat, position.lng), {
-                                draggable: 'true'
-                            });
-                            map.panTo(new L.LatLng(position.lat, position.lng))
-                        });
-
-                        marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
-                            "<input type=\"checkbox\" name=\"enabled" + marker._leaflet_id + "\" id=\"enabled" + marker._leaflet_id + "\" value=\"enabled\" " + (floorWaypoints[i].enabled ? "checked" : "") + "> Enable <br>" +
-                            "<input type=\"submit\" value=\"Save\"></label></form>");
-
-                        var waypoint = new FloorWaypoint(marker, etageActuel);
-                        waypoint.enabled = verticalWaypoints[i].enabled;
-                        markersList.push(waypoint);
-                    }
-                }
-
-                for (var i = 0; i < verticalWaypoints.length; i++) {
-                    if (etageActuel === verticalWaypoints[i].floor) {
-                        var latlng = new L.LatLng(parseFloat(verticalWaypoints[i].latitude), parseFloat(verticalWaypoints[i].longitude));
-
-                        marker = new L.marker(latlng, {
-                            draggable: 'true',
-                            icon: greenIcon
-                        }).addTo(myMarkers);
-                        marker.on('dragend', function (event) {
-                            var marker = event.target;
-                            var position = marker.getLatLng();
-                            marker.setLatLng(new L.LatLng(position.lat, position.lng), {
-                                draggable: 'true'
-                            });
-                            map.panTo(new L.LatLng(position.lat, position.lng))
-                        });
-
-                        marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
-                            "<input type=\"checkbox\" name=\"enabled" + marker._leaflet_id + "\" id=\"enabled" + marker._leaflet_id + "\" value=\"enabled\" " + (verticalWaypoints[i].enabled ? "checked" : "") + "> Enable <br>" +
-                            "<input type=\"checkbox\" name=\"elevator" + marker._leaflet_id + "\" id=\"elevator" + marker._leaflet_id + "\" value=\"elevator\" " + (verticalWaypoints[i].elevator ? "checked" : "") + "> Elevator <br>" +
-                            "<input type=\"text\" name=\"floors" + marker._leaflet_id + "\" id=\"floors" + marker._leaflet_id + "\">" +
-                            "<input type=\"submit\" value=\"Save\"></label></form>");
-
-                        var waypoint = new VerticalWaypoint(marker, etageActuel);
-
-                        waypoint.setElevator = verticalWaypoints[i].elevator;
-                        waypoint.setFloors = verticalWaypoints[i].accessibleFloors;
-                        waypoint.enabled = verticalWaypoints[i].enabled;
-
-                        markersList.push(waypoint);
-                    }
-                }
-            }, 'json');
 
         }
 
         function calculateRoute(start, finish) {
 
         }
+
+        function drawZone(zone) {
+            if(polygon !== null) {
+                map.removeLayer(polygon);
+            }
+
+            var points = [];
+
+            for(var i = 0; i < zone.getPoints.length; i++) {
+                points.push(zone.getPoints[i].getCoord);
+            }
+
+            polygon = L.polygon(points);
+            polygon.addTo(map);
+        }
+
     </script>
 
     </script>
