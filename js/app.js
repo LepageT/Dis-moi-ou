@@ -291,7 +291,7 @@
             var positionMarqueur = "";
 
             // Fonction appellé chaque fois que l'on veux afficher un marqueur sur la carte pour montrer l'emplacement d'un local
-            function afficherMarqueur(position, etage, message){
+            function afficherMarqueur(position, etage, message, image){
 
                 // Suprime le calque "marqueur" qui contient le ou les marqueurs
                 map.removeLayer(marqueur);
@@ -303,7 +303,9 @@
                 changerEtage(etage);
                 
                 // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
-                marqueur = L.marker(positionMarqueur, {bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 200}}).bindPopup(message)
+                var button = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage">Default</button>';
+
+                marqueur = L.marker(positionMarqueur, {bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 200}}).bindPopup(message + button);
 
                 // Créé un nouveau calque, ajoute le marqueur puis l'affiche sur la carte
                 map.addLayer(marqueur);
@@ -316,6 +318,13 @@
 
                 // Centre le marqueur dans l'écran
                 map.panTo(positionMarqueur);
+
+
+               // Modifie la source de l'image
+                $('#imgModal').attr("src","images/logo-dismoiou.png");
+
+                //source pour titre message
+                $('#labelMessage').html(message);
             };
 
 
