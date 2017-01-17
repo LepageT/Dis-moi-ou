@@ -89,8 +89,8 @@ class VerticalWaypoint extends Waypoint {
     }
 
     removeConnectedWaypoints() {
-        for(var i = 0; i < this.connectedWaypoint.length; i++) {
-            if(this.connectedWaypoint[i] === id) {
+        for (var i = 0; i < this.connectedWaypoint.length; i++) {
+            if (this.connectedWaypoint[i] === id) {
                 this.connectedWaypoint.splice(i, 1);
             }
         }
@@ -101,6 +101,9 @@ class VerticalWaypoint extends Waypoint {
 class Zone {
     constructor() {
         this.points = [];
+        this.removeLast = function () {
+            this.points.pop();
+        }
     }
 
     addPointToZone(point) {
@@ -110,6 +113,8 @@ class Zone {
     get getPoints() {
         return this.points;
     }
+
+
 }
 
 class Point {
