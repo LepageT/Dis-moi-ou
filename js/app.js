@@ -128,7 +128,7 @@
                 map.removeLayer(libelleEtage);
                 map.removeLayer(iconesEtage);
                 map.removeLayer(numeroLocauxEtage);
-
+                etageActuel = etage;
                 if(etage == -1){
 
                     // Le plan de base du sous-sol
