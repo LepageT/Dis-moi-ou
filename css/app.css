@@ -1,472 +1,497 @@
-        /* latin-ext */
-        @font-face {
-          font-family: 'Roboto';
-          font-style: normal;
-          font-weight: 400;
-          src: local('Roboto'), local('Roboto-Regular'), url(../fonts/roboto/roboto_400.woff2) format('woff2');
-          unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-        }
-        /* latin */
-        @font-face {
-          font-family: 'Roboto';
-          font-style: normal;
-          font-weight: 400;
-          src: local('Roboto'), local('Roboto-Regular'), url(../fonts/roboto/roboto_400.woff2) format('woff2');
-          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-        }
-
-        /* latin-ext */
-        @font-face {
-          font-family: 'Roboto';
-          font-style: normal;
-          font-weight: 900;
-          src: local('Roboto Black'), local('Roboto-Black'), url(../fonts/roboto/roboto_900.woff2) format('woff2');
-          unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-        }
-        /* latin */
-        @font-face {
-          font-family: 'Roboto';
-          font-style: normal;
-          font-weight: 900;
-          src: local('Roboto Black'), local('Roboto-Black'), url(../fonts/roboto/roboto_900.woff2) format('woff2');
-          unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-        }
-
-        html, body {
-          width: 100%;
-          height: 100%;
-          padding: 0;
-          margin: 0;
-          overflow: hidden;
-          font-family: 'Roboto', sans-serif;
-        }
-        
-        #loading
-        {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: 9999;
-          background-color: #e46d4d;
-          display: block;
-        }
-
-        #loading #content
-        {
-          display: block;
-          width: 80vw;
-          max-width: 400px;
-          height: auto;
-          margin: 0 auto;
-        }
-
-        #loading #content img
-        {
-          display: block;
-          width: 80%;
-          height: auto;
-          margin: 0 auto 30px auto;
-        }
-
-        #map {
-          position: relative;
-          height: 100vh;
-          width: 100%;
-          margin: 0;
-          padding: 0;
-        }
-
-        .container-fluid
-        {
-          margin: 0;
-          padding: 0;
-        }
-
-
-        .material-icons {
-          font-family: 'Material Icons';
-          font-weight: normal;
-          font-style: normal;
-          font-size: 24px;  /* Preferred icon size */
-          display: inline-block;
-          width: 1em;
-          height: 1em;
-          line-height: 1;
-          text-transform: none;
-          letter-spacing: normal;
-          word-wrap: normal;
-
-          /* Support for all WebKit browsers. */
-          -webkit-font-smoothing: antialiased;
-          /* Support for Safari and Chrome. */
-          text-rendering: optimizeLegibility;
-
-          /* Support for Firefox. */
-          -moz-osx-font-smoothing: grayscale;
-
-          /* Support for IE. */
-          font-feature-settings: 'liga';
-        }
-        .col-xs-12, .col-xs-4
-        {
-          margin: 0;
-          padding: 0;
-        }
-
-        .info {
-          width: 150px;
-          padding: 6px 8px;
-          font: 14px/16px Arial, Helvetica, sans-serif;
-          background: white;
-          background: rgba(255,255,255,1);
-          box-shadow: 0 0 15px rgba(0,0,0,0.2);
-          border-radius: 5px;
-        }
-
-        .leaflet-clickable
-        {
-          cursor: help;
-        }
-
-        .list {
-          font-family:sans-serif;
-          margin:0;
-          padding:20px 0 0;
-          list-style-type:none;
-        }
-
-        .list > li {
-          display:block;
-          background-color: #fff;
-          padding:10px;
-          box-shadow: inset 0 1px 0 #e26d4d;
-        }
-
-        #listePoi li:hover, #listeLocaux li:hover
-        {
-          background-color: #f6f6f6;
-        }
-
-        .list li a
-        {
-          text-decoration: none;
-          display: block;
-          width: 100%;
-          height: 100%;
-        }
-
-        #listeLocaux li {
-          background-color: #fff;
-        }
-
-        #listePoi .material-icons, #listeLocaux .material-icons {
-          margin-top:-12px !important;
-        }  
-
-
-        img {
-          max-width: 100%;
-        }
-
-        h3 {
-          font-size: 16px;
-          margin:0 0 0.3rem;
-          font-weight: normal;
-          font-weight:bold;
-        }
-        p {
-          margin:0;
-        }
-
-        input {
-          border:solid 1px #ccc;
-          padding:7px 14px;
-        }
-
-        input:focus {
-          border-color:#aaa;
-        }
-
-        .recherche {
-          width:100%;
-          padding:0 15px;
-        }
-
-        .list h1, .list h2, .list h3, .list h4, .list h5, .list h6
-        {
-          display: inline-block;
-          margin: 0;
-        }
-
-        .navbar
-        {
-          margin: 0;
-        }
-
-        #controlleEtage
-        {
-          display: none;
-          list-style-type: none;
-          position: absolute;
-          width: 45px;
-          height: auto;
-          bottom: 140px;
-          left: -15px;
-        }
-
-        #controlleEtage li
-        {
-
-          position: relative;
-          bottom: 0;
-          display: inline-block;
-          height: 40px;
-          width: 40px;
-          border-radius: 100%;
-          background-color: rgba(0,0,0,0.7);
-          transition: all 250ms linear;
-          margin-bottom: 3px;
-        }
-
-        #controlleEtage li:hover
-        {
-          background-color: rgb(0,0,0);
-        }
-
-        #controlleEtage li a:hover
-        {
-          color: #fff;
-        }
-
-        #controlleEtage li a
-        {
-          box-sizing:border-box;
-          display: block;
-          width: 100%;
-          height: 100%;
-          color: #fff;
-          font-weight: bold;
-          font-size: 18px;
-          text-decoration: none;
-          font-family: 'Roboto', sans-serif;
-          font-weight: 400;
-          text-align: center;
-          padding-top:8px;
-        }
-
-
-        .etageActif
-        {
-          background-color: rgba(0,0,0);
-        }
-
-        #indicateurEtage
-        {
-          box-sizing:border-box;
-          background-color: rgba(0,0,0,0.7);
-          font-size: 25px;
-          display: block;
-          width: 40px;
-          height: 40px;
-          color: #fff;
-          border-radius: 40px;
-          margin: 0;
-          margin-top:-4px;
-          padding: 0;
-          padding-top:7px;
-          cursor: pointer;
-        }
-
-        #boutonAfficherEtage
-        {
-          position: absolute;
-          z-index: 999;
-          bottom: 70px;
-          left: 25px;
-          display: block;
-          width: 40px;
-          color: #000;
-          text-align: center;
-        }
-
-
-        footer
-        {
-          height: 60px;
-          width: 100%;
-          position: absolute;
-          bottom: 0;
-          background-color: rgba(0,0,0,0.7);
-        }
-
-        #navigationFooter
-        {
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          list-style-type: none;
-        }
-
-        #navigationFooter li
-        {
-          margin: 0;
-          padding: 0;
-          display: inline-block;
-          width: 100%;
-          height: 55px;
-          text-align: center;
-        }
-
-
-        #navigationFooter li a
-        {
-          box-sizing: content-box;
-          display: block;
-          width: 100%;
-          height: 60px;
-          text-decoration: none;
-          color: #fff;
-          border-right: 1px solid rgba(255,255,255,0.3);
-          padding: 13px 0 0 0;
-        }
-
-        #navigationFooter li a img
-        {
-          display: inline-block;
-          height: 60%;
-          margin: 0 auto;
-        }
-
-        #navigationFooter li a img:nth-of-type(1){ margin-left: 7px; }
-        #navigationFooter li a img::nth-of-type(3){ margin-right: 7px; }
-
-        /* Cache le controle de localisation (Normalement en haut à gauche) */
-        .leaflet-control
-        {
-          display: none;
-        }
-
-        .codeLocalQ
-        {
-          visibility: hidden;
-          font-size: 0px;
-        }
-
-        #modalInformations .modal-body {
-          background-color:#fff;
-          border-bottom-right-radius: 6px;
-          border-bottom-left-radius: 6px;
-          padding-bottom:40px;
-        }
-
-        .logo-dismoiou {
-          width:140px;
-          height:auto;
-          margin-bottom:30px;
-        }
-
-        .logo-cegep-limoilou {
-          width:140px;
-          height:auto;
-        }
-
-        .contenu {
-          box-sizing:border-box;
-          font-family: 'Roboto', sans-serif;
-          font-size:14px;
-          margin-bottom:80px;
-          margin:10px auto 40px auto;
-          padding:0 20px;
-        }
-
-        .contenu h3 {
-          font-size:14px;
-          color:#e26d4d;
-          margin-bottom:0;
-        }
-
-        .contenu a {
-          color:#000;
-        }   
-
-        .progress-bar {
-          background-image:none !important;
-          background-color:#333 !important;
-        }
-        
-        .progress {
-          height: 20px !important;
-        } 
-
-        #aucunResultat {
-          list-style-type: none;
-          margin-left:20px;
-          color:#fff;
-          font-size:24px;
-        }
-
-        #inputRechercherModal
-        {
-          display: inline;
-          width: 80%;
-          padding-left: 30px;
-        }
-
-        #boutonOK
-        {
-          display: inline;
-          width: 15%;
-          background-color: #333;
-          border: none;
-          color: #fff;
-          float: right;
-        }
-
-        #boutonOK:hover
-        {
-          background-color: #000;
-        }
-
-        .recherche
-        {
-          position: relative;
-        }
-
-        .recherche .glyphicon
-        {
-          position: absolute;
-          left:  10px;
-          padding: 10px;
-          pointer-events: none;
-        }
-
-
-        /* Pour mobile - Footer*/
-        .no-margin
-        {
-          margin: 0;
-        }
-
-
-         @media (max-width: 768px) {
-          
-          #inputRechercherModal
-          {
-            width: 68%;
-          }
-          #boutonOK
-          {
-            width: 30%;
-          }
-
-          .nomLocal
-          {
-            font-size: 14px;
-          }
-          #navigationFooter li a:hover
-          {
-            background-color: rgba(0,0,0,0.9);
-          }
-        }
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(../fonts/roboto/roboto_400.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(../fonts/roboto/roboto_400.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Roboto Black'), local('Roboto-Black'), url(../fonts/roboto/roboto_900.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Roboto Black'), local('Roboto-Black'), url(../fonts/roboto/roboto_900.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+#loading
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: #e46d4d;
+  display: block;
+}
+
+#loading #content
+{
+  display: block;
+  width: 80vw;
+  max-width: 400px;
+  height: auto;
+  margin: 0 auto;
+}
+
+#loading #content img
+{
+  display: block;
+  width: 80%;
+  height: auto;
+  margin: 0 auto 30px auto;
+}
+
+#map {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid
+{
+  margin: 0;
+  padding: 0;
+}
+
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+.col-xs-12, .col-xs-4
+{
+  margin: 0;
+  padding: 0;
+}
+
+.info {
+  width: 150px;
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255,255,255,1);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.leaflet-clickable
+{
+  cursor: help;
+}
+
+.list {
+  font-family:sans-serif;
+  margin:0;
+  padding:20px 0 0;
+  list-style-type:none;
+}
+
+.list > li {
+  display:block;
+  background-color: #fff;
+  padding:10px;
+  box-shadow: inset 0 1px 0 #e26d4d;
+}
+
+#listePoi li:hover, #listeLocaux li:hover
+{
+  background-color: #f6f6f6;
+}
+
+.list li a
+{
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#listeLocaux li {
+  background-color: #fff;
+}
+
+#listePoi .material-icons, #listeLocaux .material-icons {
+  margin-top:-12px !important;
+}
+
+
+img {
+  max-width: 100%;
+}
+
+h3 {
+  font-size: 16px;
+  margin:0 0 0.3rem;
+  font-weight: normal;
+  font-weight:bold;
+}
+p {
+  margin:0;
+}
+
+input {
+  border:solid 1px #ccc;
+  padding:7px 14px;
+}
+
+input:focus {
+  border-color:#aaa;
+}
+
+.recherche {
+  width:100%;
+  padding:0 15px;
+}
+
+.list h1, .list h2, .list h3, .list h4, .list h5, .list h6
+{
+  display: inline-block;
+  margin: 0;
+}
+
+.navbar
+{
+  margin: 0;
+}
+
+#controlleEtage
+{
+  display: none;
+  list-style-type: none;
+  position: absolute;
+  width: 45px;
+  height: auto;
+  bottom: 140px;
+  left: -15px;
+}
+
+#controlleEtage li
+{
+
+  position: relative;
+  bottom: 0;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  background-color: rgba(0,0,0,0.7);
+  transition: all 250ms linear;
+  margin-bottom: 3px;
+}
+
+#controlleEtage li:hover
+{
+  background-color: rgb(0,0,0);
+}
+
+#controlleEtage li a:hover
+{
+  color: #fff;
+}
+
+#controlleEtage li a
+{
+  box-sizing:border-box;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  text-align: center;
+  padding-top:8px;
+}
+
+
+.etageActif
+{
+  background-color: rgba(0,0,0);
+}
+
+#indicateurEtage
+{
+  box-sizing:border-box;
+  background-color: rgba(0,0,0,0.7);
+  font-size: 25px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  border-radius: 40px;
+  margin: 0;
+  margin-top:-4px;
+  padding: 0;
+  padding-top:7px;
+  cursor: pointer;
+}
+
+#boutonAfficherEtage
+{
+  position: absolute;
+  z-index: 999;
+  bottom: 70px;
+  left: 25px;
+  display: block;
+  width: 40px;
+  color: #000;
+  text-align: center;
+}
+
+
+footer
+{
+  height: 60px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+}
+
+#navigationFooter
+{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#navigationFooter li
+{
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  width: 100%;
+  height: 55px;
+  text-align: center;
+}
+
+
+#navigationFooter li a
+{
+  box-sizing: content-box;
+  display: block;
+  width: 100%;
+  height: 60px;
+  text-decoration: none;
+  color: #fff;
+  border-right: 1px solid rgba(255,255,255,0.3);
+  padding: 13px 0 0 0;
+}
+
+#navigationFooter li a img
+{
+  display: inline-block;
+  height: 60%;
+  margin: 0 auto;
+}
+
+#navigationFooter li a img:nth-of-type(1){ margin-left: 7px; }
+#navigationFooter li a img::nth-of-type(3){ margin-right: 7px; }
+
+/* Cache le controle de localisation (Normalement en haut à gauche) */
+.leaflet-control
+{
+  display: none;
+}
+
+.codeLocalQ
+{
+  visibility: hidden;
+  font-size: 0px;
+}
+
+#modalInformations .modal-body {
+  background-color:#fff;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding-bottom:40px;
+}
+
+.logo-dismoiou {
+  width:140px;
+  height:auto;
+  margin-bottom:30px;
+}
+
+.logo-cegep-limoilou {
+  width:140px;
+  height:auto;
+}
+
+.contenu {
+  box-sizing:border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size:14px;
+  margin-bottom:80px;
+  margin:10px auto 40px auto;
+  padding:0 20px;
+}
+
+.contenu h3 {
+  font-size:14px;
+  color:#e26d4d;
+  margin-bottom:0;
+}
+
+.contenu a {
+  color:#000;
+}
+
+.progress-bar {
+  background-image:none !important;
+  background-color:#333 !important;
+}
+
+.progress {
+  height: 20px !important;
+}
+
+#aucunResultat {
+  list-style-type: none;
+  margin-left:20px;
+  color:#fff;
+  font-size:24px;
+}
+
+#inputRechercherModal
+{
+  display: inline;
+  width: 80%;
+  padding-left: 30px;
+}
+
+#boutonOK
+{
+  display: inline;
+  width: 15%;
+  background-color: #333;
+  border: none;
+  color: #fff;
+  float: right;
+}
+
+#boutonOK:hover
+{
+  background-color: #000;
+}
+
+.recherche
+{
+  position: relative;
+}
+
+.recherche .glyphicon
+{
+  position: absolute;
+  left:  10px;
+  padding: 10px;
+  pointer-events: none;
+}
+
+
+/* Pour mobile - Footer*/
+.no-margin
+{
+  margin: 0;
+}
+
+
+ @media (max-width: 768px) {
+
+  #inputRechercherModal
+  {
+    width: 68%;
+  }
+  #boutonOK
+  {
+    width: 30%;
+  }
+
+  .nomLocal
+  {
+    font-size: 14px;
+  }
+  #navigationFooter li a:hover
+  {
+    background-color: rgba(0,0,0,0.9);
+  }
+}
+
+#adminPanel {
+    width: 390px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    text-align: center;
+    color: white;
+    z-index: 1000;
+}
+
+#adminPanel .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#adminPanel .col-md-4 {
+    padding: 0;
+}
+
+#adminPanel button {
+    width: 100%;
+    color: black;
+}

@@ -1,8 +1,6 @@
 class Waypoint {
     constructor(marker, id, floor) {
-        //console.log(marker);
         this.marker = marker;
-        //this.enable = false;
         this.floor = floor;
         this.id = id;
     }
@@ -53,30 +51,15 @@ class Path {
             this.waypoints.push(point);
         }
 
-        this.toJSON = function() {
-
-            var jsonString = "{\"local\":" + this.local + ",\"points\":[";
-            var points = "";
-
-            for (var i = 0; i < this.waypoints.length; i++) {
-                if (points !== "") {
-                    points += ", ";
-                }
-
-                points += this.waypoints[i];
-            }
-
-            jsonString += points + "]}";
-
-            return jsonString;
-        }
-
         this.getPoints = function() {
             return this.waypoints;
         }
     }
+    get getLocal() {
+        return this.local;
+    }
 }
-
+/*
 class Zone {
     constructor(id) {
         this.id = id;
@@ -175,4 +158,4 @@ class Point {
         return "{\"id\": " + this.id +
             ", \"coords\": [" + this.point.lat + ", " + this.point.lng + "]}";
     }
-}
+}*/

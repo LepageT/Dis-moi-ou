@@ -194,6 +194,33 @@
 
     <!--------  ÉCRAN PRINCIPAL  -------->
     <div class="container-fluid">
+
+       <div class="row" id="adminPanel">
+           <h2>-- Admin Panel --</h2>
+           <div class="row">
+                <div class="col-md-4">
+                    <button id="selectLocal">Select Local</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="importWaypoints">Import waypoints</button>
+                </div>
+                   <div class="col-md-4">
+                    <button id="exportWaypoints">Export waypoints</button>
+                </div>
+           </div>
+           <div class="row">
+                <div class="col-md-4">
+                    <button id="remove">Remove last</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="addPath">Add path to file</button>
+                </div>
+                   <div class="col-md-4">
+                    <button id="saveLocal">Export paths/local</button>
+                </div>
+           </div>
+       </div>
+
         <div class="row">
             <div class="col-xs-12">
                 <div id="map"></div>
@@ -217,45 +244,27 @@
                         <div class="row no-margin">
                             <ul id="navigationFooter">
 
-                                <div class="col-xs-2">
+                                <div class="col-xs-4">
                                     <!-- Apelle la fonction lc.start().....Geolocalisation de l'utilisateur -->
                                     <li>
                                         <a href="javascript:lc.start()"><img src="images/position.png"></a>
                                     </li>
                                 </div>
                                 <!-- .col-xs-4 -->
-                                <div class="col-xs-2">
+                                <div class="col-xs-4">
                                     <!-- Ouvre la fenêtre modale de recherche de locaux -->
                                     <li>
                                         <a id="boutonRechercher" href="javascript:"><img src="images/loupe.png"></a>
                                     </li>
                                 </div>
-                                <!-- .col-xs-3 -->
-                                <div class="col-xs-2">
+                                <!-- .col-xs-4 -->
+                                <div class="col-xs-4">
                                     <!-- Ouvre la fenetre d'information sur le projet -->
                                     <li>
                                         <a id="boutonInformations" href="javascript:"><img src="images/information.png"></a>
                                     </li>
                                 </div>
-                                <!-- .col-xs-3 -->
-                                <div class="col-xs-2">
-                                    <!-- Ouvre la fenetre d'information sur le projet -->
-                                    <li>
-                                        <a id="startWaypoints" href="javascript:"><img src="images/loupe.png">Select Local</a>
-                                    </li>
-                                </div>
-                                <div class="col-xs-2">
-                                    <!-- Ouvre la fenetre d'information sur le projet -->
-                                    <li>
-                                        <a id="import" href="javascript:"><img src="images/information.png">Import/Export</a>
-                                    </li>
-                                </div>
-                                <div class="col-xs-2">
-                                    <!-- Ouvre la fenetre d'information sur le projet -->
-                                    <li>
-                                        <a id="remove" href="javascript:"><img src="images/information.png">Remove last</a>
-                                    </li>
-                                </div>
+                                <!-- .col-xs-4 -->
                             </ul>
                         </div>
                         <!-- .row -->
@@ -453,29 +462,23 @@
     <script>
         var creatingPath = true;
 
-        if(!creatingPath) {
+        if (!creatingPath) {
             map.on("click", addMarker);
         }
-
-        //var zone = new Zone(1);
-        //var zoneId = 1;
 
         var polyLayer = L.layerGroup();
         map.addLayer(polyLayer);
 
         var polylineLayer = L.layerGroup();
         map.addLayer(polylineLayer);
-        //var nextId = 1;
-        //var myZones = [];
-
-        //var waypointsAdd = false;
-
-        //var waypointsId = 1;
 
         var waypoints = [];
         var nextWaypointId = 1;
 
         var path = null;
+
+        var local = [];
+        loadLocal();
 
         function addMarker(e) {
             /*if (!waypointsAdd) {
@@ -519,166 +522,21 @@
             nextWaypointId += 1;
         }
 
-        $("#import").on("click", function () {
-            var dialog = $('<p>Are you sure?</p>').dialog({
-                    buttons: {
-                        "Import": function() {loadWaypoints()},
-                        "Export":  function() {exportWaypoints()},
-                        "Cancel":  function() {
-                            this.dialog('close');
-                        }
-                    }
-                });
-        });
-
+        $("#importWaypoints").on("click", loadWaypoints);
+        $("#exportWaypoints").on("click", exportWaypoints);
         $("#remove").on("click", function () {
-            polyLayer.removeLayer(waypoints.pop().getMarker);
-        });
-
-        $("#startWaypoints").on("click", function () {
-            alert("Select a room");
-
-        })
-
-        /*function exportWaypoints() {
-            var zones = "";
-            for (var i = 0; i < myZones.length; i++) {
-                if (zones !== "") {
-                    zones += ", ";
-                }
-                zones += myZones[i].toJSON;
-            }
-
-            var myJson = "{\"zones\": [" + zones + "]}";
-
-            var a = document.createElement('a');
-            a.setAttribute('href', 'data:text/plain;charset=utf-u,' + encodeURIComponent(myJson));
-            a.setAttribute('download', "waypoints.json");
-            a.click();
-        }*/
-        /*
-        function changeZone() {
-            myZones.push(zone);
-            zoneId++;
-            zone = new Zone(zoneId);
-            nextId = 1;
-            waypointsId = 1;
-        }
-
-        function drawAllZones(marker = true) {
-            map.removeLayer(polyLayer);
-            polyLayer = L.layerGroup();
-            map.addLayer(polyLayer);
-
-            for (var i = 0; i < myZones.length; i++) {
-                drawZone(myZones[i], marker);
-            }
-        }
-
-        function redrawZone(zone, marker = true) {
-            map.removeLayer(polyLayer);
-            polyLayer = L.layerGroup();
-            map.addLayer(polyLayer);
-            drawZone(zone, marker);
-        }
-
-        function drawZone(zone, marker = true) {
-            var points = [];
-            for (var i = 0; i < zone.getPoints.length; i++) {
-                points.push(zone.getPoints[i].getCoord);
-                if (marker) {
-                    new L.marker(zone.getPoints[i].getCoord, {}).addTo(polyLayer);
-                }
-            }
-
-            for (var i = 0; i < zone.getWaypoints.length; i++) {
-                new L.marker(zone.getWaypoints[i].getCoord, {}).addTo(polyLayer);
-            }
-
-            if (zone.getPoints.length < 3) {
-                return;
-            }
-
-            var polygon = L.polygon(points);
-            polygon.bindPopup("Test " + zone.getId);
-            polygon.addTo(polyLayer);
-        }
-
-        function removeLastMarker() {
-            console.log(zone);
-            if (waypointsAdd) {
-                zone.removeLastWaypoints();
+            if(creatingPath) {
+                path.removeLastWaypoint();
+                redrawPath(path, false);
             } else {
-                zone.removeLast();
+                polyLayer.removeLayer(waypoints.pop().getMarker);
             }
-            redrawZone(zone);
-        }
-
-        function loadZones() {
-            $.ajax({
-                url: "data/zones.json",
-                context: document.body,
-                dataType: "json"
-            }).success(function (data) {
-                for (var i = 0; i < data.zones.length; i++) {
-                    var zone = new Zone(data.zones[i].id);
-                    for (var j = 0; j < data.zones[i].points.length; j++) {
-                        var point = new Point(data.zones[i].points[j].id, new L.LatLng(data.zones[i].points[j].coords[0], data.zones[i].points[j].coords[1]));
-                        zone.addPointToZone(point);
-                    }
-
-                    for (var j = 0; j < data.zones[i].waypoints.length; j++) {
-                        var point = new Point(data.zones[i].waypoints[j].id, new L.LatLng(data.zones[i].waypoints[j].coords[0], data.zones[i].waypoints[j].coords[1]));
-                        zone.addWaypoints(point);
-                    }
-                    myZones.push(zone);
-                }
-            }).complete(function () {});
-        }
-
-        function findZoneForLocation(location) {
-            for (var i = 0; i < myZones.length; i++) {
-                console.log("te");
-                if (isInside(location, myZones[i].formatedPoints)) {
-                    console.log("Location in zone: " + myZones[i].getId);
-                    showPathFromZone(myZones[i], location);
-                    return;
-                }
-            }
-        }
-
-        function showPathFromZone(zone, location) {
-            var points = [new L.LatLng(location[0], location[1])];
-            points = points.concat(zone.formatedWaypoints);
-
-            console.log(points);
-            console.log(zone.formatedWaypoints);
-            var polyline = new L.Polyline(points, {
-                color: "red",
-                weight: 3,
-                smoothFactor: 1
-            });
-
-            polyline.addTo(polyLayer);
-        }
-
-        function isInside(point, poly) {
-            var x = point[0],
-                y = point[1];
-
-            var inside = false;
-            for (var i = 0, j = poly.length - 1; i < poly.length; j = i++) {
-                var xi = poly[i][0],
-                    yi = poly[i][1];
-                var xj = poly[j][0],
-                    yj = poly[j][1];
-
-                var intersect = ((yi > y) != (yj > y)) && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
-                if (intersect) inside = !inside;
-            }
-
-            return inside;
-        }*/
+        });
+        $("#selectLocal").on("click", function () {
+            alert("Select a room");
+        })
+        $("#addPath").on("click", addPathToLocal);
+        $("#saveLocal").on("click", saveLocal);
 
         function loadWaypoints() {
             $.get("data/waypoints.json", function (data) {
@@ -689,8 +547,8 @@
                         //marker.bindPopup("ID: " + data.waypoints[i].id);
                         var waypoint = new Waypoint(marker, data.waypoints[i].id, data.waypoints[i].floor);
 
-                        if(creatingPath) {
-                            marker.on("click", function() {
+                        if (creatingPath) {
+                            marker.on("click", function () {
                                 addToPath(getWaypoint(this).getId);
                                 redrawPath(path, false);
                             });
@@ -702,17 +560,30 @@
             }, 'json');
         }
 
+        function loadLocal() {
+            $.ajax({
+                url: "data/listelocaux.json",
+                context: document.body,
+                dataType: "json"
+            }).success(function(data) {
+               local = data;
+
+            }).complete(function(){
+
+            }); // ajax Complete(function(){})
+        }
+
         function getWaypoint(marker) {
-            for(var i = 0; i < waypoints.length; i++) {
-                if(waypoints[i].getMarker._leaflet_id == marker._leaflet_id) {
+            for (var i = 0; i < waypoints.length; i++) {
+                if (waypoints[i].getMarker._leaflet_id == marker._leaflet_id) {
                     return waypoints[i];
                 }
             }
         }
 
         function getWaypointById(id) {
-            for(var i = 0; i < waypoints.length; i++) {
-                if(waypoints[i].getId == id) {
+            for (var i = 0; i < waypoints.length; i++) {
+                if (waypoints[i].getId == id) {
                     return waypoints[i];
                 }
             }
@@ -725,10 +596,15 @@
             drawPath(path, marker);
         }
 
+        /* !!!!!!!!!!!!!!! Check if there is a floor change !!!!!!!!!!!!!!!!!! */
         function drawPath(path, marker = true) {
             var points = [];
             for (var i = 0; i < path.getPoints().length; i++) {
-                points.push(getWaypointById(path.getPoints()[i]).getMarker._latlng);
+                var waypoint = getWaypointById(path.getPoints()[i]);
+
+                if (waypoint.floor === etageActuel) {
+                    points.push(getWaypointById(path.getPoints()[i]).getMarker._latlng);
+                }
 
                 if (marker) {
                     new L.marker(getWaypoint(path.getPoints[i].getMarker)._latlng, {}).addTo(polyLayer);
@@ -761,9 +637,7 @@
         }
 
         function exportWaypoints() {
-            if(creatingPath) {
-                console.log(path);
-            } else {
+            if (waypoints.length > 0) {
                 var zones = "";
                 for (var i = 0; i < waypoints.length; i++) {
                     if (zones !== "") {
@@ -781,11 +655,24 @@
         }
 
         function addToPath(id) {
-            if(path !== null) {
+            if (path !== null) {
                 path.addWaypoint(id);
             } else {
                 alert("Select a room");
             }
+        }
+
+        function addPathToLocal() {
+            for(var i = 0; i < local.length; i++) {
+                if(path.getLocal == local.local) {
+                    local.path = path.getPoints();
+                    return;
+                }
+            }
+        }
+
+        function saveLocal() {
+            console.log(JSON.stringify(local));
         }
     </script>
 
