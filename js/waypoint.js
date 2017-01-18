@@ -1,22 +1,30 @@
 class Waypoint {
-    constructor(marker, floor, id) {
+    constructor(marker, id, floor) {
         //console.log(marker);
         this.marker = marker;
-        this.enable = false;
+        //this.enable = false;
         this.floor = floor;
         this.id = id;
     }
 
-    get idMarker() {
-        return this.marker._leaflet_id;
-    }
-
-    get id() {
+    get getId() {
         return this.id;
     }
 
     get getMarker() {
         return this.marker;
+    }
+
+    get toJSON() {
+        return "{\"id\": " + this.id +
+            ", \"latitude\": " + this.marker._latlng.lat +
+            ", \"longitude\": " + this.marker._latlng.lng +
+            ", \"floor\": " + this.floor +
+            "}";
+    }
+
+    /*get idMarker() {
+        return this.marker._leaflet_id;
     }
 
     get isEnabled() {
@@ -29,74 +37,45 @@ class Waypoint {
 
     get getFloor() {
         return this.floor;
-    }
+    }*/
 }
 
-class FloorWaypoint extends Waypoint {
-    constructor(marker, floor, id) {
-        super(marker, floor, id);
-    }
+class Path {
+    constructor(local) {
+        this.local = local;
+        this.waypoints = [];
 
-    get toJSON() {
-        return "{\"latitude\": " + this.marker._latlng.lat +
-            ", \"longitude\": " + this.marker._latlng.lng +
-            ", \"floor\": " + this.floor +
-            ", \"enabled\": " + this.enable +
-            "}";
-    }
+        this.removeLastWaypoint = function() {
+            this.waypoints.pop();
+        }
 
-    get toString() {
-        return "Lat et Long: " + this.marker._latlng + ", Floor: " + this.floor;
-    }
-}
+        this.addWaypoint = function(point) {
+            this.waypoints.push(point);
+        }
 
-class VerticalWaypoint extends Waypoint {
-    constructor(marker, floor, id) {
-        super(marker, floor, id);
-        this.accessibleFloors = [1, 2, 3];
-        this.elevator = false;
-        this.connectedWaypoint = [];
-    }
+        this.toJSON = function() {
 
-    get toJSON() {
-        return "{\"latitude\": " + this.marker._latlng.lat +
-            ", \"longitude\": " + this.marker._latlng.lng +
-            ", \"elevator\": " + this.elevator +
-            ", \"floor\": " + this.floor +
-            ", \"enabled\": " + this.enable +
-            ", \"accessibleFloors\": [" + this.accessibleFloors +
-            "]}";
-    }
+            var jsonString = "{\"local\":" + this.local + ",\"points\":[";
+            var points = "";
 
-    get toString() {
-        return "Lat et Long: " + this.marker._latlng + ", Accessible floors: " + this.accessibleFloors + ", Elevator: " + this.elevator;
-    }
+            for (var i = 0; i < this.waypoints.length; i++) {
+                if (points !== "") {
+                    points += ", ";
+                }
 
-    set setElevator(elevator) {
-        this.elevator = elevator;
-    }
-
-    set setFloors(floors) {
-        this.accessibleFloors = floors;
-    }
-
-    get getConnectedWaypoints() {
-        return this.connectedWaypoint;
-    }
-
-    addConnectedWaypoints(id) {
-        this.push(id);
-    }
-
-    removeConnectedWaypoints() {
-        for (var i = 0; i < this.connectedWaypoint.length; i++) {
-            if (this.connectedWaypoint[i] === id) {
-                this.connectedWaypoint.splice(i, 1);
+                points += this.waypoints[i];
             }
+
+            jsonString += points + "]}";
+
+            return jsonString;
+        }
+
+        this.getPoints = function() {
+            return this.waypoints;
         }
     }
 }
-
 
 class Zone {
     constructor(id) {
