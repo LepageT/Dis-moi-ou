@@ -303,9 +303,9 @@
                 changerEtage(etage);
                 
                 // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
-                var button = '<hr/> <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage">Visualiser</button>';
+                var button = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
 
-                marqueur = L.marker(positionMarqueur, {bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 200}}).bindPopup(message + button);
+                marqueur = L.marker(positionMarqueur, {bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 200}}).bindPopup(button + message);
 
                 // Créé un nouveau calque, ajoute le marqueur puis l'affiche sur la carte
                 map.addLayer(marqueur);
@@ -313,8 +313,11 @@
                 //Ouvre le popup du marqueur automatiquement (Contient la variable "message" de la fonction afficheMarqueur())
                 marqueur.openPopup();
 
-                // Ferme la fênetre modale
+                // Ferme la fênetre modale rechercher
                 $('#modalRechercher').modal('hide')
+
+                // Ferme fenêtre modale itinéraire
+                $('#modalItineraire').modal('hide')
 
                 // Centre le marqueur dans l'écran
                 map.panTo(positionMarqueur);
@@ -327,6 +330,23 @@
                 $('#labelMessage').html(message);
             };
 
+   $(document).ready(function () {
+            var cacheListe = $("#premier-jour").hide();
+            var cacheListe2 = $("#inscription-gym").hide();
+            var cacheListe3 = $("#aideFinanciere").hide();
+
+            $("#first-day").on("click", function () {
+                cacheListe.toggle();
+            });
+
+        $("#gym").on("click", function () {
+                cacheListe2.toggle();
+            });
+
+       $("#finance").on("click", function () {
+                cacheListe3.toggle();
+            });
+        });
 
             // Document ready function
             $(function(){
@@ -336,6 +356,7 @@
                             var text = "[" + e.latlng.lat + "," + e.latlng.lng + "]";
                             window.prompt("Position: ", text);
                         });*/
+
 
         $("#boutonAfficherEtage").click(function(){
             if ($("#controlleEtage").is(":visible")){
