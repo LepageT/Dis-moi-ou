@@ -439,6 +439,13 @@
                             $("#modalInformations").modal('show');
                         });
 
+                // Ouvre la fenêtre modale avec le bouton légende dans le menu de navigation
+
+                        $("#boutonLegende").click(function(event){
+                            event.preventDefault();
+                            $("#modalLegende").modal('show');
+                        });
+
                  // Ouvre la fenêtre modale itineraire avec le bouton dans le menu de navigation
                         $("#boutonItineraire").click(function(event){
                             event.preventDefault();

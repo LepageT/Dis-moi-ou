@@ -480,6 +480,22 @@ h2{
 
 }
 
+#boutonInformations{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0,0,0,0.7);
+    border-color: transparent;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+ul li{
+    list-style: none;
+}
+
+
 
         /* Pour mobile - Footer*/
         .no-margin
