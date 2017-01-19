@@ -72,24 +72,34 @@
 
     // Methods to load data to use the admin panel.
     function loadWaypoints() {
+        waypoints = [];
+
         $.get("data/waypoints.json", function (data) {
+            map.removeLayer(waypointLayer);
+            waypointLayer = L.layerGroup();
+            map.addLayer(waypointLayer);
+
             for (var i = 0; i < data.waypoints.length; i++) {
+                var latlng = new L.LatLng(parseFloat(data.waypoints[i].latitude), parseFloat(data.waypoints[i].longitude));
+                //marker.bindPopup("ID: " + data.waypoints[i].id);
+
+                marker = new L.marker(latlng, {});
                 if (etageActuel === data.waypoints[i].floor) {
-                    var latlng = new L.LatLng(parseFloat(data.waypoints[i].latitude), parseFloat(data.waypoints[i].longitude));
-                    marker = new L.marker(latlng, {}).addTo(waypointLayer);
-                    //marker.bindPopup("ID: " + data.waypoints[i].id);
-                    var waypoint = new Waypoint(marker, data.waypoints[i].id, data.waypoints[i].floor);
-                    if(nextWaypointId < data.waypoints[i].id) {
-                        nextWaypointId = data.waypoints[i].id;
-                    }
+                    marker.addTo(waypointLayer);
                     marker.on("click", function () {
                         if (creatingPath) {
                             addToPath(getWaypoint(this).getId);
                             redrawPath(path, false);
                         }
                     });
-                    waypoints.push(waypoint);
                 }
+
+                var waypoint = new Waypoint(marker, data.waypoints[i].id, data.waypoints[i].floor);
+                if(nextWaypointId < data.waypoints[i].id) {
+                    nextWaypointId = data.waypoints[i].id;
+                }
+
+                waypoints.push(waypoint);
             }
             nextWaypointId++;
         }, 'json');
@@ -102,9 +112,6 @@
             dataType: "json"
         }).success(function (data) {
             local = data;
-
-        }).complete(function () {
-
         });
     }
     //End - Loading methods
@@ -198,6 +205,7 @@
     }
 
     function saveJSONToFile(json, filename) {
+        var a = document.createElement('a');
         a.setAttribute('href', 'data:text/plain;charset=utf-u,' + encodeURIComponent(json));
         a.setAttribute('download', filename + ".json");
         a.click();
