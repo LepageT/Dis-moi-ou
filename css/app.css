@@ -472,7 +472,7 @@ footer
 }
 
 #adminPanel {
-    width: 390px;
+    width: 430px;
     background-color: rgba(0, 0, 0, 0.7);
     position: fixed;
     top: 50px;
@@ -480,6 +480,7 @@ footer
     text-align: center;
     color: white;
     z-index: 1000;
+    padding: 20px;
 }
 
 #adminPanel .row {
