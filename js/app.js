@@ -330,23 +330,23 @@
                 $('#labelMessage').html(message);
             };
 
-   $(document).ready(function () {
-            var cacheListe = $("#premier-jour").hide();
-            var cacheListe2 = $("#inscription-gym").hide();
-            var cacheListe3 = $("#aideFinanciere").hide();
+  $(document).ready(function () {
+            $(".list-itineraire").hide();
+            var cacheListe = $("#premier-jour");
+            var cacheListe2 = $("#inscription-gym");
 
             $("#first-day").on("click", function () {
                 cacheListe.toggle();
+                 cacheListe2.hide();
             });
 
-        $("#gym").on("click", function () {
+            $("#gym").on("click", function () {
                 cacheListe2.toggle();
-            });
-
-       $("#finance").on("click", function () {
-                cacheListe3.toggle();
+                   cacheListe.hide();
             });
         });
+
+
 
             // Document ready function
             $(function(){
