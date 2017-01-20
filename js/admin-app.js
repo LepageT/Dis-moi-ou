@@ -140,15 +140,14 @@
     //End - Methods to export
 
     //Methods to show the path the user is creating.
-    function redrawPath(path) {
+    function redrawPath(path, destination = null) {
         map.removeLayer(pathLayer);
         pathLayer = L.layerGroup();
         map.addLayer(pathLayer);
-        drawPath(path, marker);
+        drawPath(path, destination);
     }
 
-    /* !!!!!!!!!!!!!!! Check if there is a floor change !!!!!!!!!!!!!!!!!! */
-    function drawPath(path) {
+    function drawPath(path, destination = null) {
         var points = [];
         for (var i = 0; i < path.getPoints().length; i++) {
             var waypoint = getWaypointById(path.getPoints()[i]);
@@ -158,12 +157,15 @@
             }
         }
 
+        if(destination !== null) {
+            points.push(destination);
+        }
+
         var polyline = new L.Polyline(points, {
             color: "red",
             weight: 3,
             smoothFactor: 1
         });
-
         polyline.addTo(pathLayer);
     }
     //End - Methods to show the path
@@ -186,7 +188,7 @@
     }
 
     function selectedRoom(roomId) {
-
+        path = new Path(roomId);
     }
 
     function addToPath(id) {

@@ -23,9 +23,13 @@ class Waypoint {
 }
 
 class Path {
-    constructor(local) {
+    constructor(local, path = null) {
         this.local = local;
         this.waypoints = [];
+
+        if(path !== null) {
+            this.waypoints = path;
+        }
 
         this.removeLastWaypoint = function() {
             this.waypoints.pop();
