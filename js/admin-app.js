@@ -71,7 +71,7 @@
     }
 
     // Methods to load data to use the admin panel.
-    function loadWaypoints() {
+    function loadWaypoints(show = true) {
         waypoints = [];
 
         $.get("data/waypoints.json", function (data) {
@@ -85,13 +85,15 @@
 
                 marker = new L.marker(latlng, {});
                 if (etageActuel === data.waypoints[i].floor) {
-                    marker.addTo(waypointLayer);
-                    marker.on("click", function () {
-                        if (creatingPath) {
-                            addToPath(getWaypoint(this).getId);
-                            redrawPath(path, false);
-                        }
-                    });
+                    if(show) {
+                        marker.addTo(waypointLayer);
+                        marker.on("click", function () {
+                            if (creatingPath) {
+                                addToPath(getWaypoint(this).getId);
+                                redrawPath(path, false);
+                            }
+                        });
+                    }
                 }
 
                 var waypoint = new Waypoint(marker, data.waypoints[i].id, data.waypoints[i].floor);
