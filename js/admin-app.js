@@ -32,12 +32,16 @@
         }
     });
     $("#selectLocal").on("click", function () {
-        alert("Select a room");
+        $("#roomSelect").modal("show");
     })
     $("#addPath").on("click", addPathToLocal);
     $("#saveLocal").on("click", saveLocal);
     $("#createingPath").on("click", function () {
         creatingPath = !creatingPath;
+    });
+
+    $("#selectRoom").click(function() {
+        selectedRoom($("#roomList").val());
     });
     map.on("click", addMarker);
 
@@ -93,6 +97,14 @@
                                 redrawPath(path, false);
                             }
                         });
+                        marker.on('dragend', function (event) {
+                            var marker = event.target;
+                            var position = marker.getLatLng();
+                            marker.setLatLng(new L.LatLng(position.lat, position.lng), {
+                                draggable: 'true'
+                        });
+                map.panTo(new L.LatLng(position.lat, position.lng))
+            });
                     }
                 }
 
@@ -114,6 +126,16 @@
             dataType: "json"
         }).success(function (data) {
             local = data;
+
+            for(var i = 0; i < data.length; i++) {
+                if(data[i].local.length > 0 && data[i].local !== " ") {
+                    var optionClass = "";
+                    if(data[i].hasOwnProperty("path")) {
+                        optionClass = "green";
+                    }
+                    $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>")
+                }
+            }
         });
     }
     //End - Loading methods
