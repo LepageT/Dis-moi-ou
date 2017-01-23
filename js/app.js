@@ -333,16 +333,37 @@
   $(document).ready(function () {
             $(".list-itineraire").hide();
             var cacheListe = $("#premier-jour");
-            var cacheListe2 = $("#inscription-gym");
+            var cacheListe2 = $("#organisation");
+            var cacheListe3 = $("#inscription-gym");
+            var cacheListe4 = $("#parcoursCultu");
 
             $("#first-day").on("click", function () {
                 cacheListe.toggle();
-                 cacheListe2.hide();
+                cacheListe2.hide();
+                cacheListe3.hide();
+                cacheListe4.hide();
+
+            });
+
+            $("#organiScolaire").on("click", function () {
+                cacheListe2.toggle();
+                cacheListe.hide();
+                cacheListe3.hide();
+                cacheListe4.hide();
             });
 
             $("#gym").on("click", function () {
-                cacheListe2.toggle();
-                   cacheListe.hide();
+                cacheListe3.toggle();
+                cacheListe.hide();
+                cacheListe2.hide();
+                cacheListe4.hide();
+            });
+
+            $("#parcours").on("click", function () {
+                cacheListe4.toggle();
+                cacheListe.hide();
+                cacheListe2.hide();
+                cacheListe3.hide();
             });
         });
 
