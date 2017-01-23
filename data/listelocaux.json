@@ -21,7 +21,8 @@
     "local": "1208",
     "position": "[46.830488266524,-71.22672155499458]",
     "etage": 1,
-    "message": "Salle de réunion"
+    "message": "Salle de réunion",
+    "path": []
 }, {
     "nom": "Local 1540",
     "local": "1540",

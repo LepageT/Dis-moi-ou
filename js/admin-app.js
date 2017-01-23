@@ -131,7 +131,9 @@
                 if(data[i].local.length > 0 && data[i].local !== " ") {
                     var optionClass = "";
                     if(data[i].hasOwnProperty("path")) {
-                        optionClass = "green";
+                        if(data[i].path.length > 0) {
+                            optionClass = "green";
+                        }
                     }
                     $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>")
                 }
