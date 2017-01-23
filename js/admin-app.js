@@ -87,7 +87,9 @@
                 var latlng = new L.LatLng(parseFloat(data.waypoints[i].latitude), parseFloat(data.waypoints[i].longitude));
                 //marker.bindPopup("ID: " + data.waypoints[i].id);
 
-                marker = new L.marker(latlng, {});
+                marker = new L.marker(latlng, {
+                    draggable: 'true'
+                });
                 if (etageActuel === data.waypoints[i].floor) {
                     if(show) {
                         marker.addTo(waypointLayer);
@@ -102,9 +104,10 @@
                             var position = marker.getLatLng();
                             marker.setLatLng(new L.LatLng(position.lat, position.lng), {
                                 draggable: 'true'
+                            });
+                            map.panTo(new L.LatLng(position.lat, position.lng))
                         });
-                map.panTo(new L.LatLng(position.lat, position.lng))
-            });
+                        marker.bindPopup("ID: " + data.waypoints[i].id);
                     }
                 }
 
