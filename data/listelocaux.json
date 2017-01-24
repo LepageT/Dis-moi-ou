@@ -266,157 +266,183 @@
     "local": "1452",
     "position": "[46.830242826991956,-71.22759863734245]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [8, 507, 6]
 }, {
     "nom": "Local 1458",
     "local": "1458",
     "position": "[46.8302598013508,-71.22753493487834]",
     "etage": 1,
-    "message": "Accès via le 1452"
+    "message": "Accès via le 1452",
+    "path": [8, 507, 6]
 }, {
     "nom": "Local 1457",
     "local": "1457",
     "position": "[46.83026805914506,-71.2275429815054]",
     "etage": 1,
-    "message": "Accès via le 1452"
+    "message": "Accès via le 1452",
+    "path": [8, 507, 6]
 }, {
     "nom": "Local 1456",
     "local": "1456",
     "position": "[46.83030659550151,-71.22757785022259]",
     "etage": 1,
-    "message": "Accès via le 1452"
+    "message": "Accès via le 1452",
+    "path": [8, 507, 6]
 }, {
     "nom": "Local 1455",
     "local": "1455",
     "position": "[46.8303171471181,-71.22758589684963]",
     "etage": 1,
-    "message": "Accès via le 1452"
+    "message": "Accès via le 1452",
+    "path": [8, 507, 6]
 }, {
     "nom": "Local 1454",
     "local": "1454",
     "position": "[46.830352013314695,-71.2276167422533]",
     "etage": 1,
-    "message": "Accès via le 1452"
+    "message": "Accès via le 1452",
+    "path": [8, 507, 6]
 }, {
     "nom": "Local 1453",
     "local": "1453",
     "position": "[46.83036302368788,-71.22762881219387]",
     "etage": 1,
-    "message": "Accès via le 1452"
+    "message": "Accès via le 1452",
+    "path": [8, 507, 6]
 }, {
     "nom": "Local 1461",
     "local": "1461",
     "position": "[46.83036531751534,-71.22771061956882]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [9, 507, 6]
 }, {
     "nom": "Local 1467",
     "local": "1467",
     "position": "[46.83038642072338,-71.22772805392742]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [508, 507, 6]
 }, {
     "nom": "Local 1465",
     "local": "1465",
     "position": "[46.83042541575993,-71.22771263122559]",
     "etage": 1,
-    "message": "Accès via le 1452"
+    "message": "Accès via le 1452",
+    "path": [8, 507, 6]
 }, {
     "nom": "Local 1477",
     "local": "1477",
     "position": "[46.830464869532825,-71.22774884104729]",
     "etage": 1,
-    "message": "Accès via le 1471"
+    "message": "Accès via le 1471",
+    "path": [10, 507, 6]
 }, {
     "nom": "Local 1471",
     "local": "1471",
     "position": "[46.83046532829746,-71.22780181467533]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [10, 507, 6]
 }, {
     "nom": "Local 1466",
     "local": "1466",
     "position": "[46.83038642072338,-71.22764825820923]",
     "etage": 1,
-    "message": "Accès via le 1452"
+    "message": "Accès via le 1452",
+    "path": [8, 507, 6]
 }, {
     "nom": "Local 1462",
     "local": "1462",
     "position": "[46.830424956994975,-71.22768312692642]",
     "etage": 1,
-    "message": "Accès via le 1452"
+    "message": "Accès via le 1452",
+    "path": [8, 507, 6]
 }, {
     "nom": "Local 1463",
     "local": "1463",
     "position": "[46.8304446838852,-71.22769720852374]",
     "etage": 1,
-    "message": "Accès via le 1452"
+    "message": "Accès via le 1452",
+    "path": [8, 507, 6]
 }, {
     "nom": "Local 1476",
     "local": "1476",
     "position": "[46.83046991594355,-71.22772470116615]",
     "etage": 1,
-    "message": "Accès via le 1471"
+    "message": "Accès via le 1471",
+    "path": [10, 507, 6]
 }, {
     "nom": "Local 1475",
     "local": "1475",
     "position": "[46.830506617098195,-71.22775755822657]",
     "etage": 1,
-    "message": "Accès via le 1471"
+    "message": "Accès via le 1471",
+    "path": [10, 507, 6]
 }, {
     "nom": "Local 1474",
     "local": "1474",
     "position": "[46.8305171686755,-71.22776828706264]",
     "etage": 1,
-    "message": "Accès via le 1471"
+    "message": "Accès via le 1471",
+    "path": [10, 507, 6]
 }, {
     "nom": "Local 1473",
     "local": "1473",
     "position": "[46.8305410244079,-71.22778974473476]",
     "etage": 1,
-    "message": "Accès via le 1471"
+    "message": "Accès via le 1471",
+    "path": [10, 507, 6]
 }, {
     "nom": "Local 1141",
     "local": "1141",
     "position": "[46.83030843056541,-71.22738406062125]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [5, 6]
 }, {
     "nom": "Local 1142",
     "local": "1142",
     "position": "[46.83037999800876,-71.22744910418987]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [509, 5, 6]
 }, {
     "nom": "Local 1143",
     "local": "1143",
     "position": "[46.83041761675488,-71.22747726738453]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [40, 5, 6]
 }, {
     "nom": "Local 1144",
     "local": "1144",
     "position": "[46.8304570705335,-71.22751615941525]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [39, 5, 6]
 }, {
     "nom": "Local 1146",
     "local": "1146",
     "position": "[46.83052450890198,-71.2275791913271]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [38, 5, 6]
 }, {
     "nom": "Local 1324",
     "local": "1324",
     "position": "[46.83065571528118,-71.22818738222122]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [15, 1, 4, 5, 6]
 }, {
     "nom": "Local 1323",
     "local": "1323",
     "position": "[46.83067544208673,-71.22820414602757]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [15, 1, 4, 5, 6]
 }, {
     "nom": "Entrée Salle Sylvain-Lelièvre",
     "local": " ",
@@ -428,13 +454,15 @@
     "local": "1322",
     "position": "[46.830771782195804,-71.22822426259518]",
     "etage": 1,
-    "message": "Accès via le Gymnase D"
+    "message": "Accès via le Gymnase D",
+    "path": [15, 1, 4, 5, 6]
 }, {
     "nom": "Local 1325",
     "local": "1325",
     "position": "[46.83067085445817,-71.22822493314743]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [15, 1, 4, 5, 6]
 }, {
     "nom": "Gymnase D",
     "local": "1321",

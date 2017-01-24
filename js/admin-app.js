@@ -128,7 +128,7 @@
             dataType: "json"
         }).success(function (data) {
             local = data;
-            console.log(data.length);
+            var temp = 0;
             for(var i = 0; i < data.length; i++) {
                 if(data[i].local.length > 0 && data[i].local !== " ") {
                     var optionClass = "";
@@ -137,10 +137,12 @@
                             optionClass = "green";
                         }
                     } else {
+                        temp++;
                         $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>")
                     }
                 }
             }
+            console.log(temp);
         });
     }
     //End - Loading methods
