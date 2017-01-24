@@ -83,14 +83,13 @@
             waypointLayer = L.layerGroup();
             map.addLayer(waypointLayer);
 
-            for (var i = 0; i < data.waypoints.length; i++) {
-                var latlng = new L.LatLng(parseFloat(data.waypoints[i].latitude), parseFloat(data.waypoints[i].longitude));
-                //marker.bindPopup("ID: " + data.waypoints[i].id);
+            for (var i = 0; i < data.length; i++) {
+                var latlng = new L.LatLng(parseFloat(data[i].latitude), parseFloat(data[i].longitude));
 
                 marker = new L.marker(latlng, {
                     draggable: 'true'
                 });
-                if (etageActuel === data.waypoints[i].floor) {
+                if (etageActuel === data[i].floor) {
                     if(show) {
                         marker.addTo(waypointLayer);
                         marker.on("click", function () {
@@ -107,13 +106,13 @@
                             });
                             map.panTo(new L.LatLng(position.lat, position.lng))
                         });
-                        marker.bindPopup("ID: " + data.waypoints[i].id);
+                        marker.bindPopup("ID: " + data[i].id);
                     }
                 }
 
-                var waypoint = new Waypoint(marker, data.waypoints[i].id, data.waypoints[i].floor);
-                if(nextWaypointId < data.waypoints[i].id) {
-                    nextWaypointId = data.waypoints[i].id;
+                var waypoint = new Waypoint(marker, data[i].id, data[i].floor);
+                if(nextWaypointId < data[i].id) {
+                    nextWaypointId = data[i].id;
                 }
 
                 waypoints.push(waypoint);
@@ -148,15 +147,15 @@
     //Methods to export the waypoints and the new rooms file with path.
     function exportWaypoints() {
         if (waypoints.length > 0) {
-            var zones = "";
+            var waypointsString = "";
             for (var i = 0; i < waypoints.length; i++) {
-                if (zones !== "") {
-                    zones += ", ";
+                if (waypointsString !== "") {
+                    waypointsString += ", ";
                 }
-                zones += waypoints[i].toJSON;
+                waypointsString += waypoints[i].toJSON;
             }
 
-            var myJson = "{\"waypoints\": [" + zones + "]}";
+            var myJson = "[" + waypointsString + "]";
             saveJSONToFile(myJson, "waypoints");
         }
     }

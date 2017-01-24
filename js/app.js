@@ -246,8 +246,8 @@
                 imageLocauxUrl = 'images/etages/etage5_numero.svg'
                 numeroLocauxEtage = L.imageOverlay(imageLocauxUrl, imageBounds);
 
-                //libelleEtageUrl = '';
-                //libelleEtage = L.imageOverlay(libelleEtageUrl, imageBounds);
+                libelleEtageUrl = '';
+                libelleEtage = L.imageOverlay(libelleEtageUrl, imageBounds);
 
                 planEtage = L.imageOverlay(imageUrl, imageBounds)
                 map.addLayer(planEtage);
