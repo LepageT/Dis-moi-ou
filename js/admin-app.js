@@ -26,7 +26,7 @@
     $("#remove").on("click", function () {
         if (creatingPath) {
             path.removeLastWaypoint();
-            redrawPath(path, false);
+            redrawPath(path, null);
         } else {
             waypointLayer.removeLayer(waypoints.pop().getMarker);
         }
@@ -64,7 +64,7 @@
                 if (creatingPath) {
                     console.log("ID: " + getWaypoint(this).getId);
                     addToPath(getWaypoint(this).getId);
-                    redrawPath(path, false);
+                    redrawPath(path, null);
                 }
             });
 
@@ -95,7 +95,7 @@
                         marker.on("click", function () {
                             if (creatingPath) {
                                 addToPath(getWaypoint(this).getId);
-                                redrawPath(path, false);
+                                redrawPath(path, null);
                             }
                         });
                         marker.on('dragend', function (event) {
@@ -128,7 +128,7 @@
             dataType: "json"
         }).success(function (data) {
             local = data;
-
+            console.log(data.length);
             for(var i = 0; i < data.length; i++) {
                 if(data[i].local.length > 0 && data[i].local !== " ") {
                     var optionClass = "";
@@ -136,8 +136,9 @@
                         if(data[i].path.length > 0) {
                             optionClass = "green";
                         }
+                    } else {
+                        $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>")
                     }
-                    $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>")
                 }
             }
         });
@@ -175,18 +176,23 @@
 
     function drawPath(path, destination = null) {
         var points = [];
-        for (var i = 0; i < path.getPoints().length; i++) {
-            var waypoint = getWaypointById(path.getPoints()[i]);
-
-            if (waypoint.floor === etageActuel) {
-                points.push(getWaypointById(path.getPoints()[i]).getMarker._latlng);
-            }
-        }
 
         if(destination !== null) {
             points.push(destination);
         }
 
+        for (var i = 0; i < path.getPoints().length; i++) {
+            var waypoint = getWaypointById(path.getPoints()[i]);
+
+            if (waypoint.floor === etageActuel) {
+                console.log(getWaypointById(path.getPoints()[i]));
+                points.push(getWaypointById(path.getPoints()[i]).getMarker._latlng);
+            }
+        }
+
+
+
+        console.log(points);
         var polyline = new L.Polyline(points, {
             color: "red",
             weight: 3,
@@ -214,6 +220,7 @@
     }
 
     function selectedRoom(roomId) {
+        console.log(roomId);
         path = new Path(roomId);
     }
 

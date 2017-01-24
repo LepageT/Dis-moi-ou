@@ -22,211 +22,245 @@
     "position": "[46.830488266524,-71.22672155499458]",
     "etage": 1,
     "message": "Salle de réunion",
-    "path": []
+    "path": [125, 123, 124, 43, 41, 6]
 }, {
     "nom": "Local 1540",
     "local": "1540",
     "position": "[46.82932482732999,-71.22610464692116]",
     "etage": 1,
-    "message": "Salle de conférence"
+    "message": "Salle de conférence",
+    "path": [99, 97, 96, 94, 93, 91, 89, 85, 76, 43, 41, 6]
 }, {
     "nom": "Local 1401",
     "local": "1401",
     "position": "[46.83015061484073,-71.22778840363026]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [1, 4, 5, 6]
 }, {
     "nom": "Local 1405",
     "local": "1405",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
-    "message": "Pédagogie et international"
+    "message": "Pédagogie et international",
+    "path": [506, 1, 4, 5, 6]
 }, {
     "nom": "Local 1406",
     "local": "1406",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
-    "message": "Pédagogie et international"
+    "message": "Pédagogie et international",
+    "path": [506, 1, 4, 5, 6]
 }, {
     "nom": "Local 1407",
     "local": "1407",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
-    "message": "Pédagogie et international"
+    "message": "Pédagogie et international",
+    "path": [506, 1, 4, 5, 6]
 }, {
     "nom": "Local 1408",
     "local": "1408",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
-    "message": "Pédagogie et international"
+    "message": "Pédagogie et international",
+    "path": [506, 1, 4, 5, 6]
 }, {
     "nom": "Local 1409",
     "local": "1409",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
-    "message": "Pédagogie et international"
+    "message": "Pédagogie et international",
+    "path": [506, 1, 4, 5, 6]
 }, {
     "nom": "Local 1412",
     "local": "1412",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
-    "message": "Pédagogie et international"
+    "message": "Pédagogie et international",
+    "path": [506, 1, 4, 5, 6]
 }, {
     "nom": "Local 1413",
     "local": "1413",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
-    "message": "Pédagogie et international"
+    "message": "Pédagogie et international",
+    "path": [506, 1, 4, 5, 6]
 }, {
     "nom": "Local 1414",
     "local": "1414",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
-    "message": "Pédagogie et international"
+    "message": "Pédagogie et international",
+    "path": [506, 1, 4, 5, 6]
 }, {
     "nom": "Local 1415",
     "local": "1415",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
-    "message": "Pédagogie et international"
+    "message": "Pédagogie et international",
+    "path": [506, 1, 4, 5, 6]
 }, {
     "nom": "Local 1404",
     "local": "1404",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
-    "message": "Pédagogie et international"
+    "message": "Pédagogie et international",
+    "path": [506, 1, 4, 5, 6]
 }, {
     "nom": "Local 1448",
     "local": "1448",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1446",
     "local": "1446",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1447",
     "local": "1447",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1449",
     "local": "1449",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1443",
     "local": "1443",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1435",
     "local": "1435",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1436",
     "local": "1436",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1445",
     "local": "1445",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1442",
     "local": "1442",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1437",
     "local": "1437",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1434",
     "local": "1434",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1433",
     "local": "1433",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1432",
     "local": "1432",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1423",
     "local": "1423",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1424",
     "local": "1424",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1425",
     "local": "1425",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1422",
     "local": "1422",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1421",
     "local": "1421",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1419",
     "local": "1419",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1430",
     "local": "1430",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1417",
     "local": "1417",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1416",
     "local": "1416",
     "position": "[46.83034926072105,-71.22783333063126]",
     "etage": 1,
-    "message": "Animation et consultation"
+    "message": "Animation et consultation",
+    "path": [506, 1, 2, 4, 5, 6]
 }, {
     "nom": "Local 1452",
     "local": "1452",
@@ -773,8 +807,7 @@
     "local": "1021",
     "position": "[46.83004785086392,-71.22744441032408]",
     "etage": 1,
-    "message": " ",
-    "path": [6, 5, 3, 57, 56, 55]
+    "message": " "
 }, {
     "nom": "Local 1022",
     "local": "1022",
@@ -1590,8 +1623,7 @@
     "local": "2106",
     "position": "[46.82990838515256,-71.22694417834282]",
     "etage": 2,
-    "message": "",
-    "path": [6, 7, 322, 194, 229, 316, 315, 314, 313, 312, 302]
+    "message": ""
 }, {
     "nom": "Local 2052",
     "local": "2052",
