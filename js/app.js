@@ -324,7 +324,7 @@
 
 
                // Modifie la source de l'image
-                $('#imgModal').attr("src","images/exemple_image.png");
+                $('#imgModal').attr("src","images/image_test.jpg");
 
                 //source pour titre message
                 $('#labelMessage').html(message);
