@@ -86,7 +86,7 @@
         // Affiche certains calques SVG selon le niveau de zoom de la carte
         function afficheLorsZoom() {
             if (map.getZoom() >= 19 && libelleEtageUrl !== '') {
-                map.addLayer(libelleEtage);
+                //map.addLayer(libelleEtage);
             }
 
             if (map.getZoom() < 19) {
