@@ -305,9 +305,8 @@
 
             //Afficher le path jusqu'au local
             var myPath = findPathForLocal(local);
-
             if(myPath !== null) {
-                var temp = new Path(2106, myPath);
+                var temp = new Path(local, myPath);
                 redrawPath(temp, positionMarqueur);
             }
         };
