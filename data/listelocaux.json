@@ -466,9 +466,10 @@
 }, {
     "nom": "Gymnase D",
     "local": "1321",
-    "position": "[46.83080022543308,-71.22824840247631]",
+    "position": "[46.83094840528057,-71.22788831591605]",
     "etage": 1,
-    "message": " "
+    "message": " ",
+    "path": [30, 34, 37, 5, 6, 326, 325, 520]
 }, {
     "nom": "Foyer Desjardins",
     "local": "1333",
@@ -2748,7 +2749,8 @@
     "local": "3503",
     "position": "[46.82972028937656,-71.22637286782265]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [398, 397, 396, 146, 145, 193, 194]
 }, {
     "nom": "Local 3035",
     "local": "3035",
@@ -2957,7 +2959,8 @@
     "local": "3071",
     "position": "[46.83006803666058,-71.22751280665398]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [541, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3046",
     "local": "3046",
@@ -3123,7 +3126,8 @@
     "local": "3045",
     "position": "[46.82996435498809,-71.2269039452076]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [363, 364, 365, 366, 311, 310, 189, 193, 194]
 }, {
     "nom": "Local 3090",
     "local": "3090",
@@ -3187,21 +3191,24 @@
 }, {
     "nom": "Local 3412",
     "local": "3412",
-    "position": "[46.83044284882593,-71.2265793979168]",
+    "position": "[46.83044284882593,-71.22791446745396]",
     "etage": 3,
-    "message": " "
+    "message": "Accès via le 3411",
+    "path": [326, 325, 520, 253, 216, 229, 194]
 }, {
     "nom": "Local 3414",
     "local": "3414",
     "position": "[46.83043321476384,-71.22786417603493]",
     "etage": 3,
-    "message": "Accès via le 3411"
+    "message": "Accès via le 3411",
+    "path": [326, 325, 520, 253, 216, 229, 194]
 }, {
     "nom": "Local 3411",
     "local": "3411",
-    "position": "[46.83044284882593,-71.2265793979168]",
+    "position": "[46.83039467849818,-71.22797213494778]",
     "etage": 3,
-    "message": " "
+    "message": " ",
+    "path": [326, 325, 520, 253, 216, 229, 194]
 }, {
     "nom": "Local 3410",
     "local": "3410",
@@ -3249,55 +3256,64 @@
     "local": "3417",
     "position": "[46.830302007841475,-71.22779108583927]",
     "etage": 3,
-    "message": "DSTI (Service informatique)"
+    "message": "DSTI (Service informatique)",
+    "path": [328, 329, 330, 264, 263, 265, 228, 229, 194]
 }, {
     "nom": "Local 3418",
     "local": "3418",
     "position": "[46.830302007841475,-71.22779108583927]",
     "etage": 3,
-    "message": "DSTI (Service informatique)"
+    "message": "DSTI (Service informatique)",
+    "path": [328, 329, 330, 264, 263, 265, 228, 229, 194]
 }, {
     "nom": "Local 3419",
     "local": "3419",
     "position": "[46.830302007841475,-71.22779108583927]",
     "etage": 3,
-    "message": "DSTI (Service informatique)"
+    "message": "DSTI (Service informatique)",
+    "path": [328, 329, 330, 264, 263, 265, 228, 229, 194]
 }, {
     "nom": "Local 3420",
     "local": "3420",
     "position": "[46.830302007841475,-71.22779108583927]",
     "etage": 3,
-    "message": "DSTI (Service informatique)"
+    "message": "DSTI (Service informatique)",
+    "path": [328, 329, 330, 264, 263, 265, 228, 229, 194]
 }, {
     "nom": "Local 3421",
     "local": "3421",
     "position": "[46.830302007841475,-71.22779108583927]",
     "etage": 3,
-    "message": "DSTI (Service informatique)"
+    "message": "DSTI (Service informatique)",
+    "path": [328, 329, 330, 264, 263, 265, 228, 229, 194]
 }, {
     "nom": "Local 3422",
     "local": "3422",
     "position": "[46.830302007841475,-71.22779108583927]",
     "etage": 3,
-    "message": "DSTI (Service informatique)"
+    "message": "DSTI (Service informatique)",
+    "path": [328, 329, 330, 264, 263, 265, 228, 229, 194]
 }, {
     "nom": "Local 3423",
     "local": "3423",
     "position": "[46.830302007841475,-71.22779108583927]",
     "etage": 3,
-    "message": "DSTI (Service informatique)"
+    "message": "DSTI (Service informatique)",
+    "path": [328, 329, 330, 264, 263, 265, 228, 229, 194]
 }, {
     "nom": "Local 3427",
     "local": "3427",
     "position": "[46.830302007841475,-71.22779108583927]",
     "etage": 3,
-    "message": "DSTI (Service informatique)"
+    "message": "DSTI (Service informatique)",
+    "path": [328, 329, 330, 264, 263, 265, 228, 229, 194]
 }, {
     "nom": "Local 3416",
     "local": "3416",
     "position": "[46.830302007841475,-71.22779108583927]",
     "etage": 3,
-    "message": "DSTI (Service informatique)"
+    "message": "DSTI (Service informatique)",
+    "path": [328, 329, 330, 264, 263, 265, 228, 229, 194]
 }, {
     "nom": "Local 3061",
     "local": "3061",
@@ -3681,7 +3697,8 @@
     "local": "4053",
     "position": "[46.83003408781641,-71.22739277780056]",
     "etage": 4,
-    "message": "Accès via le 4052"
+    "message": "Accès via le 4052",
+    "path": [429, 426, 425, 423, 424, 330, 264, 263, 265, 228, 229, 194]
 }, {
     "nom": "Local 4051",
     "local": "4051",
