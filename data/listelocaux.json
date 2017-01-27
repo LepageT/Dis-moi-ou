@@ -2969,7 +2969,8 @@
     "local": "3049",
     "position": "[46.82998637589101,-71.22738003730774]",
     "etage": 3,
-    "message": "Accès via la Bibliothèque"
+    "message": "Accès via la Bibliothèque",
+    "path": [541, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3051",
     "local": "3051",
@@ -2982,121 +2983,141 @@
     "local": "3097",
     "position": "[46.82995655591614,-71.22722379863262]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [379, 373, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3054",
     "local": "3054",
     "position": "[46.82998362327864,-71.22724860906601]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [380, 379, 373, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3055",
     "local": "3055",
     "position": "[46.83000059771936,-71.22737936675549]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [381, 379, 373, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3044",
     "local": "3044",
     "position": "[46.8301281352376,-71.22729286551476]",
     "etage": 3,
-    "message": "Carrefour de l’information (Bibliothèque)"
+    "message": "Carrefour de l’information (Bibliothèque)",
+    "path": [382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3043",
     "local": "3043",
     "position": "[46.83010473808964,-71.22727073729038]",
     "etage": 3,
-    "message": "Carrefour de l’information (Bibliothèque)"
+    "message": "Carrefour de l’information (Bibliothèque)",
+    "path": [383, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3042",
     "local": "3042",
     "position": "[46.830082717235214,-71.22725129127502]",
     "etage": 3,
-    "message": "Carrefour de l’information (Bibliothèque)"
+    "message": "Carrefour de l’information (Bibliothèque)",
+    "path": [384, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3041",
     "local": "3041",
     "position": "[46.83005748499508,-71.2272284924984]",
     "etage": 3,
-    "message": "Carrefour de l’information (Bibliothèque)"
+    "message": "Carrefour de l’information (Bibliothèque)",
+    "path": [385, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3052",
     "local": "3052",
     "position": "[46.83001252570153,-71.2272372096777]",
     "etage": 3,
-    "message": "Accès via le 3053"
+    "message": "Accès via le 3053",
+    "path": [380, 379, 373, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3053",
     "local": "3053",
     "position": "[46.82999279865268,-71.22722916305065]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [380, 379, 373, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3093",
     "local": "3093",
     "position": "[46.82997857682227,-71.2271326035261]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [377, 373, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3096",
     "local": "3096",
     "position": "[46.829951050688194,-71.22716344892979]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [378, 373, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3095",
     "local": "3095",
     "position": "[46.82997123652124,-71.22711583971977]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [377, 373, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3094",
     "local": "3094",
     "position": "[46.82998362327864,-71.22708767652512]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [376, 373, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3092",
     "local": "3092",
     "position": "[46.8300317939748,-71.22717283666132]",
     "etage": 3,
-    "message": "Carrefour de l’information (Bibliothèque)"
+    "message": "Carrefour de l’information (Bibliothèque)",
+    "path": [387, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3077",
     "local": "3077",
     "position": "[46.83005243854566,-71.22704207897185]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [371, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3078",
     "local": "3078",
     "position": "[46.830038675499296,-71.22704945504665]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [372, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3079",
     "local": "3079",
     "position": "[46.830001974025116,-71.22701190412043]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [373, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3080",
     "local": "3080",
     "position": "[46.8299960100332,-71.2270025163889]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [374, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3081",
     "local": "3081",
     "position": "[46.82997720051588,-71.2269850820303]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [374, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3082",
     "local": "3082",
     "position": "[46.82995747345409,-71.22696697711945]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [375, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3045",
     "local": "3045",
@@ -3108,37 +3129,43 @@
     "local": "3090",
     "position": "[46.83005381485009,-71.22709035873413]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3089",
     "local": "3089",
     "position": "[46.83004739209572,-71.22708432376385]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [371, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3088",
     "local": "3088",
     "position": "[46.83001665461779,-71.22705616056919]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [371, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3087",
     "local": "3087",
     "position": "[46.82999371618999,-71.22703470289707]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [373, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3084",
     "local": "3084",
     "position": "[46.829962061143505,-71.22700586915016]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [374, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3083",
     "local": "3083",
     "position": "[46.829954720840234,-71.22699983417988]",
     "etage": 3,
-    "message": ""
+    "message": "",
+    "path": [375, 369, 382, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3203",
     "local": "3203",
@@ -3283,73 +3310,85 @@
     "local": "3062",
     "position": "[46.83030567796953,-71.22745178639889]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3063",
     "local": "3063",
     "position": "[46.83033045132737,-71.2274745851755]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3064",
     "local": "3064",
     "position": "[46.83035430714261,-71.22749604284763]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [390, 389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3065",
     "local": "3065",
     "position": "[46.83037219899714,-71.22747257351875]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [391, 389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3066",
     "local": "3066",
     "position": "[46.83038458566215,-71.22744508087635]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [391, 389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3067",
     "local": "3067",
     "position": "[46.83045110659208,-71.22736595571041]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [393, 391, 389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3068",
     "local": "3068",
     "position": "[46.83045890559228,-71.22738070786]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [393, 391, 389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3069",
     "local": "3069",
     "position": "[46.83043780241269,-71.2273183465004]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [394, 391, 389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3073",
     "local": "3073",
     "position": "[46.83046532829746,-71.22736394405364]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [394, 391, 389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3074",
     "local": "3074",
     "position": "[46.83048872528843,-71.2273109704256]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [394, 391, 389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3075",
     "local": "3075",
     "position": "[46.83048367887946,-71.22729286551476]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [394, 391, 389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 3076",
     "local": "3076",
     "position": "[46.83045385918051,-71.22729286551476]",
     "etage": 3,
-    "message": "Carrefour de l’information"
+    "message": "Carrefour de l’information",
+    "path": [395, 391, 389, 368, 367, 540, 532, 194]
 }, {
     "nom": "Local 4410",
     "local": "4410",
