@@ -318,7 +318,9 @@
                                 }
                             }
                         });
-                    })
+                    });
+                    $(this).find('[autofocus]').focus();
+
                 }); // fin boutonOK.click
             });
 
@@ -352,6 +354,7 @@
                     etageLocal = data[i].etage;
                     message = data[i].message;
                     var level = '';
+
                     // Selon chaque étage
                     if (etageLocal == -1) {
                         level = 'Sous-sol';
