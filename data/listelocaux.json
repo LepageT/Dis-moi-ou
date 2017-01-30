@@ -47,7 +47,7 @@
          "position": "[46.830290538689674,-71.22796341776848]",
          "etage": 1,
          "message": "Pédagogie et international",
-         "image": "Q"
+         "image": "aide-pedagogique.jpg"
 	},
      {
          "nom": "Local 1406",
@@ -55,7 +55,7 @@
          "position": "[46.830290538689674,-71.22796341776848]",
          "etage": 1,
          "message": "Pédagogie et international",
-         "image": "Q"
+         "image": "aide-pedagogique.jpg"
 	},
      {
          "nom": "Local 1407",
@@ -63,7 +63,7 @@
          "position": "[46.830290538689674,-71.22796341776848]",
          "etage": 1,
          "message": "Pédagogie et international",
-         "image": "Q"
+         "image": "aide-pedagogique.jpg"
 	},
      {
          "nom": "Local 1408",
@@ -71,7 +71,7 @@
          "position": "[46.830290538689674,-71.22796341776848]",
          "etage": 1,
          "message": "Pédagogie et international",
-         "image": "Q"
+         "image": "aide-pedagogique.jpg"
 	},
      {
          "nom": "Local 1409",
@@ -79,7 +79,7 @@
          "position": "[46.830290538689674,-71.22796341776848]",
          "etage": 1,
          "message": "Pédagogie et international",
-        "image": "Q"
+        "image": "aide-pedagogique.jpg"
 	},
      {
          "nom": "Local 1412",
@@ -87,7 +87,7 @@
          "position": "[46.830290538689674,-71.22796341776848]",
          "etage": 1,
          "message": "Pédagogie et international",
-         "image": "Q"
+         "image": "aide-pedagogique.jpg"
 	},
      {
          "nom": "Local 1413",
@@ -103,7 +103,7 @@
          "position": "[46.830290538689674,-71.22796341776848]",
          "etage": 1,
          "message": "Pédagogie et international",
-         "image": "Q"
+         "image": "aide-pedagogique.jpg"
 	},
      {
          "nom": "Local 1415",
@@ -111,7 +111,7 @@
          "position": "[46.830290538689674,-71.22796341776848]",
          "etage": 1,
          "message": "Pédagogie et international",
-         "image": "Q"
+         "image": "aide-pedagogique.jpg"
 	},
      {
          "nom": "Local 1404",
@@ -119,7 +119,7 @@
          "position": "[46.830290538689674,-71.22796341776848]",
          "etage": 1,
          "message": "Pédagogie et international",
-         "image": "Q"
+         "image": "aide-pedagogique.jpg"
 	},
      {
          "nom": "Local 1448",
@@ -224,7 +224,8 @@
          "local": "",
          "position": "[46.830340085407876,-71.22719027101994]",
          "etage": 1,
-         "message": "Escalier principal - 1er étage"
+         "message": "Escalier principal - 1er étage",
+         "image": "Q"
 },
      {
          "nom": "Local 1424",
@@ -499,7 +500,7 @@
          "position": "[46.83080022543308,-71.22824840247631]",
          "etage": 1,
          "message": " ",
-         "image": "Q"
+         "image": "gymnase.jpg"
 	},
      {
          "nom": "Foyer Desjardins",
@@ -514,7 +515,7 @@
          "position": "[46.830615344121696,-71.22801639139652]",
          "etage": 1,
          "message": "Accès via le Foyer Desjardins",
-         "image": "Q"
+         "image": "salle-sylvain-lelievre-int2.jpg"
 	},
      {
          "nom": "Entrée Centre Sportif",
@@ -529,7 +530,7 @@
          "position": "[46.83084013769227,-71.22769519686699]",
          "etage": 1,
          "message": " ",
-         "image": "Q"
+         "image": "magasin-sportif.jpg"
 	},
      {
          "nom": "Local 1317",
@@ -621,7 +622,7 @@
          "position": "[46.830871333460415,-71.22740015387535]",
          "etage": 1,
          "message": " ",
-         "image": "Q"
+         "image": "gymnase.jpg"
 	},
      {
          "nom": "Cafétéria",
@@ -629,7 +630,7 @@
          "position": "[46.8303763278858,-71.22721575200558]",
          "etage": 1,
          "message": " ",
-         "image": "Q"
+         "image": "cafeteriaQC2.jpg"
 	},
      {
          "nom": "COOP",
@@ -978,7 +979,7 @@
          "position": "[46.83007675325225,-71.22719295322894]",
          "etage": 1,
          "message": " ",
-         "image": "Q"
+         "image": "cafe1.jpg"
 	},
      {
          "nom": "Local 1030",
@@ -2241,7 +2242,7 @@
          "position": "[46.83017676457132,-71.22741490602493]",
          "etage": 2,
          "message": "",
-         "image": "Q"
+         "image": "bibli3.jpg"
 	},
      {
          "nom": "Local 2115",
@@ -2613,7 +2614,7 @@
          "position": "[46.83075939562002,-71.22738808393478]",
          "etage": 2,
          "message": "",
-         "image": "Q"
+         "image": "gym.jpg"
 	},
      {
          "nom": "Salle de danse",
@@ -4095,6 +4096,6 @@
          "position": "[46.83068828744457,-71.22812233865261]",
          "etage": -1,
          "message": "Accès via le premier étage",
-         "image": "Q"
+         "image": "caroussel_piscine.png"
 	}
 ]

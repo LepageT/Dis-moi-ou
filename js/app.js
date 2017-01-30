@@ -291,8 +291,8 @@
             var positionMarqueur = "";
 
             // Fonction appellé chaque fois que l'on veux afficher un marqueur sur la carte pour montrer l'emplacement d'un local
-            function afficherMarqueur(position, etage, message, image = null){
-                console.log (image);
+            function afficherMarqueur(position, etage, message, image = "null"){
+                console.log (etage);
 
                 // Suprime le calque "marqueur" qui contient le ou les marqueurs
                 map.removeLayer(marqueur);
@@ -330,7 +330,9 @@
 
 
                // Modifie la source de l'image
+                if (image!=="null"){
                 $('#imgModal').attr("src","images/" + image);
+                }
 
                 //source pour titre message
                 $('#labelMessage').html(message);
@@ -532,7 +534,7 @@
 
                                 // Selon chaque étage
                                 if (etageLocal == -1){
-                                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal  +'\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">Sous-sol</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal  +'\'' + ',' + '\'SS\'' + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message +  '\',\'' + image + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">Sous-sol</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
                                 }
 
                                 else if (etageLocal == 1){
@@ -540,7 +542,7 @@
                                }
 
                                else{
-                                elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal  +'\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + etageLocal +'e étage'+ '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                                elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal  +'\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',\'' + image + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + etageLocal +'e étage'+ '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
                             }
 
                         }
