@@ -265,6 +265,16 @@
 
             // Affiche seulement les marqueurs des portes si la carte est asser zoomer (Level 19)
             map.on('zoomend', afficheLorsZoom);
+            $("#inputRechercherModal").keydown(function (e) {
+                if (!e) {
+                    var e = window.event;
+                }
+
+                // Enter is pressed
+                if (e.keyCode == 13) {
+                    $("#boutonOK").click();
+                }
+            });
 
             // Ouvre la fenêtre modale avec le bouton dans le menu de navigation
             $("#boutonRechercher").click(function (event) {
