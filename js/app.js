@@ -35,7 +35,7 @@
         }
 
         // Geolocalisation de l'utilisateur
-        lc = L.control.locate({
+        /*lc = L.control.locate({
             position: 'topleft', // set the location of the control
             drawCircle: false, // controls whether a circle is drawn that shows the uncertainty about the location
             follow: false, // follow the user's location
@@ -75,7 +75,7 @@
         lc.addTo(map);
 
         // Démare le service de gélocalisation
-        lc.start();
+        lc.start();*/
 
         /* Controlle étage version 1 */
         $("#controlleEtage ul li").click(function (event) {
@@ -344,9 +344,6 @@
 
             // Affiche le plan du 1er étage par defaut
             changerEtage(1);
-
-            // Démare le service de géolocalisation
-            lc.start();
 
             // Appellé lorsque la fenêtre est redimensionner
             $(window).resize(function () {
