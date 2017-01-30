@@ -194,6 +194,38 @@
 
     <!--------  ÉCRAN PRINCIPAL  -------->
     <div class="container-fluid">
+
+       <div class="row" id="adminPanel">
+           <h2>-- Admin Panel --</h2>
+           <div class="row">
+                <div class="col-md-4">
+                    <button id="selectLocal">Select Local</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="importWaypoints">Import waypoints</button>
+                </div>
+                   <div class="col-md-4">
+                    <button id="exportWaypoints">Export waypoints</button>
+                </div>
+           </div>
+           <div class="row">
+                <div class="col-md-4">
+                    <button id="remove">Remove last</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="addPath">Add path to file</button>
+                </div>
+                   <div class="col-md-4">
+                    <button id="saveLocal">Export paths/local</button>
+                </div>
+           </div>
+           <div class="row">
+               <div class="col-md-4">
+                      <input type="checkbox" id="createingPath"> Creating path
+               </div>
+           </div>
+       </div>
+
         <div class="row">
             <div class="col-xs-12">
                 <div id="map"></div>
@@ -217,44 +249,27 @@
                         <div class="row no-margin">
                             <ul id="navigationFooter">
 
-                                <div class="col-xs-3">
+                                <div class="col-xs-4">
                                     <!-- Apelle la fonction lc.start().....Geolocalisation de l'utilisateur -->
                                     <li>
                                         <a href="javascript:lc.start()"><img src="images/position.png"></a>
                                     </li>
                                 </div>
                                 <!-- .col-xs-4 -->
-
-
-                                <div class="col-xs-3">
+                                <div class="col-xs-4">
                                     <!-- Ouvre la fenêtre modale de recherche de locaux -->
                                     <li>
                                         <a id="boutonRechercher" href="javascript:"><img src="images/loupe.png"></a>
                                     </li>
                                 </div>
-                                <!-- .col-xs-3 -->
-
-                                <div class="col-xs-2">
+                                <!-- .col-xs-4 -->
+                                <div class="col-xs-4">
                                     <!-- Ouvre la fenetre d'information sur le projet -->
                                     <li>
                                         <a id="boutonInformations" href="javascript:"><img src="images/information.png"></a>
                                     </li>
                                 </div>
-                                <!-- .col-xs-3 -->
-
-                                <div class="col-xs-2">
-                                    <!-- Ouvre la fenetre d'information sur le projet -->
-                                    <li>
-                                        <a id="export" href="javascript:"><img src="images/information.png"></a>
-                                    </li>
-                                </div>
-
-                                <div class="col-xs-2">
-                                    <!-- Ouvre la fenetre d'information sur le projet -->
-                                    <li>
-                                        <a id="import" href="javascript:"><img src="images/information.png"></a>
-                                    </li>
-                                </div>
+                                <!-- .col-xs-4 -->
                             </ul>
                         </div>
                         <!-- .row -->
@@ -430,17 +445,33 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="roomSelect" tabindex="-1" role="dialog" aria-labelledby="labelInformations">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-center" id="labelInformations">Select Room to create Path</h4>
+                    </div>
+                    <div class="modal-body">
+                        <select id="roomList"></select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button class="btn btn-primary" id="selectRoom">Select</button>
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <!--------  .modal  -------->
-
-
-
     <!-- Bootstrap -->
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Système de recherche dans une liste -->
     <script src="js/jquery.liveFilter.js"></script>
-
 
     <!-- Pour faire bondir les petit markeur lors de leur ajout sur la carte -->
     <script src="js/bouncemarker.js"></script>
@@ -448,250 +479,9 @@
     <!---------------------------------------------------------------------->
     <!------------------ Les scripts de notre application ------------------>
     <!---------------------------------------------------------------------->
-    <script src="js/app.js"></script>
     <script src="js/waypoint.js"></script>
-
-    <script>
-        map.on("click", addMarker);
-
-        var myMarkers = L.layerGroup();
-        map.addLayer(myMarkers);
-        var nextId = 1;
-
-        var markersList = [];
-        var redIcon = L.icon({
-            iconUrl: "images/marker-icon_rouge.png",
-            iconAnchor: [12.5, 41],
-            popupAnchor: [0, -41]
-        });
-        var blueIcon = L.icon({
-            iconUrl: "images/marker-icon.png",
-            iconAnchor: [12.5, 41],
-            popupAnchor: [0, -41]
-        });
-        var greenIcon = L.icon({
-            iconUrl: "images/marker-icon_green.png",
-            iconAnchor: [12.5, 41],
-            popupAnchor: [0, -41]
-        });
-
-        map.on("popupopen", function (e) {
-            var marker = e.popup._source;
-            var waypoint = getWaypoint(marker._leaflet_id);
-
-            if (waypoint instanceof FloorWaypoint) {
-                console.log("Floor");
-            } else if (waypoint instanceof VerticalWaypoint) {
-                console.log("Vertical");
-            } else {
-
-            }
-        });
-
-        function addMarker(e) {
-            marker = new L.marker(e.latlng, {
-                draggable: 'true',
-                icon: redIcon
-            }).addTo(myMarkers);
-            marker.on('dragend', function (event) {
-                var marker = event.target;
-                var position = marker.getLatLng();
-                marker.setLatLng(new L.LatLng(position.lat, position.lng), {
-                    draggable: 'true'
-                });
-                map.panTo(new L.LatLng(position.lat, position.lng))
-            });
-
-            marker.bindPopup("<button onClick=\"setWaypointType(" + marker._leaflet_id + ", 1)\">Vertical</button> or <button onClick=\"setWaypointType(" + marker._leaflet_id + ", 2)\">Floor</button>").openPopup();
-
-            var waypoint = new Waypoint(marker, etageActuel, nextId);
-            markersList.push(waypoint);
-            nextId += 1;
-        }
-
-        $("#export").on("click", function () {
-            exportWaypoints();
-        });
-
-        $("#import").on("click", function () {
-            importWayPointForFloor(etageActuel);
-        });
-
-        function exportWaypoints() {
-            var floorWaypoints = "";
-            var verticalWaypoints = "";
-            for (var i = 0; i < markersList.length; i++) {
-
-                if (markersList[i] instanceof FloorWaypoint) {
-                    console.log("Floor-export");
-                    if (floorWaypoints !== "") {
-                        floorWaypoints += ", ";
-                    }
-                    floorWaypoints += markersList[i].toJSON;
-                } else if (markersList[i] instanceof VerticalWaypoint) {
-                    console.log("Vertical-export");
-                    if (verticalWaypoints !== "") {
-                        verticalWaypoints += ", ";
-                    }
-                    verticalWaypoints += markersList[i].toJSON;
-                }
-            }
-
-            var myJson = "{\"verticalWaypoints\": [" + verticalWaypoints + "], \"floorWaypoints\": [" + floorWaypoints + "]}";
-
-            var a = document.createElement('a');
-            a.setAttribute('href', 'data:text/plain;charset=utf-u,' + encodeURIComponent(myJson));
-            a.setAttribute('download', "waypoints.json");
-            a.click()
-        }
-
-        function getWaypoint(id) {
-            for (var i = 0; i < markersList.length; i++) {
-                if (markersList[i].idMarker === id) {
-                    return markersList[i];
-                }
-            }
-
-            return null;
-        }
-
-        function setWaypointType(id, type) {
-            map.closePopup();
-
-            var waypoint = getWaypoint(id);
-            console.log(waypoint.getMarker);
-            console.log(type);
-
-            switch (type) {
-            case 1:
-                var vertical = new VerticalWaypoint(waypoint.getMarker, waypoint.getFloor, waypoint.id);
-                var marker = waypoint.getMarker;
-
-                marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
-                    "<input type=\"checkbox\" name=\"enabled" + marker._leaflet_id + "\" id=\"enabled" + marker._leaflet_id + "\" value=\"enabled\" checked> Enable <br>" +
-                    "<input type=\"checkbox\" name=\"elevator" + marker._leaflet_id + "\" id=\"elevator" + marker._leaflet_id + "\" value=\"elevator\"> Elevator <br>" +
-                    "<input type=\"text\" name=\"floors" + marker._leaflet_id + "\" id=\"floors" + marker._leaflet_id + "\">" +
-                    "<input type=\"submit\" value=\"Save\"></label></form>");
-                waypoint.getMarker.setIcon(greenIcon);
-                swapWaypoint(waypoint, vertical);
-                break;
-            case 2:
-                var floor = new FloorWaypoint(waypoint.getMarker, waypoint.getFloor, waypoint.id);
-                var marker = waypoint.getMarker;
-
-                marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
-                    "<input type=\"checkbox\" name=\"enabled" + marker._leaflet_id + "\" id=\"enabled" + marker._leaflet_id + "\" value=\"enabled\" " + (waypoint.isEnabled ? "checked" : "") + "> Enable <br>" +
-                    "<input type=\"submit\" value=\"Save\"></label></form>");
-
-                waypoint.getMarker.setIcon(blueIcon);
-                swapWaypoint(waypoint, floor);
-                break;
-            default:
-                break;
-            }
-        }
-
-        function swapWaypoint(oldWaypoint, newWaypoint) {
-            for (var i = 0; i < markersList.length; i++) {
-                if (markersList[i].idMarker === oldWaypoint.idMarker) {
-                    markersList[i] = newWaypoint;
-                    return;
-                }
-            }
-        }
-
-        function updateWaypoint(id) {
-            var waypoint = getWaypoint(id);
-            waypoint.enabled = $("#enabled" + id).is(':checked');
-            if (waypoint instanceof FloorWaypoint) {
-
-            } else if (waypoint instanceof VerticalWaypoint) {
-                waypoint.elevator = $("#elevator" + id).is(':checked');
-                var floors = $("#floors" + id).val();
-                floors = floors.toString().replace(/\s/g, '');
-                floors = floors.split(",");
-                waypoint.setFloors = floors;
-
-            }
-        }
-
-        function importWayPointForFloor(floor) {
-            //Load waypoint from JSON
-
-            var floorWaypoints = [];
-            var verticalWaypoints = [];
-
-            $.get("data/waypoints.json", function (data) {
-
-                floorWaypoints = data.floorWaypoints;
-                verticalWaypoints = data.verticalWaypoints;
-
-                for (var i = 0; i < floorWaypoints.length; i++) {
-                    if (etageActuel === floorWaypoints[i].floor) {
-                        var latlng = new L.LatLng(parseFloat(floorWaypoints[i].latitude), parseFloat(floorWaypoints[i].longitude));
-                        marker = new L.marker(latlng, {
-                            draggable: 'true',
-                            icon: blueIcon
-                        }).addTo(myMarkers);
-                        marker.on('dragend', function (event) {
-                            var marker = event.target;
-                            var position = marker.getLatLng();
-                            marker.setLatLng(new L.LatLng(position.lat, position.lng), {
-                                draggable: 'true'
-                            });
-                            map.panTo(new L.LatLng(position.lat, position.lng))
-                        });
-
-                        marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
-                            "<input type=\"checkbox\" name=\"enabled" + marker._leaflet_id + "\" id=\"enabled" + marker._leaflet_id + "\" value=\"enabled\" " + (floorWaypoints[i].enabled ? "checked" : "") + "> Enable <br>" +
-                            "<input type=\"submit\" value=\"Save\"></label></form>");
-
-                        var waypoint = new FloorWaypoint(marker, etageActuel);
-                        waypoint.enabled = verticalWaypoints[i].enabled;
-                        markersList.push(waypoint);
-                    }
-                }
-
-                for (var i = 0; i < verticalWaypoints.length; i++) {
-                    if (etageActuel === verticalWaypoints[i].floor) {
-                        var latlng = new L.LatLng(parseFloat(verticalWaypoints[i].latitude), parseFloat(verticalWaypoints[i].longitude));
-
-                        marker = new L.marker(latlng, {
-                            draggable: 'true',
-                            icon: greenIcon
-                        }).addTo(myMarkers);
-                        marker.on('dragend', function (event) {
-                            var marker = event.target;
-                            var position = marker.getLatLng();
-                            marker.setLatLng(new L.LatLng(position.lat, position.lng), {
-                                draggable: 'true'
-                            });
-                            map.panTo(new L.LatLng(position.lat, position.lng))
-                        });
-
-                        marker.bindPopup("<form id=\"markerForm\" action=\"JavaScript:updateWaypoint(" + marker._leaflet_id + ")\">" +
-                            "<input type=\"checkbox\" name=\"enabled" + marker._leaflet_id + "\" id=\"enabled" + marker._leaflet_id + "\" value=\"enabled\" " + (verticalWaypoints[i].enabled ? "checked" : "") + "> Enable <br>" +
-                            "<input type=\"checkbox\" name=\"elevator" + marker._leaflet_id + "\" id=\"elevator" + marker._leaflet_id + "\" value=\"elevator\" " + (verticalWaypoints[i].elevator ? "checked" : "") + "> Elevator <br>" +
-                            "<input type=\"text\" name=\"floors" + marker._leaflet_id + "\" id=\"floors" + marker._leaflet_id + "\">" +
-                            "<input type=\"submit\" value=\"Save\"></label></form>");
-
-                        var waypoint = new VerticalWaypoint(marker, etageActuel);
-
-                        waypoint.setElevator = verticalWaypoints[i].elevator;
-                        waypoint.setFloors = verticalWaypoints[i].accessibleFloors;
-                        waypoint.enabled = verticalWaypoints[i].enabled;
-
-                        markersList.push(waypoint);
-                    }
-                }
-            }, 'json');
-
-        }
-
-        function calculateRoute(start, finish) {
-
-        }
-    </script>
+    <script src="js/app.js"></script>
+    <script src="js/admin-app.js"></script>
 
     </script>
 </body>
