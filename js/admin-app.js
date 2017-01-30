@@ -135,9 +135,9 @@
                         if(data[i].path.length > 0) {
                             optionClass = "green";
                         }
-                    } else {
-                        $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>")
                     }
+                    $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>");
+
                 }
             }
         });
