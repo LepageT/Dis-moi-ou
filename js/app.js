@@ -134,27 +134,17 @@
             }
 
             if (etage == -1) {
-                // Le plan de base du sous-sol
                 imageBounds = [[46.8294243, -71.2286517], [46.8314, -71.2256881]];
             } else if (etage == 1) {
-                // Le plan de base de l'étage 1
                 imageBounds = [[46.8288074, -71.2289322], [46.8316386, -71.2252248]];
-            }
-            // Change pour le 2e étage
-            else if (etage == 2) {
+            } else if (etage == 2) {
                 imageBounds = [[46.8291313, -71.228653], [46.831318, -71.225684]];
-            }
-            // Change pour le 3e étage
-            else if (etage == 3) {
+            } else if (etage == 3) {
                 imageBounds = [[46.8291017, -71.2283308], [46.830922, -71.2258206]];
-            }
-            // Change pour le 4e étage
-            else if (etage == 4) {
+            } else if (etage == 4) {
                 imageBounds = [[46.829521, -71.228328], [46.8306627, -71.2263944]];
                 libelleEtageUrl = 'images/etages/vide.svg';
-            }
-            // Change pour le 4e étage
-            else if (etage == 5) {
+            } else if (etage == 5) {
                 imageBounds = [[46.8297179, -71.2283872], [46.8306298, -71.2269909]];
                 libelleEtageUrl = '';
             }

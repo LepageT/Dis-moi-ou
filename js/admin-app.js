@@ -137,7 +137,6 @@
                         }
                     }
                     $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>");
-
                 }
             }
         });
