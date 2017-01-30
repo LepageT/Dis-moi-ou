@@ -383,7 +383,6 @@
 
                 $("#modalRechercher").modal('show');
                 $('#modalRechercher').on('shown.bs.modal', function () {
-
                     $("#boutonOK").click(function () {
                         $('#listeLocaux').liveFilter('#inputRechercherModal', 'li', {
                             filterChildSelector: 'a',
