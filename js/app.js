@@ -243,13 +243,6 @@
 
         // Document ready function
         $(function () {
-
-            // Copie la position GPS lors du clic
-            /*map.on('click', function(e) {
-                var text = "[" + e.latlng.lat + "," + e.latlng.lng + "]";
-                window.prompt("Position: ", text);
-            });*/
-
             $("#boutonAfficherEtage").click(function () {
                 if ($("#controlleEtage").is(":visible")) {
                     $("#controlleEtage").fadeTo(150, 0, function () {
@@ -358,15 +351,17 @@
                     positionLocal = data[i].position;
                     etageLocal = data[i].etage;
                     message = data[i].message;
-
+                    var level = '';
                     // Selon chaque étage
                     if (etageLocal == -1) {
-                        elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',' + numeroLocal + ')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">Sous-sol</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                        level = 'Sous-sol';
                     } else if (etageLocal == 1) {
-                        elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',' + numeroLocal + ')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + etageLocal + 'er étage' + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                        level = etageLocal + 'er étage';
                     } else {
-                        elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',' + numeroLocal + ')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + etageLocal + 'e étage' + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                        level = etageLocal + 'e étage';
                     }
+
+                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',' + numeroLocal + ')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
                 }
 
                 // Ajoute le très long string qui contient toute la liste dans la fenètre modale
