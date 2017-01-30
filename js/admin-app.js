@@ -128,7 +128,6 @@
             dataType: "json"
         }).success(function (data) {
             local = data;
-            var temp = 0;
             for(var i = 0; i < data.length; i++) {
                 if(data[i].local.length > 0 && data[i].local !== " ") {
                     var optionClass = "";
@@ -137,12 +136,10 @@
                             optionClass = "green";
                         }
                     } else {
-                        temp++;
                         $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>")
                     }
                 }
             }
-            console.log(temp);
         });
     }
     //End - Loading methods
@@ -191,7 +188,6 @@
             }
         }
 
-        console.log(points);
         var polyline = new L.Polyline(points, {
             color: "red",
             weight: 3,
@@ -219,7 +215,6 @@
     }
 
     function selectedRoom(roomId) {
-        console.log(roomId);
         path = new Path(roomId);
     }
 
