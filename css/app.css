@@ -524,3 +524,33 @@ ul li{
             background-color: rgba(0,0,0,0.9);
           }
         }
+
+#adminPanel {
+    width: 430px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    text-align: center;
+    color: white;
+    z-index: 1000;
+    padding: 20px;
+}
+
+#adminPanel .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#adminPanel .col-md-4 {
+    padding: 0;
+}
+
+#adminPanel button {
+    width: 100%;
+    color: black;
+}
+
+.green {
+    background-color: lawngreen;
+}
