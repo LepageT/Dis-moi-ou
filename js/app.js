@@ -10,6 +10,7 @@
             marqueur = "",
             etageActuel = 1;
         var listeLocauxObj = [];
+        var myPath = null;
 
         // Limite de la carte (Déasactivé...drôle de comportement sur mobile)
         /*--------
@@ -166,6 +167,9 @@
             planEtage.bringToBack();
             afficheLorsZoom();
             map.panTo([46.8302871, -71.227337]);
+            if(myPath !== null) {
+                redrawPath(myPath);
+            }
 
         } // Fin fonction changerEtage()
 
@@ -214,10 +218,10 @@
             $('#labelMessage').html(message);
 
             //Afficher le path jusqu'au local
-            var myPath = findPathForLocal(local);
-            if (myPath !== null) {
-                var temp = new Path(local, myPath);
-                redrawPath(temp, positionMarqueur);
+            var temp = findPathForLocal(local);
+            if (temp !== null) {
+                myPath = new Path(local, temp);
+                redrawPath(myPath, positionMarqueur);
             }
         };
 
