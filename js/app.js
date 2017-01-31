@@ -230,6 +230,43 @@
 
             return null;
         }
+        
+          $(document).ready(function () {
+            $(".list-itineraire").hide();
+            var cacheListe = $("#premier-jour");
+            var cacheListe2 = $("#organisation");
+            var cacheListe3 = $("#inscription-gym");
+            var cacheListe4 = $("#parcoursCultu");
+
+            $("#first-day").on("click", function () {
+                cacheListe.toggle();
+                cacheListe2.hide();
+                cacheListe3.hide();
+                cacheListe4.hide();
+
+            });
+
+            $("#organiScolaire").on("click", function () {
+                cacheListe2.toggle();
+                cacheListe.hide();
+                cacheListe3.hide();
+                cacheListe4.hide();
+            });
+
+            $("#gym").on("click", function () {
+                cacheListe3.toggle();
+                cacheListe.hide();
+                cacheListe2.hide();
+                cacheListe4.hide();
+            });
+
+            $("#parcours").on("click", function () {
+                cacheListe4.toggle();
+                cacheListe.hide();
+                cacheListe2.hide();
+                cacheListe3.hide();
+            });
+        });
 
         // Document ready function
         $(function () {
@@ -295,7 +332,8 @@
                 });
 
                 $("#modalRechercher").modal('show');
-                $('#modalRechercher').on('shown.bs.modal', function () {
+              
+                $('#modalRechercher').on('shown.bs.modal', function () {                        
                     $("#boutonOK").click(function () {
                         $('#listeLocaux').liveFilter('#inputRechercherModal', 'li', {
                             filterChildSelector: 'a',
@@ -329,6 +367,19 @@
                 event.preventDefault();
                 $("#modalInformations").modal('show');
             });
+                          
+                          // Ouvre la fenêtre modale avec le bouton légende dans le menu de navigation
+
+                        $("#boutonLegende").click(function(event){
+                            event.preventDefault();
+                            $("#modalLegende").modal('show');
+                        });
+
+                 // Ouvre la fenêtre modale itineraire avec le bouton dans le menu de navigation
+                        $("#boutonItineraire").click(function(event){
+                            event.preventDefault();
+                            $("#modalItineraire").modal('show');
+                        });
 
             // Pour améliorer les performances avec jQuery
             var listeLocaux = $("#listeLocaux");
