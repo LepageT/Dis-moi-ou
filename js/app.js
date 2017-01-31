@@ -35,7 +35,7 @@
         }
 
         // Geolocalisation de l'utilisateur
-        lc = L.control.locate({
+        /*lc = L.control.locate({
             position: 'topleft', // set the location of the control
             drawCircle: false, // controls whether a circle is drawn that shows the uncertainty about the location
             follow: false, // follow the user's location
@@ -75,7 +75,7 @@
         lc.addTo(map);
 
         // Démare le service de gélocalisation
-        lc.start();
+        lc.start();*/
 
         /* Controlle étage version 1 */
         $("#controlleEtage ul li").click(function (event) {
@@ -120,141 +120,51 @@
             map.removeLayer(iconesEtage);
             map.removeLayer(numeroLocauxEtage);
             etageActuel = etage;
+
             if (etage == -1) {
-                // Le plan de base du sous-sol
                 imageUrl = 'images/etages/etage0_locaux.svg';
-                imageBounds = [[46.8294243, -71.2286517], [46.8314, -71.2256881]];
-                planEtage = L.imageOverlay(imageUrl, imageBounds);
-
-                // Calque des numéros des locaux sur l'étage (est seulement ajouter lorsque beacoup zoomer dans la carte)
                 imageLocauxUrl = 'images/etages/etage0_numero.svg'
-                numeroLocauxEtage = L.imageOverlay(imageLocauxUrl, imageBounds);
-
                 iconesEtageUrl = 'images/etages/etage0_icones.svg';
-                iconesEtage = L.imageOverlay(iconesEtageUrl, imageBounds);
-                map.addLayer(iconesEtage);
-
                 libelleEtageUrl = 'images/etages/etage0_libelle.svg';
-                libelleEtage = L.imageOverlay(libelleEtageUrl, imageBounds);
+            } else {
+                imageUrl = 'images/etages/etage' + etage + '_locaux.svg';
+                imageLocauxUrl = 'images/etages/etage' + etage + '_numero.svg'
+                iconesEtageUrl = 'images/etages/etage' + etage + '_icones.svg';
+                libelleEtageUrl = 'images/etages/etage' + etage + '_libelle.svg';
+            }
 
-                // Ajoute et affiche l'image du sous-sol
-                map.addLayer(planEtage);
-
-                // Affiche la carte en arrière-plan de tout les autres calque. Nécésaire pour voir le point de géolocalisation après avoir changer d'étage
-                planEtage.bringToBack();
-                afficheLorsZoom();
+            if (etage == -1) {
+                imageBounds = [[46.8294243, -71.2286517], [46.8314, -71.2256881]];
             } else if (etage == 1) {
-                // Le plan de base de l'étage 1
-                imageUrl = 'images/etages/etage1_locaux.svg';
                 imageBounds = [[46.8288074, -71.2289322], [46.8316386, -71.2252248]];
-                planEtage = L.imageOverlay(imageUrl, imageBounds);
-
-                // Calque des numéros des locaux sur l'étage (est seulement ajouter lorsque beacoup zoomer dans la carte)
-                imageLocauxUrl = 'images/etages/etage1_numero.svg'
-                numeroLocauxEtage = L.imageOverlay(imageLocauxUrl, imageBounds);
-
-                iconesEtageUrl = 'images/etages/etage1_icones.svg';
-                iconesEtage = L.imageOverlay(iconesEtageUrl, imageBounds);
-                map.addLayer(iconesEtage);
-
-                libelleEtageUrl = 'images/etages/etage1_libelle.svg';
-                libelleEtage = L.imageOverlay(libelleEtageUrl, imageBounds);
-
-                // Ajoute et affiche l'image du plan de l'étage 1
-                map.addLayer(planEtage);
-
-                // Affiche la carte en arrière-plan de tout les autres calque. Nécésaire pour voir le point de géolocalisation après avoir changer d'étage
-                planEtage.bringToBack();
-                afficheLorsZoom();
-            }
-            // Change pour le 2e étage
-            else if (etage == 2) {
-                imageUrl = 'images/etages/etage2_locaux.svg';
+            } else if (etage == 2) {
                 imageBounds = [[46.8291313, -71.228653], [46.831318, -71.225684]];
-
-                iconesEtageUrl = 'images/etages/etage2_icones.svg';
-                iconesEtage = L.imageOverlay(iconesEtageUrl, imageBounds);
-                map.addLayer(iconesEtage);
-
-                // Calque des numéros des locaux sur l'étage (est seulement ajouter lorsque beacoup zoomer dans la carte)
-                imageLocauxUrl = 'images/etages/etage2_numero.svg'
-                numeroLocauxEtage = L.imageOverlay(imageLocauxUrl, imageBounds);
-
-                libelleEtageUrl = 'images/etages/etage2_libelle.svg';
-                libelleEtage = L.imageOverlay(libelleEtageUrl, imageBounds);
-
-                planEtage = L.imageOverlay(imageUrl, imageBounds)
-                map.addLayer(planEtage);
-
-                planEtage.bringToBack();
-                afficheLorsZoom();
-            }
-            // Change pour le 3e étage
-            else if (etage == 3) {
-                imageUrl = 'images/etages/etage3_locaux.svg';
+            } else if (etage == 3) {
                 imageBounds = [[46.8291017, -71.2283308], [46.830922, -71.2258206]];
-
-                iconesEtageUrl = 'images/etages/etage3_icones.svg';
-                iconesEtage = L.imageOverlay(iconesEtageUrl, imageBounds);
-                map.addLayer(iconesEtage);
-
-                // Calque des numéros des locaux sur l'étage (est seulement ajouter lorsque beacoup zoomer dans la carte)
-                imageLocauxUrl = 'images/etages/etage3_numero.svg'
-                numeroLocauxEtage = L.imageOverlay(imageLocauxUrl, imageBounds);
-
-                libelleEtageUrl = 'images/etages/etage3_libelle.svg';
-                libelleEtage = L.imageOverlay(libelleEtageUrl, imageBounds);
-
-                planEtage = L.imageOverlay(imageUrl, imageBounds)
-                map.addLayer(planEtage);
-
-                planEtage.bringToBack();
-                afficheLorsZoom();
-            }
-            // Change pour le 4e étage
-            else if (etage == 4) {
-                imageUrl = 'images/etages/etage4_locaux.svg';
+            } else if (etage == 4) {
                 imageBounds = [[46.829521, -71.228328], [46.8306627, -71.2263944]];
-
-                iconesEtageUrl = 'images/etages/etage4_icones.svg';
-                iconesEtage = L.imageOverlay(iconesEtageUrl, imageBounds);
-                map.addLayer(iconesEtage);
-
-                // Calque des numéros des locaux sur l'étage (est seulement ajouter lorsque beacoup zoomer dans la carte)
-                imageLocauxUrl = 'images/etages/etage4_numero.svg'
-                numeroLocauxEtage = L.imageOverlay(imageLocauxUrl, imageBounds);
-
                 libelleEtageUrl = 'images/etages/vide.svg';
-                libelleEtage = L.imageOverlay(libelleEtageUrl, imageBounds);
-
-                planEtage = L.imageOverlay(imageUrl, imageBounds)
-                map.addLayer(planEtage);
-                map.addLayer(numeroLocauxEtage);
-                planEtage.bringToBack();
-                afficheLorsZoom();
-            }
-            // Change pour le 4e étage
-            else if (etage == 5) {
-                imageUrl = 'images/etages/etage5_locaux.svg';
+            } else if (etage == 5) {
                 imageBounds = [[46.8297179, -71.2283872], [46.8306298, -71.2269909]];
-
-                iconesEtageUrl = 'images/etages/etage5_icones.svg';
-                iconesEtage = L.imageOverlay(iconesEtageUrl, imageBounds);
-                map.addLayer(iconesEtage);
-
-                // Calque des numéros des locaux sur l'étage (est seulement ajouter lorsque beacoup zoomer dans la carte)
-                imageLocauxUrl = 'images/etages/etage5_numero.svg'
-                numeroLocauxEtage = L.imageOverlay(imageLocauxUrl, imageBounds);
-
                 libelleEtageUrl = '';
-                libelleEtage = L.imageOverlay(libelleEtageUrl, imageBounds);
-
-                planEtage = L.imageOverlay(imageUrl, imageBounds)
-                map.addLayer(planEtage);
-                planEtage.bringToBack();
-                afficheLorsZoom();
             }
 
+            // Calque des numéros des locaux sur l'étage (est seulement ajouter lorsque beacoup zoomer dans la carte)
+            numeroLocauxEtage = L.imageOverlay(imageLocauxUrl, imageBounds);
+            map.addLayer(numeroLocauxEtage);
+
+            iconesEtage = L.imageOverlay(iconesEtageUrl, imageBounds);
+            map.addLayer(iconesEtage);
+
+            libelleEtage = L.imageOverlay(libelleEtageUrl, imageBounds);
+
+            planEtage = L.imageOverlay(imageUrl, imageBounds);
+            // Ajoute et affiche l'image du sous-sol
+            map.addLayer(planEtage);
+
+            // Affiche la carte en arrière-plan de tout les autres calque. Nécésaire pour voir le point de géolocalisation après avoir changer d'étage
+            planEtage.bringToBack();
+            afficheLorsZoom();
             map.panTo([46.8302871, -71.227337]);
 
         } // Fin fonction changerEtage()
@@ -305,15 +215,15 @@
 
             //Afficher le path jusqu'au local
             var myPath = findPathForLocal(local);
-            if(myPath !== null) {
+            if (myPath !== null) {
                 var temp = new Path(local, myPath);
                 redrawPath(temp, positionMarqueur);
             }
         };
 
         function findPathForLocal(local) {
-            for(var i = 0; i < listeLocauxObj.length; i++) {
-                if(listeLocauxObj[i].local == local) {
+            for (var i = 0; i < listeLocauxObj.length; i++) {
+                if (listeLocauxObj[i].local == local) {
                     return listeLocauxObj[i].path;
                 }
             }
@@ -360,13 +270,6 @@
 
         // Document ready function
         $(function () {
-
-            // Copie la position GPS lors du clic
-            /*map.on('click', function(e) {
-                var text = "[" + e.latlng.lat + "," + e.latlng.lng + "]";
-                window.prompt("Position: ", text);
-            });*/
-
             $("#boutonAfficherEtage").click(function () {
                 if ($("#controlleEtage").is(":visible")) {
                     $("#controlleEtage").fadeTo(150, 0, function () {
@@ -382,9 +285,6 @@
             // Affiche le plan du 1er étage par defaut
             changerEtage(1);
 
-            // Démare le service de géolocalisation
-            lc.start();
-
             // Appellé lorsque la fenêtre est redimensionner
             $(window).resize(function () {
                 redimensionnerCarte();
@@ -392,6 +292,16 @@
 
             // Affiche seulement les marqueurs des portes si la carte est asser zoomer (Level 19)
             map.on('zoomend', afficheLorsZoom);
+            $("#inputRechercherModal").keydown(function (e) {
+                if (!e) {
+                    var e = window.event;
+                }
+
+                // Enter is pressed
+                if (e.keyCode == 13) {
+                    $("#boutonOK").click();
+                }
+            });
 
             // Ouvre la fenêtre modale avec le bouton dans le menu de navigation
             $("#boutonRechercher").click(function (event) {
@@ -422,6 +332,7 @@
                 });
 
                 $("#modalRechercher").modal('show');
+              
                 $('#modalRechercher').on('shown.bs.modal', function () {                        
                     $("#boutonOK").click(function () {
                         $('#listeLocaux').liveFilter('#inputRechercherModal', 'li', {
@@ -445,7 +356,9 @@
                                 }
                             }
                         });
-                    })
+                    });
+                    $(this).find('[autofocus]').focus();
+
                 }); // fin boutonOK.click
             });
 
@@ -491,15 +404,18 @@
                     positionLocal = data[i].position;
                     etageLocal = data[i].etage;
                     message = data[i].message;
+                    var level = '';
 
                     // Selon chaque étage
                     if (etageLocal == -1) {
-                        elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',' + numeroLocal + ')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">Sous-sol</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                        level = 'Sous-sol';
                     } else if (etageLocal == 1) {
-                        elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',' + numeroLocal + ')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + etageLocal + 'er étage' + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                        level = etageLocal + 'er étage';
                     } else {
-                        elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',' + numeroLocal + ')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + etageLocal + 'e étage' + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                        level = etageLocal + 'e étage';
                     }
+
+                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',' + numeroLocal + ')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
                 }
 
                 // Ajoute le très long string qui contient toute la liste dans la fenètre modale

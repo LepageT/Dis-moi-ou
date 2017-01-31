@@ -426,136 +426,116 @@
             </div>
         </div>
 
-
-
         <!-- Fenêtre modal pour rechercher un local, contient le champ de recherche et la longue liste de tout les locaux. Affiché via un bouton dans le menu de navigation et la fonction  $("#modalRechercher").modal('show') dans le fichier app.js-->
         <div class="modal fade" id="modalRechercher" tabindex="-1" role="dialog" aria-labelledby="labelRechercher">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title text-center" id="labelRechercher">Rechercher</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div id="containerListeLocaux">
-
-                            <!-- Le champ de recherche, filtre dynamiquement la liste via le plugin jQuery LiveFilter-->
-                            <div class="recherche form-inline">
-                                <i class="glyphicon glyphicon-search"></i>
-                                <input id="inputRechercherModal" class="search form-control" placeholder="Local 2106, Cafétéria, Entrée principale" autofocus tabindex="1" />
-                                <button id="boutonOK" type="submit" class="btn btn-default">Chercher</button>
-                            </div>
-                            <!-- .recherche -->
-
-
-
-
-                            <ul class="list" id="listePoi">
-                                <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83007675325225,-71.22719295322894]',1, '<strong>Café étudiant</strong>')">
-                                        <h3 class="nomLocal">Café étudiant</h3>
-                                        <br>
-                                        <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xE541;</i>
-                                    </a>
-                                </li>
-                                <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.8303763278858,-71.22721575200558]',1, '<strong>Cafétéria</strong>')">
-                                        <h3 class="nomLocal">Cafétéria</h3>
-                                        <br>
-                                        <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xE556;</i>
-                                    </a>
-                                </li>
-                                <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83017676457132,-71.22741490602493]',2, '<strong>Carrefour de l\'information (Bibliothèque)</strong>')">
-                                        <h3 class="nomLocal">Carrefour de l'information (Bibliothèque)</h3>
-                                        <br>
-                                        <h6 class="etage">2e étage</h6>
-                                        <i class="material-icons pull-right">&#xE54B;</i>
-                                    </a>
-                                </li>
-                                <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83039743108951,-71.22702732682228]',1, '<strong>COOP</strong>')">
-                                        <h3 class="nomLocal">COOP</h3>
-                                        <br>
-                                        <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xE8CC;</i>
-                                    </a>
-                                </li>
-                                <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.82972350077338,-71.22621729969978]',1, '<strong>DSEFC Formation continue</strong>')">
-                                        <h3 class="nomLocal">DSEFC Formation continue</h3>
-                                        <br>
-                                        <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xE80C;</i>
-                                    </a>
-                                </li>
-                                <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.82990425622797,-71.2274806201458]',1, '<strong>Garderie</strong>')">
-                                        <h3 class="nomLocal">Garderie</h3>
-                                        <br>
-                                        <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xE87B;</i>
-                                    </a>
-                                </li>
-                                <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.830871333460415,-71.22740015387535]',1, '<strong>Gymnase A, B et C</strong>')">
-                                        <h3 class="nomLocal">Gymnase A, B et C</h3>
-                                        <br>
-                                        <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xEB43;</i>
-                                    </a>
-                                </li>
-                                <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83080022543308,-71.22824840247631]',1, '<strong>Gymnase D</strong>')">
-                                        <h3 class="nomLocal">Gymnase D</h3>
-                                        <br>
-                                        <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xEB43;</i>
-                                    </a>
-                                </li>
-                                <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83084013769227,-71.22769519686699]',1, '<strong>Magasin Sportif</strong>')">
-                                        <h3 class="nomLocal">Magasin Sportif</h3>
-                                        <br>
-                                        <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xE8CC;</i>
-                                    </a>
-                                </li>
-                                <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.830615344121696,-71.22801639139652]',1, '<strong>Salle Sylvain-Lelièvre</strong><br>Accès via le Foyer Desjardins')">
-                                        <h3 class="nomLocal">Salle Sylvain-Lelièvre</h3>
-                                        <br>
-                                        <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xE404;</i>
-                                    </a>
-                                </li>
-                                <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83068828744457,-71.22812233865261]',-1, '<strong>Piscine</strong><br>Accès via le premier étage')">
-                                        <h3 class="nomLocal">Piscine</h3>
-                                        <br>
-                                        <h6 class="etage">Sous-Sol</h6>
-                                        <i class="material-icons pull-right">&#xEB48;</i>
-                                    </a>
-                                </li>
-                            </ul>
-
-                            <div id="containerResultatRecherche">
-                                <ul class="list" id="listeLocaux">
-                                    <!-- Via Javascript -->
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer"></div>
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" id="labelRechercher">Rechercher</h4>
                 </div>
-            </div>
-            <!--------  .modal  -------->
-        </div>
+                <div class="modal-body">
+                    <div id="containerListeLocaux">
+
+                        <!-- Le champ de recherche, filtre dynamiquement la liste via le plugin jQuery LiveFilter-->
+                        <div class="recherche form-inline">
+                            <i class="glyphicon glyphicon-search"></i>
+                            <input id="inputRechercherModal" class="search form-control" placeholder="Local 2106, Cafétéria, Entrée principale" tabindex="1" autofocus/>
+                            <button id="boutonOK" type="submit" class="btn btn-default" tabindex="2">Chercher</button>
+                        </div> <!-- .recherche -->
+
+                        <ul class="list" id="listePoi">
+                            <li style="display: list-item;">
+                                <a href="javascript:afficherMarqueur('[46.83007675325225,-71.22719295322894]',1, '<strong>Café étudiant</strong>')">
+                                    <h3 class="nomLocal">Café étudiant</h3><br>
+                                    <h6 class="etage">1er étage</h6>
+                                    <i class="material-icons pull-right">&#xE541;</i>
+                                </a>
+                            </li>
+                            <li style="display: list-item;">
+                                <a href="javascript:afficherMarqueur('[46.8303763278858,-71.22721575200558]',1, '<strong>Cafétéria</strong>')">
+                                    <h3 class="nomLocal">Cafétéria</h3><br>
+                                    <h6 class="etage">1er étage</h6>
+                                    <i class="material-icons pull-right">&#xE556;</i>
+                                </a>
+                            </li>
+                            <li style="display: list-item;">
+                                <a href="javascript:afficherMarqueur('[46.83017676457132,-71.22741490602493]',2, '<strong>Carrefour de l\'information (Bibliothèque)</strong>')">
+                                    <h3 class="nomLocal">Carrefour de l'information (Bibliothèque)</h3><br>
+                                    <h6 class="etage">2e étage</h6>
+                                    <i class="material-icons pull-right">&#xE54B;</i>
+                                </a>
+                            </li>
+                            <li style="display: list-item;">
+                                <a href="javascript:afficherMarqueur('[46.83039743108951,-71.22702732682228]',1, '<strong>COOP</strong>')">
+                                    <h3 class="nomLocal">COOP</h3><br>
+                                    <h6 class="etage">1er étage</h6>
+                                    <i class="material-icons pull-right">&#xE8CC;</i>
+                                </a>
+                            </li>
+                            <li style="display: list-item;">
+                                <a href="javascript:afficherMarqueur('[46.82972350077338,-71.22621729969978]',1, '<strong>DSEFC Formation continue</strong>')">
+                                    <h3 class="nomLocal">DSEFC Formation continue</h3><br>
+                                    <h6 class="etage">1er étage</h6>
+                                    <i class="material-icons pull-right">&#xE80C;</i>
+                                </a>
+                            </li>
+                            <li style="display: list-item;">
+                                <a href="javascript:afficherMarqueur('[46.82990425622797,-71.2274806201458]',1, '<strong>Garderie</strong>')">
+                                    <h3 class="nomLocal">Garderie</h3><br>
+                                    <h6 class="etage">1er étage</h6>
+                                    <i class="material-icons pull-right">&#xE87B;</i>
+                                </a>
+                            </li>
+                            <li style="display: list-item;">
+                                <a href="javascript:afficherMarqueur('[46.830871333460415,-71.22740015387535]',1, '<strong>Gymnase A, B et C</strong>')">
+                                    <h3 class="nomLocal">Gymnase A, B et C</h3><br>
+                                    <h6 class="etage">1er étage</h6>
+                                    <i class="material-icons pull-right">&#xEB43;</i>
+                                </a>
+                            </li>
+                            <li style="display: list-item;">
+                                <a href="javascript:afficherMarqueur('[46.83080022543308,-71.22824840247631]',1, '<strong>Gymnase D</strong>')">
+                                    <h3 class="nomLocal">Gymnase D</h3><br>
+                                    <h6 class="etage">1er étage</h6>
+                                    <i class="material-icons pull-right">&#xEB43;</i>
+                                </a>
+                            </li>
+                            <li style="display: list-item;">
+                                <a href="javascript:afficherMarqueur('[46.83084013769227,-71.22769519686699]',1, '<strong>Magasin Sportif</strong>')">
+                                    <h3 class="nomLocal">Magasin Sportif</h3><br>
+                                    <h6 class="etage">1er étage</h6>
+                                    <i class="material-icons pull-right">&#xE8CC;</i>
+                                </a>
+                            </li>
+                            <li style="display: list-item;">
+                                <a href="javascript:afficherMarqueur('[46.830615344121696,-71.22801639139652]',1, '<strong>Salle Sylvain-Lelièvre</strong><br>Accès via le Foyer Desjardins')">
+                                    <h3 class="nomLocal">Salle Sylvain-Lelièvre</h3><br>
+                                    <h6 class="etage">1er étage</h6>
+                                    <i class="material-icons pull-right">&#xE404;</i>
+                                </a>
+                            </li>
+                            <li style="display: list-item;">
+                                <a href="javascript:afficherMarqueur('[46.83068828744457,-71.22812233865261]',-1, '<strong>Piscine</strong><br>Accès via le premier étage')">
+                                    <h3 class="nomLocal">Piscine</h3><br>
+                                    <h6 class="etage">Sous-Sol</h6>
+                                    <i class="material-icons pull-right">&#xEB48;</i>
+                                </a>
+                            </li>
+                        </ul> 
+
+                        <div id="containerResultatRecherche">
+                            <ul class="list" id="listeLocaux">
+                             <!-- Via Javascript -->
+                         </ul> 
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div> <!--------  .modal  -------->
+ </div>
 
         <!-- Fenêtre modale de légende -->
-
         <div class="modal fade" id="modalLegende" tabindex="-1" role="dialog" aria-labelledby="labelInformations">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -688,3 +668,4 @@
 </body>
 
 </html>
+
