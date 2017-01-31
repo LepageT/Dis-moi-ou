@@ -67,6 +67,7 @@
                     redrawPath(path, null);
                 }
             });
+            marker.bindPopup("ID: " + nextWaypointId);
 
             var waypoint = new Waypoint(marker, nextWaypointId, etageActuel);
             waypoints.push(waypoint);
@@ -182,7 +183,6 @@
         for (var i = 0; i < path.getPoints().length; i++) {
             var waypoint = getWaypointById(path.getPoints()[i]);
             if (waypoint.floor == etageActuel) {
-                console.log(getWaypointById(path.getPoints()[i]));
                 points.push(getWaypointById(path.getPoints()[i]).getMarker._latlng);
             }
         }
