@@ -30,11 +30,9 @@
     <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-
-
     <link rel="stylesheet" href="css/leaflet.css" />
     <link rel="stylesheet" href="css/L.Control.Locate.css" />
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="//rawgithub.com/domoritz/leaflet-locatecontrol/gh-pages/dist/L.Control.Locate.ie.min.css"/>
     <![endif]-->
@@ -51,11 +49,6 @@
     <!-- Notre feuille de styles -->
     <link rel="stylesheet" href="css/app.css">
 </head>
-
-
-
-
-
 
 <body>
     <!--------  Écran de chargement  -------->
@@ -74,13 +67,11 @@
     </div>
     <!-- #loading -->
 
-
     <script>
         // Système de chargement
         $("#loading #content").css("margin-top", function () {
             return ($(window).height() / 2) - ($(this).height() / 2);
         });
-
 
         var pourcentageProgres = 0;
 
@@ -103,7 +94,6 @@
         }, 200);
 
         var progressBar = $(".progress-bar");
-
 
         // Charge toutes les images d'avance
         $.when(
@@ -202,9 +192,40 @@
         ).then(function () {});
     </script>
 
-
     <!--------  ÉCRAN PRINCIPAL  -------->
     <div class="container-fluid">
+
+       <div class="row" id="adminPanel">
+           <h2>-- Admin Panel --</h2>
+           <div class="row">
+                <div class="col-md-4">
+                    <button id="selectLocal">Select Local</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="importWaypoints">Import waypoints</button>
+                </div>
+                   <div class="col-md-4">
+                    <button id="exportWaypoints">Export waypoints</button>
+                </div>
+           </div>
+           <div class="row">
+                <div class="col-md-4">
+                    <button id="remove">Remove last</button>
+                </div>
+                <div class="col-md-4">
+                    <button id="addPath">Add path to file</button>
+                </div>
+                   <div class="col-md-4">
+                    <button id="saveLocal">Export paths/local</button>
+                </div>
+           </div>
+           <div class="row">
+               <div class="col-md-4">
+                      <input type="checkbox" id="createingPath"> Creating path
+               </div>
+           </div>
+       </div>
+
         <div class="row">
             <div class="col-xs-12">
                 <div id="map"></div>
@@ -235,30 +256,20 @@
                                     </li>
                                 </div>
                                 <!-- .col-xs-4 -->
-
-
-                                <div class="col-xs-3">
+                                <div class="col-xs-4">
                                     <!-- Ouvre la fenêtre modale de recherche de locaux -->
                                     <li>
                                         <a id="boutonRechercher" href="javascript:"><img src="images/loupe.png"></a>
                                     </li>
                                 </div>
-                                <!-- .col-xs-3 -->
-
-                                <div class="col-xs-3">
+                                <!-- .col-xs-4 -->
+                                <div class="col-xs-4">
                                     <!-- Ouvre la fenetre d'information sur le projet -->
                                     <li>
                                         <a id="boutonInformations" href="javascript:"><img src="images/information.png"></a>
                                     </li>
                                 </div>
-                                <!-- .col-xs-3 -->
-
-                                <div class="col-xs-2">
-                                    <!-- Ouvre la fenetre d'information sur le projet -->
-                                    <li>
-                                        <a id="export" href="javascript:"><img src="images/information.png"></a>
-                                    </li>
-                                </div>
+                                <!-- .col-xs-4 -->
                             </ul>
                         </div>
                         <!-- .row -->
@@ -336,7 +347,7 @@
                                         <h3 class="nomLocal">Garderie</h3>
                                         <br>
                                         <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xE87C;</i>
+                                        <i class="material-icons pull-right">&#xE87B;</i>
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
@@ -352,7 +363,7 @@
                                         <h3 class="nomLocal">Gymnase D</h3>
                                         <br>
                                         <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xE80C;</i>
+                                        <i class="material-icons pull-right">&#xE8CC;</i>
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
@@ -360,7 +371,7 @@
                                         <h3 class="nomLocal">Magasin Sportif</h3>
                                         <br>
                                         <h6 class="etage">1er étage</h6>
-                                        <i class="material-icons pull-right">&#xE80C;</i>
+                                        <i class="material-icons pull-right">&#xEB43;</i>
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
@@ -376,7 +387,7 @@
                                         <h3 class="nomLocal">Piscine</h3>
                                         <br>
                                         <h6 class="etage">Sous-Sol</h6>
-                                        <i class="material-icons pull-right">&#xE903;</i>
+                                        <i class="material-icons pull-right">&#xEB48;</i>
                                     </a>
                                 </li>
                             </ul>
@@ -434,49 +445,43 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="roomSelect" tabindex="-1" role="dialog" aria-labelledby="labelInformations">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title text-center" id="labelInformations">Select Room to create Path</h4>
+                    </div>
+                    <div class="modal-body">
+                        <select id="roomList"></select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button class="btn btn-primary" id="selectRoom">Select</button>
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <!--------  .modal  -------->
-
-
-
     <!-- Bootstrap -->
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Système de recherche dans une liste -->
     <script src="js/jquery.liveFilter.js"></script>
 
-
     <!-- Pour faire bondir les petit markeur lors de leur ajout sur la carte -->
     <script src="js/bouncemarker.js"></script>
-
 
     <!---------------------------------------------------------------------->
     <!------------------ Les scripts de notre application ------------------>
     <!---------------------------------------------------------------------->
+    <script src="js/waypoint.js"></script>
     <script src="js/app.js"></script>
-
-    <script>
-        map.on("click", addMarker);
-
-        var myMarkers = L.layerGroup();
-        map.addLayer(myMarkers);
-
-        var markersList = [];
-
-        function addMarker(e) {
-            marker = new L.marker(e.latlng, {
-                draggable: 'true'
-            }).addTo(myMarkers);
-            marker.on('dragend', function (event) {
-                var marker = event.target;
-                var position = marker.getLatLng();
-                marker.setLatLng(new L.LatLng(position.lat, position.lng), {
-                    draggable: 'true'
-                });
-                map.panTo(new L.LatLng(position.lat, position.lng));
-                console.log(marker);
-            });
-        }
+    <script src="js/admin-app.js"></script>
 
     </script>
 </body>
