@@ -296,9 +296,11 @@
         </h4>
                                         </div>
                                         <div id="collapse1" class="panel-collapse collapse">
-                                            <div class="panel-body"><a href="#">Première journée</a></div>
-                                            <div class="panel-body"><a href="#">Inscription gym</a></div>
-                                            <div class="panel-body"><a href="#">Aide financière</a></div>
+                                            <div class="panel-body"><a href="#" id="first-day">Première journée</a></div>
+                                            <div class="panel-body"><a href="#" id="organiScolaire">Organisation scolaire</a></div>
+                                            <div class="panel-body"><a href="#" id="gym">Inscription gym</a></div>
+                                            <div class="panel-body"><a href="#" id="parcours">Parcours culturel </a></div>
+
 
                                         </div>
                                     </div>
@@ -309,16 +311,16 @@
                             <hr>
                             <div class="row">
                                 <div class="col-xs-12 text-center">
-                                    <ol class="liste-etapes list">
+                                    <ol class="list list-itineraire" id="premier-jour">
                                         <li>
-                                            <a href="">
-                                                <h3 class="nomLocal">Accueil des étudiants - Escalier principal</h3>
+                                            <a href="javascript:afficherMarqueur('[46.830340085407876,-71.22719027101994]',1, '<strong>Escalier principal</strong>')">
+                                                <h3 class="nomLocal">Escalier principal</h3>
                                                 <br>
                                                 <h6 class="etage">1er étage</h6>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="javascript:afficherMarqueur('[46.83019328018408,-71.22740350663662]',1, '<strong>Kiosque d\'information - Agora</strong>')">
                                                 <h3 class="nomLocal">Kiosque d’information - Agora</h3>
                                                 <br>
                                                 <h6 class="etage">1er étage</h6>
@@ -339,6 +341,78 @@
                                                 <br>
                                                 <h6 class="etage">1er étage</h6>
 
+                                            </a>
+                                        </li>
+                                    </ol>
+
+                                     <ol class="list list-itineraire" id="organisation">
+                                        <li>
+                                            <a href="javascript:afficherMarqueur('[46.830340085407876,-71.22719027101994]',1, '<strong>Escalier principal</strong>')">
+                                                <h3 class="nomLocal">Escalier principal</h3>
+                                                <br>
+                                                <h6 class="etage">1er étage</h6>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:afficherMarqueur('[46.830290538689674,-71.22796341776848]',1, '<strong>Pédagogie et international</strong>')">
+                                            <h3 class="nomLocal">Secrétariat pédagogique</h3>
+                                            <br>
+                                            <h6 class="etage">1er étage</h6>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:afficherMarqueur('[46.82972350077338,-71.22621729969978]',1, '<strong>Comptabilité</strong>')">
+                                            <h3 class="nomLocal">Comptabilité</h3>
+                                            <br>
+                                            <h6 class="etage">1er étage</h6>
+                                            </a>
+                                        </li>
+                                    </ol>
+
+                                    <ol class="list list-itineraire" id="inscription-gym">
+                                        <li>
+                                            <a href="javascript:afficherMarqueur('[46.830340085407876,-71.22719027101994]',1, '<strong>Escalier principal</strong>')">
+                                                <h3 class="nomLocal">Escalier principal</h3>
+                                                <br>
+                                                <h6 class="etage">1er étage</h6>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:afficherMarqueur('[46.83084013769227,-71.22769519686699]',1, '<strong>Magasin Sportif</strong>')">
+                                            <h3 class="nomLocal">Magasin Sportif</h3>
+                                            <br>
+                                            <h6 class="etage">1er étage</h6>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:afficherMarqueur('[46.83075939562002,-71.22738808393478]',2, '<strong>Conditionnement physique</strong>')">
+                                            <h3 class="nomLocal">Salle d'entraînement</h3>
+                                            <br>
+                                            <h6 class="etage">2e étage</h6>
+                                            </a>
+                                        </li>
+                                    </ol>
+
+                                     <ol class="list list-itineraire" id="parcoursCultu">
+                                        <li>
+                                            <a href="javascript:afficherMarqueur('[46.830340085407876,-71.22719027101994]',1, '<strong>Escalier principal</strong>')">
+                                                <h3 class="nomLocal">Escalier principal</h3>
+                                                <br>
+                                                <h6 class="etage">1er étage</h6>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:afficherMarqueur('[46.83017676457132,-71.22741490602493]',2, '<strong>Carrefour de l’information (Bibliothèque)</strong>')">
+                                            <h3 class="nomLocal">Bibliothèque</h3>
+                                            <br>
+                                            <h6 class="etage">2e étage</h6>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:afficherMarqueur('[46.830550199686776,-71.22816994786261]',1, '<strong>Entrée Salle Sylvain-Lelièvre</strong>')">
+                                            <h3 class="nomLocal">Salle Sylvain-Lelièvre</h3>
+                                            <br>
+                                            <h6 class="etage">2e étage</h6>
                                             </a>
                                         </li>
                                     </ol>
@@ -372,6 +446,7 @@
                                 <button id="boutonOK" type="submit" class="btn btn-default">Chercher</button>
                             </div>
                             <!-- .recherche -->
+
 
 
 
@@ -490,15 +565,18 @@
                     </div>
                     <div class="modal-body">
                         <div class="contenu">
-                            <ul id="listeLegende">
-                                <li>Accessibilité</li>
-                                <li><img src="images/assenceur.png">Ascenseurs</li>
-                                <li>Entrée</li>
-                                <li><img src="images/escaliers.png">Escaliers</li>
-                                <li>Portes principales (entrée/sortie)</li>
-                                <li>Stationnement</li>
-                                <li><img src="images/toilettes-hommes.png">Toilettes/hommes</li>
-                                <li><img src="images/toilettes-dames.png">Toilettes/femmes</li>
+                            <ul class="listeLegende">
+                                <li><img src="images/accessibilite.svg" width="30" height="30">&nbsp;Accessibilité</li>
+                                <li><img src="images/assenceur.png">&nbsp;Ascenseurs</li>
+                                <li><img src="images/entree.svg" height="30" width="30">&nbsp;Entrée</li>
+                                <li><img src="images/escaliers.png">&nbsp;Escaliers</li>
+                                <li><img src="images/extincteur-feu.svg" height="30" width="30">&nbsp;Extincteur de feu</li>
+                                <li><img src="images/porte-vide.png" height="30" width="30">&nbsp;Portes principales</li>
+                                <li><img src="images/sortie.svg" width="30" height="30">&nbsp;Sortie de secours</li>
+                                <li><img src="images/stationnement.png">&nbsp;Stationnement</li>
+                                <li><img src="images/toilettes-hommes.png">&nbsp;Toilettes/hommes</li>
+                                <li><img src="images/toilettes-dames.png">&nbsp;Toilettes/femmes</li>
+                                <li><img src="images/kit-urgence.svg" width="30" height="30">&nbsp;Trousse de premiers soins</li>
                             </ul>
 
                         </div>
@@ -529,7 +607,10 @@
                             <p><a href="mailto:web@cegeplimoilou.ca" title="Courriel du Cégep Limoilou">web@cegeplimoilou.ca</a></p>
                             <hr>
                             <h3>Équipe de production</h3>
-                            <p>Ce produit a été réalisé par le groupe 2 de <strong>Production en médias interactifs (NWE.2N) : </strong></p>
+                            <p>Ce produit a été réalisé par le groupe 2 et 3 de <strong>Production en médias interactifs (NWE.2N) : </strong></p>
+                            <br>
+                            <div class="row">
+                            <div class="col-md-5">
                             <ul>
                                 <li>Vesselin Eugène</li>
                                 <li>Étienne Loiselle</li>
@@ -537,13 +618,24 @@
                                 <li>Maïsa Mpembe</li>
                                 <li>Gabriel Rodrigue</li>
                             </ul>
+                            </div>
+                            <div class="col-md-5">
+                            <ul>
+                                <li>Audrick Roy</li>
+                                <li>Thomas Lepage</li>
+                                <li>Nancy Carol Harrison</li>
+                                <li>Maude Laperrière</li>
+                                <li>Guillaume Bernier</li>
+                            </ul>
+                            </div>
+                            </div>
                             <hr>
                             <h3>Remerciements</h3>
                             <p class="small">Nous tenons à remercier la Direction des services aux entreprises et de la formation continue (DSEFC), la Direction des systèmes et des technologies de l'information (DSTI), la Direction des communications et secrétariat général, et le Département de la géomatique.</p>
 
                         </div>
                         <div class="col-xs-12 text-center">
-                            <small>Version 1.0 - ©2015</small>
+                            <small>Version 2.0 - ©2017</small>
                         </div>
                     </div>
                 </div>
