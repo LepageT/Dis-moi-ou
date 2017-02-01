@@ -93,7 +93,7 @@
             if (map.getZoom() < 19) {
                 map.removeLayer(libelleEtage);
             }
-          
+
             if (map.getZoom() >= 20) {
                 map.addLayer(numeroLocauxEtage);
             }
@@ -167,7 +167,7 @@
             planEtage.bringToBack();
             afficheLorsZoom();
             map.panTo([46.8302871, -71.227337]);
-            if(myPath !== null) {
+            if (myPath !== null) {
                 redrawPath(myPath);
             }
 
@@ -177,7 +177,7 @@
         var positionMarqueur = "";
 
         // Fonction appellé chaque fois que l'on veux afficher un marqueur sur la carte pour montrer l'emplacement d'un local
-        function afficherMarqueur(position, etage, message, image = "null"){
+        function afficherMarqueur(position, etage, message, image = "null") {
 
             // Supprime le calque "marqueur" qui contient le ou les marqueurs
             map.removeLayer(marqueur);
@@ -189,14 +189,20 @@
             changerEtage(etage);
 
             // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
-             var button = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
+            var button = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
 
-                if (image == "null"){
-                    button = "";
+            if (image == "null") {
+                button = "";
+            }
+
+            // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
+            marqueur = L.marker(positionMarqueur, {
+                bounceOnAdd: true,
+                bounceOnAddOptions: {
+                    duration: 500,
+                    height: 200
                 }
-
-                // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
-                marqueur = L.marker(positionMarqueur, {bounceOnAdd: true, bounceOnAddOptions: {duration: 500, height: 200}}).bindPopup(button + message);
+            }).bindPopup(button + message);
 
             // Créé un nouveau calque, ajoute le marqueur puis l'affiche sur la carte
             map.addLayer(marqueur);
@@ -206,16 +212,16 @@
 
             // Ferme la fênetre modale
             $('#modalRechercher').modal('hide')
-            // Ferme fenêtre modale itinéraire
+                // Ferme fenêtre modale itinéraire
             $('#modalItineraire').modal('hide')
 
             // Centre le marqueur dans l'écran
             map.panTo(positionMarqueur);
 
-          // Modifie la source de l'image
-                if (image!=="null"){
-                $('#imgModal').attr("src","images/" + image);
-                }
+            // Modifie la source de l'image
+            if (image !== "null") {
+                $('#imgModal').attr("src", "images/" + image);
+            }
             //source pour titre message
             $('#labelMessage').html(message);
 
@@ -236,8 +242,8 @@
             }
             return null;
         }
-        
-          $(document).ready(function () {
+
+        $(document).ready(function () {
             $(".list-itineraire").hide();
             var cacheListe = $("#premier-jour");
             var cacheListe2 = $("#organisation");
@@ -338,8 +344,8 @@
                 });
 
                 $("#modalRechercher").modal('show');
-              
-                $('#modalRechercher').on('shown.bs.modal', function () {                        
+
+                $('#modalRechercher').on('shown.bs.modal', function () {
                     $("#boutonOK").click(function () {
                         $('#listeLocaux').liveFilter('#inputRechercherModal', 'li', {
                             filterChildSelector: 'a',
@@ -373,19 +379,19 @@
                 event.preventDefault();
                 $("#modalInformations").modal('show');
             });
-                          
-                          // Ouvre la fenêtre modale avec le bouton légende dans le menu de navigation
 
-                        $("#boutonLegende").click(function(event){
-                            event.preventDefault();
-                            $("#modalLegende").modal('show');
-                        });
+            // Ouvre la fenêtre modale avec le bouton légende dans le menu de navigation
 
-                 // Ouvre la fenêtre modale itineraire avec le bouton dans le menu de navigation
-                        $("#boutonItineraire").click(function(event){
-                            event.preventDefault();
-                            $("#modalItineraire").modal('show');
-                        });
+            $("#boutonLegende").click(function (event) {
+                event.preventDefault();
+                $("#modalLegende").modal('show');
+            });
+
+            // Ouvre la fenêtre modale itineraire avec le bouton dans le menu de navigation
+            $("#boutonItineraire").click(function (event) {
+                event.preventDefault();
+                $("#modalItineraire").modal('show');
+            });
 
             // Pour améliorer les performances avec jQuery
             var listeLocaux = $("#listeLocaux");
@@ -411,11 +417,11 @@
                     positionLocal = data[i].position;
                     etageLocal = data[i].etage;
                     message = data[i].message;
-                  image = null;
+                    image = null;
                     var level = '';
-                                if (data[i].hasOwnProperty("image")){
-                                    image=data[i].image;
-                                }
+                    if (data[i].hasOwnProperty("image")) {
+                        image = data[i].image;
+                    }
                     // Selon chaque étage
                     if (etageLocal == -1) {
                         level = 'Sous-sol';
@@ -425,8 +431,7 @@
                         level = etageLocal + 'e étage';
                     }
 
-
-                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',' + numeroLocal +  '\',\'' + image + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',\'' + image + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
                 }
 
                 // Ajoute le très long string qui contient toute la liste dans la fenètre modale
