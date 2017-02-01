@@ -122,7 +122,7 @@
             map.removeLayer(numeroLocauxEtage);
             etageActuel = etage;
 
-            if (etage == "SS") {
+            if (etage == -1) {
                 imageUrl = 'images/etages/etage0_locaux.svg';
                 imageLocauxUrl = 'images/etages/etage0_numero.svg'
                 iconesEtageUrl = 'images/etages/etage0_icones.svg';
@@ -423,7 +423,7 @@
                         image = data[i].image;
                     }
                     // Selon chaque étage
-                    if (etageLocal == -1) {
+                    if (etageLocal == "SS") {
                         level = 'Sous-sol';
                     } else if (etageLocal == 1) {
                         level = etageLocal + 'er étage';
