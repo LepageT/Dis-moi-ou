@@ -224,6 +224,7 @@
             }
             //source pour titre message
             $('#labelMessage').html(message);
+            $('#ouverture').html(ouverture);
 
             //Afficher le path jusqu'au local
             var temp = findPathForLocal(local);
