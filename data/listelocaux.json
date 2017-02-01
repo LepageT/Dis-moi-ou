@@ -95,7 +95,7 @@
          "position": "[46.830290538689674,-71.22796341776848]",
          "etage": 1,
          "message": "Pédagogie et international",
-         "image": "Q"
+         "image": "aide-pedagogique.jpg"
 	},
      {
          "nom": "Local 1414",
@@ -225,7 +225,7 @@
          "position": "[46.830340085407876,-71.22719027101994]",
          "etage": 1,
          "message": "Escalier principal - 1er étage",
-         "image": "Q"
+         "image": "escalier.jpg"
 },
      {
          "nom": "Local 1424",
@@ -240,7 +240,7 @@
          "position": "[46.83019328018408,-71.22740350663662]",
          "etage": 1,
          "message": "Kiosque d'information - Agora",
-         "image": "Q"
+         "image": "agora.jpg"
 },
      {
          "nom": "Local 1425",
@@ -659,14 +659,16 @@
          "local": "1267",
          "position": "[46.83018135224204,-71.22683085501193]",
          "etage": 1,
-         "message": "Studios audiovisuels"
+         "message": "Studios audiovisuels",
+         "image": "audiovisuel.jpg"
 	},
      {
          "nom": "Local 1268",
          "local": "1268",
          "position": "[46.83016850676304,-71.22681945562361]",
          "etage": 1,
-         "message": "Studios audiovisuels"
+         "message": "Studios audiovisuels",
+          "image": "audiovisuel.jpg"
 	},
      {
          "nom": "Local 1269",
@@ -681,7 +683,7 @@
          "position": "[46.8301001504124,-71.22660957276821]",
          "etage": 1,
          "message": "Studios audiovisuels",
-         "image": "Q"
+         "image": "audiovisuel.jpg"
 	},
      {
          "nom": "Local 1257",
@@ -689,7 +691,7 @@
          "position": "[46.830157496350004,-71.22662901878357]",
          "etage": 1,
          "message": "Studios audiovisuels",
-         "image": "Q"
+         "image": "audiovisuel.jpg"
 	},
      {
          "nom": "Local 1256",
@@ -697,7 +699,7 @@
          "position": "[46.830270811742885,-71.22667863965033]",
          "etage": 1,
          "message": "Studios audiovisuels",
-         "image": "Q"
+         "image": "audiovisuel.jpg"
 	},
      {
          "nom": "Local 1263",
@@ -705,7 +707,7 @@
          "position": "[46.83030063154338,-71.2267054617405]",
          "etage": 1,
          "message": "Studios audiovisuels",
-         "image": "Q"
+         "image": "audiovisuel.jpg"
 	},
      {
          "nom": "Local 1255",
@@ -3070,7 +3072,7 @@
          "position": "[46.8301281352376,-71.22729286551476]",
          "etage": 3,
          "message": "Carrefour de l’information (Bibliothèque)",
-         "image": "Q"
+         "image": "bibli_etage.jpg"
     },
      {
          "nom": "Local 3043",
@@ -3078,7 +3080,7 @@
          "position": "[46.83010473808964,-71.22727073729038]",
          "etage": 3,
          "message": "Carrefour de l’information (Bibliothèque)",
-         "image": "Q"
+         "image": "bibli_etage.jpg"
     },
      {
          "nom": "Local 3042",
@@ -3086,7 +3088,7 @@
          "position": "[46.830082717235214,-71.22725129127502]",
          "etage": 3,
          "message": "Carrefour de l’information (Bibliothèque)",
-         "image": "Q"
+         "image": "bibli_etage.jpg"
     },
      {
          "nom": "Local 3041",
@@ -3094,7 +3096,7 @@
          "position": "[46.83005748499508,-71.2272284924984]",
          "etage": 3,
          "message": "Carrefour de l’information (Bibliothèque)",
-         "image": "Q"
+         "image": "bibli_etage.jpg"
     },
      {
          "nom": "Local 3052",
