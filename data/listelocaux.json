@@ -43,70 +43,80 @@
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
     "message": "Pédagogie et international",
-    "path": [506, 1, 4, 5, 6]
+    "path": [506, 1, 4, 5, 6],
+    "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1406",
     "local": "1406",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
     "message": "Pédagogie et international",
-    "path": [506, 1, 4, 5, 6]
+    "path": [506, 1, 4, 5, 6],
+         "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1407",
     "local": "1407",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
     "message": "Pédagogie et international",
-    "path": [506, 1, 4, 5, 6]
+    "path": [506, 1, 4, 5, 6],
+         "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1408",
     "local": "1408",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
     "message": "Pédagogie et international",
-    "path": [506, 1, 4, 5, 6]
+    "path": [506, 1, 4, 5, 6],
+         "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1409",
     "local": "1409",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
     "message": "Pédagogie et international",
-    "path": [506, 1, 4, 5, 6]
+    "path": [506, 1, 4, 5, 6],
+         "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1412",
     "local": "1412",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
     "message": "Pédagogie et international",
-    "path": [506, 1, 4, 5, 6]
+    "path": [506, 1, 4, 5, 6],
+         "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1413",
     "local": "1413",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
     "message": "Pédagogie et international",
-    "path": [506, 1, 4, 5, 6]
+    "path": [506, 1, 4, 5, 6],
+         "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1414",
     "local": "1414",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
     "message": "Pédagogie et international",
-    "path": [506, 1, 4, 5, 6]
+    "path": [506, 1, 4, 5, 6],
+         "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1415",
     "local": "1415",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
     "message": "Pédagogie et international",
-    "path": [506, 1, 4, 5, 6]
+    "path": [506, 1, 4, 5, 6],
+         "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1404",
     "local": "1404",
     "position": "[46.830290538689674,-71.22796341776848]",
     "etage": 1,
     "message": "Pédagogie et international",
-    "path": [506, 1, 4, 5, 6]
+    "path": [506, 1, 4, 5, 6],
+         "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1448",
     "local": "1448",
@@ -469,7 +479,8 @@
     "position": "[46.83094840528057,-71.22788831591605]",
     "etage": 1,
     "message": " ",
-    "path": [30, 34, 37, 5, 6, 326, 325, 520]
+    "path": [30, 34, 37, 5, 6, 326, 325, 520],
+         "image": "gymnase.jpg"
 }, {
     "nom": "Foyer Desjardins",
     "local": "1333",
@@ -483,7 +494,8 @@
     "position": "[46.830615344121696,-71.22801639139652]",
     "etage": 1,
     "message": "Accès via le Foyer Desjardins",
-    "path": [14, 1, 4, 5, 6]
+    "path": [14, 1, 4, 5, 6],
+         "image": "salle-sylvain-lelievre-int2.jpg"
 }, {
     "nom": "Entrée Centre Sportif",
     "local": " ",
@@ -496,7 +508,8 @@
     "position": "[46.83084013769227,-71.22769519686699]",
     "etage": 1,
     "message": " ",
-    "path": [33, 34, 37, 5, 6]
+    "path": [33, 34, 37, 5, 6],
+         "image": "magasin-sportif.jpg"
 }, {
     "nom": "Local 1317",
     "local": "1317",
@@ -587,7 +600,8 @@
     "position": "[46.830871333460415,-71.22740015387535]",
     "etage": 1,
     "message": " ",
-    "path": [24, 23, 20, 34, 37, 5, 6]
+    "path": [24, 23, 20, 34, 37, 5, 6],
+         "image": "gymnase.jpg"
 }, {
     "nom": "Cafétéria",
     "local": "1121",
@@ -595,14 +609,16 @@
     "etage": 1,
     "message": " ",
     "image": "",
-    "path": [6]
+    "path": [6],
+         "image": "cafeteriaQC2.jpg"
 }, {
     "nom": "COOP",
     "local": "1203",
     "position": "[46.83039743108951,-71.22702732682228]",
     "etage": 1,
     "message": " ",
-    "path": [6]
+    "path": [6],
+         "image": "coop.jpg"
 }, {
     "nom": "Local 1266",
     "local": "1266",
@@ -623,14 +639,16 @@
     "position": "[46.83018135224204,-71.22683085501193]",
     "etage": 1,
     "message": "Studios audiovisuels",
-    "path": [81, 43, 41, 6]
+    "path": [81, 43, 41, 6],
+         "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1268",
     "local": "1268",
     "position": "[46.83016850676304,-71.22681945562361]",
     "etage": 1,
     "message": "Studios audiovisuels",
-    "path": [81, 43, 41, 6]
+    "path": [81, 43, 41, 6],
+          "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1269",
     "local": "1269",
@@ -644,28 +662,32 @@
     "position": "[46.8301001504124,-71.22660957276821]",
     "etage": 1,
     "message": "Studios audiovisuels",
-    "path": [76, 43, 41, 6]
+    "path": [76, 43, 41, 6],
+          "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1257",
     "local": "1257",
     "position": "[46.830157496350004,-71.22662901878357]",
     "etage": 1,
     "message": "Studios audiovisuels",
-    "path": [119, 118, 123, 43, 41, 6]
+    "path": [119, 118, 123, 43, 41, 6],
+          "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1256",
     "local": "1256",
     "position": "[46.830270811742885,-71.22667863965033]",
     "etage": 1,
     "message": "Studios audiovisuels",
-    "path": [121, 123, 43, 41, 6]
+    "path": [121, 123, 43, 41, 6],
+          "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1263",
     "local": "1263",
     "position": "[46.83030063154338,-71.2267054617405]",
     "etage": 1,
     "message": "Studios audiovisuels",
-    "path": [121, 123, 43, 41, 6]
+    "path": [121, 123, 43, 41, 6],
+          "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1255",
     "local": "1255",
@@ -938,7 +960,8 @@
     "position": "[46.83007675325225,-71.22719295322894]",
     "etage": 1,
     "message": " ",
-    "path": [518, 5, 6]
+    "path": [518, 5, 6],
+         "image": "cafe1.jpg"
 }, {
     "nom": "Local 1030",
     "local": "1030",
@@ -1085,7 +1108,8 @@
     "position": "[46.82972350077338,-71.22621729969978]",
     "etage": 1,
     "message": " ",
-    "path": [93, 43, 41, 6]
+    "path": [93, 43, 41, 6],
+         "image": "formation-continue.jpg"
 }, {
     "nom": "Comptabilité",
     "local": "1527",
@@ -2562,7 +2586,8 @@
     "position": "[46.83075939562002,-71.22738808393478]",
     "etage": 2,
     "message": "",
-    "path": [202, 193, 194]
+    "path": [202, 193, 194],
+         "image": "gym.jpg"
 }, {
     "nom": "Salle de danse",
     "local": "2308",
@@ -3015,28 +3040,32 @@
     "position": "[46.8301281352376,-71.22729286551476]",
     "etage": 3,
     "message": "Carrefour de l’information (Bibliothèque)",
-    "path": [382, 368, 367, 540, 532, 194]
+    "path": [382, 368, 367, 540, 532, 194],
+         "image": "bibli_etage.jpg"
 }, {
     "nom": "Local 3043",
     "local": "3043",
     "position": "[46.83010473808964,-71.22727073729038]",
     "etage": 3,
     "message": "Carrefour de l’information (Bibliothèque)",
-    "path": [383, 382, 368, 367, 540, 532, 194]
+    "path": [383, 382, 368, 367, 540, 532, 194],
+         "image": "bibli_etage.jpg"
 }, {
     "nom": "Local 3042",
     "local": "3042",
     "position": "[46.830082717235214,-71.22725129127502]",
     "etage": 3,
     "message": "Carrefour de l’information (Bibliothèque)",
-    "path": [384, 382, 368, 367, 540, 532, 194]
+    "path": [384, 382, 368, 367, 540, 532, 194],
+         "image": "bibli_etage.jpg"
 }, {
     "nom": "Local 3041",
     "local": "3041",
     "position": "[46.83005748499508,-71.2272284924984]",
     "etage": 3,
     "message": "Carrefour de l’information (Bibliothèque)",
-    "path": [385, 382, 368, 367, 540, 532, 194]
+    "path": [385, 382, 368, 367, 540, 532, 194],
+         "image": "bibli_etage.jpg"
 }, {
     "nom": "Local 3052",
     "local": "3052",
@@ -4019,23 +4048,27 @@
     "local": "0324",
     "position": "[46.83068828744457,-71.22812233865261]",
     "etage": -1,
-    "message": "Accès via le premier étage"
+    "message": "Accès via le premier étage",
+         "image": "caroussel_piscine.png"
 }, {
     "nom": "Kiosque d'information",
     "local": "",
     "position": "[46.83019328018408,-71.22740350663662]",
     "etage": 1,
-    "message": "Kiosque d'information - Agora"
+    "message": "Kiosque d'information - Agora",
+         "image": "agora.jpg"
 }, {
     "nom": "Escalier principal",
     "local": "",
     "position": "[46.83027035297657,-71.2271225452423]",
     "etage": 2,
-    "message": "Escalier principal - 2e étage"
+    "message": "Escalier principal - 2e étage",
+         "image": "escalier.jpg"
 }, {
     "nom": "Escalier principal",
     "local": "",
     "position": "[46.830340085407876,-71.22719027101994]",
     "etage": 1,
-    "message": "Escalier principal - 1er étage"
+    "message": "Escalier principal - 1er étage",
+         "image": "escalier.jpg"
 }]

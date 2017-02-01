@@ -42,6 +42,8 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/leaflet-src.js"></script>
     <script src="js/l.control.locate.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/photo-sphere-viewer.min.js"></script>
 
     <!--[if lte IE 8]><link rel="stylesheet" href="libs/leaflet.ie.css" /><![endif]-->
     <!-- Latest compiled and minified CSS -->
@@ -200,12 +202,12 @@
                     <h4 id="indicateurEtage">1</h4><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></bouton>
 
                     <ul id="controlleEtage">
-                        <li><a href="javascript:changerEtage(5)">5</a></li>
-                        <li><a href="javascript:changerEtage(4)">4</a></li>
-                        <li><a href="javascript:changerEtage(3)">3</a></li>
-                        <li><a href="javascript:changerEtage(2)">2</a></li>
-                        <li><a href="javascript:changerEtage(1)">1</a></li>
-                        <li><a href="javascript:changerEtage(-1)">-1</a></li>
+                        <li><a href="javascript:changerEtage(5)"><img src="images/boutons_etages/5.svg"></a></li>
+                        <li><a href="javascript:changerEtage(4)"><img src="images/boutons_etages/4.svg"></a></li>
+                        <li><a href="javascript:changerEtage(3)"><img src="images/boutons_etages/3.svg"></a></li>
+                        <li><a href="javascript:changerEtage(2)"><img src="images/boutons_etages/2.svg"></a></li>
+                        <li><a href="javascript:changerEtage(1)"><img src="images/boutons_etages/1.svg"></a></li>
+                        <li><a href="javascript:changerEtage('SS')"><img src="images/boutons_etages/ss.svg"></a></li>
                     </ul>
                 </div>
                 <button id="boutonInformations"><img src="images/information.png"></button>
@@ -414,7 +416,7 @@
 
                             <ul class="list" id="listePoi">
                                 <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83007675325225,-71.22719295322894]',1, '<strong>Café étudiant</strong>')">
+                                    <a href="javascript:afficherMarqueur('[46.83007675325225,-71.22719295322894]',1, '<strong>Café étudiant</strong>', 'cafe1.jpg')">
                                         <h3 class="nomLocal">Café étudiant</h3>
                                         <br>
                                         <h6 class="etage">1er étage</h6>
@@ -422,7 +424,7 @@
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.8303763278858,-71.22721575200558]',1, '<strong>Cafétéria</strong>')">
+                                    <a href="javascript:afficherMarqueur('[46.8303763278858,-71.22721575200558]',1, '<strong>Cafétéria</strong>', 'cafeteriaQC2.jpg')">
                                         <h3 class="nomLocal">Cafétéria</h3>
                                         <br>
                                         <h6 class="etage">1er étage</h6>
@@ -430,7 +432,7 @@
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83017676457132,-71.22741490602493]',2, '<strong>Carrefour de l\'information (Bibliothèque)</strong>')">
+                                    <a href="javascript:afficherMarqueur('[46.83017676457132,-71.22741490602493]',2, '<strong>Carrefour de l\'information (Bibliothèque)</strong>', 'bibli3.jpg')">
                                         <h3 class="nomLocal">Carrefour de l'information (Bibliothèque)</h3>
                                         <br>
                                         <h6 class="etage">2e étage</h6>
@@ -438,7 +440,7 @@
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83039743108951,-71.22702732682228]',1, '<strong>COOP</strong>')">
+                                    <a href="javascript:afficherMarqueur('[46.83039743108951,-71.22702732682228]',1, '<strong>COOP</strong>', 'coop.jpg')">
                                         <h3 class="nomLocal">COOP</h3>
                                         <br>
                                         <h6 class="etage">1er étage</h6>
@@ -446,7 +448,7 @@
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.82972350077338,-71.22621729969978]',1, '<strong>DSEFC Formation continue</strong>')">
+                                    <a href="javascript:afficherMarqueur('[46.82972350077338,-71.22621729969978]',1, '<strong>DSEFC Formation continue</strong>', 'formation-continue.jpg')">
                                         <h3 class="nomLocal">DSEFC Formation continue</h3>
                                         <br>
                                         <h6 class="etage">1er étage</h6>
@@ -462,7 +464,7 @@
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.830871333460415,-71.22740015387535]',1, '<strong>Gymnase A, B et C</strong>')">
+                                    <a href="javascript:afficherMarqueur('[46.830871333460415,-71.22740015387535]',1, '<strong>Gymnase A, B et C</strong>', 'gymnase.jpg')">
                                         <h3 class="nomLocal">Gymnase A, B et C</h3>
                                         <br>
                                         <h6 class="etage">1er étage</h6>
@@ -470,7 +472,7 @@
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83080022543308,-71.22824840247631]',1, '<strong>Gymnase D</strong>')">
+                                    <a href="javascript:afficherMarqueur('[46.83080022543308,-71.22824840247631]',1, '<strong>Gymnase D</strong>', 'gymnase.jpg')">
                                         <h3 class="nomLocal">Gymnase D</h3>
                                         <br>
                                         <h6 class="etage">1er étage</h6>
@@ -478,7 +480,7 @@
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83084013769227,-71.22769519686699]',1, '<strong>Magasin Sportif</strong>')">
+                                    <a href="javascript:afficherMarqueur('[46.83084013769227,-71.22769519686699]',1, '<strong>Magasin Sportif</strong>', 'magasin-sportif.jpg')">
                                         <h3 class="nomLocal">Magasin Sportif</h3>
                                         <br>
                                         <h6 class="etage">1er étage</h6>
@@ -486,7 +488,7 @@
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.830615344121696,-71.22801639139652]',1, '<strong>Salle Sylvain-Lelièvre</strong><br>Accès via le Foyer Desjardins')">
+                                    <a href="javascript:afficherMarqueur('[46.830615344121696,-71.22801639139652]',1, '<strong>Salle Sylvain-Lelièvre</strong><br>Accès via le Foyer Desjardins', 'salle-sylvain-lelievre-int2.jpg')">
                                         <h3 class="nomLocal">Salle Sylvain-Lelièvre</h3>
                                         <br>
                                         <h6 class="etage">1er étage</h6>
@@ -494,7 +496,7 @@
                                     </a>
                                 </li>
                                 <li style="display: list-item;">
-                                    <a href="javascript:afficherMarqueur('[46.83068828744457,-71.22812233865261]',-1, '<strong>Piscine</strong><br>Accès via le premier étage')">
+                                    <a href="javascript:afficherMarqueur('[46.83068828744457,-71.22812233865261]','SS', '<strong>Piscine</strong><br>Accès via le premier étage', 'caroussel_piscine.png')">
                                         <h3 class="nomLocal">Piscine</h3>
                                         <br>
                                         <h6 class="etage">Sous-Sol</h6>
