@@ -167,7 +167,7 @@
             planEtage.bringToBack();
             afficheLorsZoom();
             map.panTo([46.8302871, -71.227337]);
-            if(myPath !== null) {
+            if (myPath !== null) {
                 redrawPath(myPath);
             }
 
@@ -234,8 +234,8 @@
 
             return null;
         }
-        
-          $(document).ready(function () {
+
+        $(document).ready(function () {
             $(".list-itineraire").hide();
             var cacheListe = $("#premier-jour");
             var cacheListe2 = $("#organisation");
@@ -336,8 +336,8 @@
                 });
 
                 $("#modalRechercher").modal('show');
-              
-                $('#modalRechercher').on('shown.bs.modal', function () {                        
+
+                $('#modalRechercher').on('shown.bs.modal', function () {
                     $("#boutonOK").click(function () {
                         $('#listeLocaux').liveFilter('#inputRechercherModal', 'li', {
                             filterChildSelector: 'a',
@@ -371,19 +371,19 @@
                 event.preventDefault();
                 $("#modalInformations").modal('show');
             });
-                          
-                          // Ouvre la fenêtre modale avec le bouton légende dans le menu de navigation
 
-                        $("#boutonLegende").click(function(event){
-                            event.preventDefault();
-                            $("#modalLegende").modal('show');
-                        });
+            // Ouvre la fenêtre modale avec le bouton légende dans le menu de navigation
 
-                 // Ouvre la fenêtre modale itineraire avec le bouton dans le menu de navigation
-                        $("#boutonItineraire").click(function(event){
-                            event.preventDefault();
-                            $("#modalItineraire").modal('show');
-                        });
+            $("#boutonLegende").click(function (event) {
+                event.preventDefault();
+                $("#modalLegende").modal('show');
+            });
+
+            // Ouvre la fenêtre modale itineraire avec le bouton dans le menu de navigation
+            $("#boutonItineraire").click(function (event) {
+                event.preventDefault();
+                $("#modalItineraire").modal('show');
+            });
 
             // Pour améliorer les performances avec jQuery
             var listeLocaux = $("#listeLocaux");
@@ -438,3 +438,37 @@
             var routesBounds = [[46.8274718, -71.2311092], [46.8333687, -71.2232114]];
             var routes = L.imageOverlay(routesUrl, routesBounds).addTo(map);
         }); // ajax Complete(function(){})
+
+
+
+           // AUDRICK CUSTOM JS
+
+        // Code pour les images 360
+        var divImage = document.getElementById('image360');
+
+
+        $("#image-pano").click(function () {
+            $("#image360").show();
+            $(".fermez").show();
+
+            var PSV = new PhotoSphereViewer({
+                panorama: 'images/img360/escalier.jpg',
+                container: divImage,
+                time_anim: false,
+                navbar: true,
+
+                navbar_style: {
+                    backgroundColor: 'rgba(58, 67, 77, 0.7)'
+                },
+                move_speed: 2,
+                mousewheel: false,
+                caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
+            });
+
+
+        });
+
+        $(".fermez").click(function () {
+            $("#image360").hide();
+            $(".fermez").hide();
+        });

@@ -42,6 +42,8 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/leaflet-src.js"></script>
     <script src="js/l.control.locate.js"></script>
+     <script src="js/three.min.js"></script>
+      <script src="js/photo-sphere-viewer.min.js"></script>
 
     <!--[if lte IE 8]><link rel="stylesheet" href="libs/leaflet.ie.css" /><![endif]-->
     <!-- Latest compiled and minified CSS -->
@@ -610,8 +612,9 @@
                         <h4 class="modal-title text-center" id="labelMessage"></h4>
                     </div>
                     <div class="modal-body">
-                        <div class="contenu">
-                            <img src="" id="imgModal" />
+                        <div class="contenu text-center">
+                            <img src="" id="imgModal" /> <br>
+                            <a href="javascript:;" id="image-pano" ><img src="images/icon-360.png" alt="icone 360" height="80" width="80">  </a>
                             <h2>Heures d'ouverture pendant la période des fêtes</h2>
                             <h2>Heures régulières d'ouverture</h2>
                         </div>
@@ -620,6 +623,12 @@
                 </div>
             </div>
         </div>
+        <div id="image360" class="image360">
+
+
+        </div>
+
+                <a href="javascript:;" id="fermez" class="fermez"><i class="glyphicon glyphicon-remove"></i>  </a>
     </div>
     <!--------  .modal  -------->
 
