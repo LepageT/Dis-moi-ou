@@ -199,15 +199,27 @@
                 <div id="map"></div>
                 <div>
                     <bouton id="boutonAfficherEtage"><span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
-                    <h4 id="indicateurEtage">1</h4><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></bouton>
+                        <h4 id="indicateurEtage">1</h4><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></bouton>
 
                     <ul id="controlleEtage">
-                        <li><a href="javascript:changerEtage(5)"><img src="images/boutons_etages/5.svg"></a></li>
-                        <li><a href="javascript:changerEtage(4)"><img src="images/boutons_etages/4.svg"></a></li>
-                        <li><a href="javascript:changerEtage(3)"><img src="images/boutons_etages/3.svg"></a></li>
-                        <li><a href="javascript:changerEtage(2)"><img src="images/boutons_etages/2.svg"></a></li>
-                        <li><a href="javascript:changerEtage(1)"><img src="images/boutons_etages/1.svg"></a></li>
-                        <li><a href="javascript:changerEtage('SS')"><img src="images/boutons_etages/ss.svg"></a></li>
+                        <li>
+                            <a href="javascript:changerEtage(5)"><img src="images/boutons_etages/5.svg"></a>
+                        </li>
+                        <li>
+                            <a href="javascript:changerEtage(4)"><img src="images/boutons_etages/4.svg"></a>
+                        </li>
+                        <li>
+                            <a href="javascript:changerEtage(3)"><img src="images/boutons_etages/3.svg"></a>
+                        </li>
+                        <li>
+                            <a href="javascript:changerEtage(2)"><img src="images/boutons_etages/2.svg"></a>
+                        </li>
+                        <li>
+                            <a href="javascript:changerEtage(1)"><img src="images/boutons_etages/1.svg"></a>
+                        </li>
+                        <li>
+                            <a href="javascript:changerEtage('SS')"><img src="images/boutons_etages/ss.svg"></a>
+                        </li>
                     </ul>
                 </div>
                 <button id="boutonInformations"><img src="images/information.png"></button>
@@ -286,7 +298,13 @@
                                                 <h3 class="nomLocal">Escalier principal</h3>
                                                 <br>
                                                 <h6 class="etage">1er étage</h6>
+
                                             </a>
+                                            <a href="javascript:;"><audio controls>
+  <source src="" type="audio/ogg">
+  <source src="data/gun.wav" type="audio/mpeg">
+Votre navigateur ne supporte pas l'élement audio.
+</audio> </a>
                                         </li>
                                         <li>
                                             <a href="javascript:afficherMarqueur('[46.83019328018408,-71.22740350663662]',1, '<strong>Kiosque d\'information - Agora</strong>')">
@@ -613,8 +631,9 @@
                     </div>
                     <div class="modal-body">
                         <div class="contenu text-center">
-                            <img src="" id="imgModal" /> <br>
-                            <a href="javascript:;" id="image-pano" ><img src="images/icon-360.png" alt="icone 360" height="80" width="80">  </a>
+                            <img src="" id="imgModal" />
+                            <br>
+                            <a href="javascript:;" id="image-pano"><img src="images/icon-360.png" alt="icone 360" height="80" width="80"> </a>
                             <h2>Heures d'ouverture pendant la période des fêtes</h2>
                             <h2>Heures régulières d'ouverture</h2>
                         </div>
@@ -628,7 +647,7 @@
 
         </div>
 
-                <a href="javascript:;" id="fermez" class="fermez"><i class="glyphicon glyphicon-remove"></i>  </a>
+        <a href="javascript:;" id="fermez" class="fermez"><i class="glyphicon glyphicon-remove"></i>  </a>
     </div>
     <!--------  .modal  -------->
 
