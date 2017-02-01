@@ -57,7 +57,8 @@
                 marker.setLatLng(new L.LatLng(position.lat, position.lng), {
                     draggable: 'true'
                 });
-                map.panTo(new L.LatLng(position.lat, position.lng))
+                map.panTo(new L.LatLng(position.lat, position.lng));
+                console.log(marker);
             });
 
             marker.on("click", function () {
@@ -67,6 +68,7 @@
                     redrawPath(path, null);
                 }
             });
+            marker.bindPopup("ID: " + nextWaypointId);
 
             var waypoint = new Waypoint(marker, nextWaypointId, etageActuel);
             waypoints.push(waypoint);
