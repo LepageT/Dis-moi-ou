@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#61A2A1;}
+	.st1{fill:none;}
+	.st2{opacity:0.5;}
+	.st3{fill:#578E8B;}
+	.st4{fill:#F1F2F2;}
+</style>
+<g>
+	<g>
+		<circle class="st0" cx="50.1" cy="50.1" r="50"/>
+	</g>
+	<g>
+		<circle class="st0" cx="50.1" cy="50.1" r="50"/>
+	</g>
+	<g>
+		<g>
+			<path class="st1" d="M34.8,57l21.7-28.5l41.1,37.2c1.6-4.9,2.5-10.1,2.5-15.5c0-27.6-22.4-50-50-50s-50,22.4-50,50s22.4,50,50,50
+				c7.6,0,14.8-1.8,21.3-4.8L34.8,57z"/>
+		</g>
+		<g class="st2">
+			<path class="st3" d="M33.2,61l36.1,35.2c13-5.4,24.5-17.6,28.3-30.6L59.5,26.4L33.2,61z"/>
+		</g>
+	</g>
+	<g>
+		<path class="st4" d="M59.5,56.3h6.2V61h-6.2v10.4h-5.7V61H33.2v-3.4l20.2-31.2h6.1V56.3z M39.7,56.3h14V34.2L53,35.5L39.7,56.3z"
+			/>
+	</g>
+</g>
+</svg>
