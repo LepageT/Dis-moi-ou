@@ -556,16 +556,20 @@
 .fermez {
     display: none;
     position:fixed;
-    top:30px;
-    right:5px;
-
+    top:40px;
+    right:50px;
+    height: 44px;
+    width: 41px;
+    background-color:#000;
+    border-radius:100%;
     z-index:1600;
+    opacity:.8;
 
 }
 
 .glyphicon-remove{
     color:red;
     font-size:3em;
-      width:200px;
-    height:200px;
+    vertical-align: middle;
+
 }
