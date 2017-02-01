@@ -234,18 +234,17 @@
             height: 40px;
             width: 40px;
             border-radius: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            /*    background-color: rgba(0, 0, 0, 0.7); */
             transition: all 250ms linear;
             margin-bottom: 3px;
         }
-
-        #controlleEtage li:hover {
+        /*    #controlleEtage li:hover {
             background-color: rgb(0, 0, 0);
         }
 
-        #controlleEtage li a:hover {
+   #controlleEtage li a:hover {
             color: #fff;
-        }
+        } */
 
         #controlleEtage li a {
             box-sizing: border-box;
@@ -268,7 +267,7 @@
 
         #indicateurEtage {
             box-sizing: border-box;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: #61a2a1;
             font-size: 25px;
             display: block;
             width: 40px;
@@ -291,6 +290,14 @@
             width: 40px;
             color: #000;
             text-align: center;
+        }
+
+        .glyphicon-triangle-top {
+            color: #61a2a1;
+        }
+
+.glyphicon-triangle-bottom {
+            color: #61a2a1;
         }
 
         footer {
@@ -473,9 +480,9 @@
             margin-top: 10px;
         }
 
-.liste-droite{
-    float: right;
-}
+        .liste-droite {
+            float: right;
+        }
         /* Pour mobile - Footer*/
 
         .no-margin {

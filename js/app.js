@@ -177,9 +177,9 @@
         var positionMarqueur = "";
 
         // Fonction appellé chaque fois que l'on veux afficher un marqueur sur la carte pour montrer l'emplacement d'un local
-        function afficherMarqueur(position, etage, message, local, image) {
+        function afficherMarqueur(position, etage, message, image = "null") {
 
-            // Suprime le calque "marqueur" qui contient le ou les marqueurs
+            // Supprime le calque "marqueur" qui contient le ou les marqueurs
             map.removeLayer(marqueur);
 
             // Transforme le string "postition" en objet pour être capable de l'afficher
@@ -189,15 +189,20 @@
             changerEtage(etage);
 
             // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
-            var button = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage">Default</button>';
+            var button = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
 
+            if (image == "null") {
+                button = "";
+            }
+
+            // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
             marqueur = L.marker(positionMarqueur, {
                 bounceOnAdd: true,
                 bounceOnAddOptions: {
                     duration: 500,
                     height: 200
                 }
-            }).bindPopup(message + button);
+            }).bindPopup(button + message);
 
             // Créé un nouveau calque, ajoute le marqueur puis l'affiche sur la carte
             map.addLayer(marqueur);
@@ -207,13 +212,16 @@
 
             // Ferme la fênetre modale
             $('#modalRechercher').modal('hide')
+                // Ferme fenêtre modale itinéraire
+            $('#modalItineraire').modal('hide')
 
             // Centre le marqueur dans l'écran
             map.panTo(positionMarqueur);
 
             // Modifie la source de l'image
-            $('#imgModal').attr("src", "images/logo-dismoiou.png");
-
+            if (image !== "null") {
+                $('#imgModal').attr("src", "images/" + image);
+            }
             //source pour titre message
             $('#labelMessage').html(message);
 
@@ -222,6 +230,7 @@
             if (temp !== null) {
                 myPath = new Path(local, temp);
                 redrawPath(myPath, positionMarqueur);
+
             }
         };
 
@@ -231,7 +240,6 @@
                     return listeLocauxObj[i].path;
                 }
             }
-
             return null;
         }
 
@@ -399,7 +407,8 @@
                     numeroLocal,
                     positionLocal,
                     etageLocal,
-                    message;
+                    message,
+                    image = null;
                 listeLocauxObj = data;
                 /* console.info("Nombre de locaux à ajouter: " + data.length); */
                 for (i = 0; i < data.length; i++) {
@@ -408,10 +417,13 @@
                     positionLocal = data[i].position;
                     etageLocal = data[i].etage;
                     message = data[i].message;
+                    image = null;
                     var level = '';
-
+                    if (data[i].hasOwnProperty("image")) {
+                        image = data[i].image;
+                    }
                     // Selon chaque étage
-                    if (etageLocal == -1) {
+                    if (etageLocal == "SS") {
                         level = 'Sous-sol';
                     } else if (etageLocal == 1) {
                         level = etageLocal + 'er étage';
@@ -419,7 +431,7 @@
                         level = etageLocal + 'e étage';
                     }
 
-                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',' + numeroLocal + ')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',\'' + image + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
                 }
 
                 // Ajoute le très long string qui contient toute la liste dans la fenètre modale
