@@ -179,7 +179,7 @@
         // Fonction appellé chaque fois que l'on veux afficher un marqueur sur la carte pour montrer l'emplacement d'un local
         function afficherMarqueur(position, etage, message, local, image) {
 
-            // Suprime le calque "marqueur" qui contient le ou les marqueurs
+            // Supprime le calque "marqueur" qui contient le ou les marqueurs
             map.removeLayer(marqueur);
 
             // Transforme le string "postition" en objet pour être capable de l'afficher
