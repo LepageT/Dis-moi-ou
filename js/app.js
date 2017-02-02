@@ -8,6 +8,8 @@
             iconesEtage = "",
             numeroLocauxEtage = "",
             marqueur = "",
+            accessibilite = "",
+            incendie = "",
             etageActuel = 1;
         var listeLocauxObj = [];
         var myPath = null;
@@ -120,6 +122,8 @@
             map.removeLayer(libelleEtage);
             map.removeLayer(iconesEtage);
             map.removeLayer(numeroLocauxEtage);
+            map.removeLayer(incendie);
+            map.removeLayer(accessibilite);
             etageActuel = etage;
 
             if (etage == -1) {
