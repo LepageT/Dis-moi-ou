@@ -122,7 +122,7 @@
             map.removeLayer(numeroLocauxEtage);
             etageActuel = etage;
 
-            if (etage == "SS") {
+            if (etage == -1) {
                 imageUrl = 'images/etages/etage0_locaux.svg';
                 imageLocauxUrl = 'images/etages/etage0_numero.svg'
                 iconesEtageUrl = 'images/etages/etage0_icones.svg';
@@ -424,7 +424,7 @@
                         image = data[i].image;
                     }
                     // Selon chaque étage
-                    if (etageLocal == -1) {
+                    if (etageLocal == "SS") {
                         level = 'Sous-sol';
                     } else if (etageLocal == 1) {
                         level = etageLocal + 'er étage';
@@ -451,3 +451,37 @@
             var routesBounds = [[46.8274718, -71.2311092], [46.8333687, -71.2232114]];
             var routes = L.imageOverlay(routesUrl, routesBounds).addTo(map);
         }); // ajax Complete(function(){})
+
+
+
+           // AUDRICK CUSTOM JS
+
+        // Code pour les images 360
+        var divImage = document.getElementById('image360');
+
+
+        $("#image-pano").click(function () {
+            $("#image360").show();
+            $(".fermez").show();
+
+            var PSV = new PhotoSphereViewer({
+                panorama: 'images/img360/escalier.jpg',
+                container: divImage,
+                time_anim: false,
+                navbar: true,
+
+                navbar_style: {
+                    backgroundColor: 'rgba(58, 67, 77, 0.7)'
+                },
+                move_speed: 2,
+                mousewheel: false,
+                caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
+            });
+
+
+        });
+
+        $(".fermez").click(function () {
+            $("#image360").hide();
+            $(".fermez").hide();
+        });
