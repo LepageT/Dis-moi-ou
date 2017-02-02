@@ -239,7 +239,7 @@
             }
             //source pour titre message
             $('#labelMessage').html(message);
-            if(localObj.hasOwnProperty("ouverture")) {
+            if (localObj.hasOwnProperty("ouverture")) {
                 console.log(localObj.ouverture);
                 $('#ouverture').html(localObj.ouverture);
             }
@@ -249,16 +249,30 @@
                 myPath = new Path(local, localObj.path);
                 redrawPath(myPath, positionMarqueur);
             }
-        };
 
-        function findPathForLocal(local) {
-            for (var i = 0; i < listeLocauxObj.length; i++) {
-                if (listeLocauxObj[i].local == local) {
-                    return listeLocauxObj[i].path;
-                }
+            if (localObj.hasOwnProperty("image360")) {
+                var divImage = document.getElementById('image360');
+
+                $("#image-pano").click(function () {
+                    $("#image360").show();
+                    $(".fermez").show();
+
+                    var PSV = new PhotoSphereViewer({
+                        panorama: 'images/img360/' + localObj.image360,
+                        container: divImage,
+                        time_anim: false,
+                        navbar: true,
+
+                        navbar_style: {
+                            backgroundColor: 'rgba(58, 67, 77, 0.7)'
+                        },
+                        move_speed: 2,
+                        mousewheel: false,
+                        caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
+                    });
+                });
             }
-            return null;
-        }
+        };
 
         $(document).ready(function () {
             $(".list-itineraire").hide();
@@ -310,6 +324,10 @@
                 }
             });
             redimensionnerCarte();
+
+            var routesUrl = 'images/etages/routes.svg';
+            var routesBounds = [[46.8274718, -71.2311092], [46.8333687, -71.2232114]];
+            var routes = L.imageOverlay(routesUrl, routesBounds).addTo(map);
 
             // Affiche le plan du 1er étage par defaut
             changerEtage(1);
@@ -448,7 +466,7 @@
                         level = etageLocal + 'e étage';
                     }
 
-                    elements += '<li><a href=\"javascript:afficherMarqueur(' + numeroLocal + ')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + numeroLocal + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
                 }
 
                 // Ajoute le très long string qui contient toute la liste dans la fenètre modale
@@ -463,36 +481,9 @@
             }); // $ajax
 
             // Calque avec les rue autour du Cégep
-            var routesUrl = 'images/etages/routes.svg';
-            var routesBounds = [[46.8274718, -71.2311092], [46.8333687, -71.2232114]];
-            var routes = L.imageOverlay(routesUrl, routesBounds).addTo(map);
-        }); // ajax Complete(function(){})
 
-        // AUDRICK CUSTOM JS
-
-        // Code pour les images 360
-        var divImage = document.getElementById('image360');
-
-        $("#image-pano").click(function () {
-            $("#image360").show();
-            $(".fermez").show();
-
-            var PSV = new PhotoSphereViewer({
-                panorama: 'images/img360/escalier.jpg',
-                container: divImage,
-                time_anim: false,
-                navbar: true,
-
-                navbar_style: {
-                    backgroundColor: 'rgba(58, 67, 77, 0.7)'
-                },
-                move_speed: 2,
-                mousewheel: false,
-                caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
+            $(".fermez").click(function () {
+                $("#image360").hide();
+                $(".fermez").hide();
             });
-        });
-
-        $(".fermez").click(function () {
-            $("#image360").hide();
-            $(".fermez").hide();
-        });
+        }); // ajax Complete(function(){})
