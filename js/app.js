@@ -176,8 +176,23 @@
         // Ca contenir la postion du marqueur en object javascript dans le format ---> [lat, long]
         var positionMarqueur = "";
 
+        function getLocalInfo(local) {
+            for (var i = 0; i < listeLocauxObj.length; i++) {
+                if (listeLocauxObj[i].local == local) {
+                    return listeLocauxObj[i];
+                }
+            }
+            return null;
+        }
+
         // Fonction appellé chaque fois que l'on veux afficher un marqueur sur la carte pour montrer l'emplacement d'un local
-        function afficherMarqueur(position, etage, message, image = "null") {
+        function afficherMarqueur(localToShow) {
+            var localObj = getLocalInfo(localToShow);
+
+            var message = "<strong>" + localObj.nom + "</strong><br>" + localObj.message,
+                position = localObj.position,
+                etage = localObj.etage,
+                local = localToShow;
 
             // Supprime le calque "marqueur" qui contient le ou les marqueurs
             map.removeLayer(marqueur);
@@ -191,7 +206,7 @@
             // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
             var button = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
 
-            if (image == "null") {
+            if (!localObj.hasOwnProperty("image")) {
                 button = "";
             }
 
@@ -219,19 +234,20 @@
             map.panTo(positionMarqueur);
 
             // Modifie la source de l'image
-            if (image !== "null") {
-                $('#imgModal').attr("src", "images/" + image);
+            if (localObj.hasOwnProperty("image")) {
+                $('#imgModal').attr("src", "images/" + localObj.image);
             }
             //source pour titre message
             $('#labelMessage').html(message);
-            $('#ouverture').html(ouverture);
+            if(localObj.hasOwnProperty("ouverture")) {
+                console.log(localObj.ouverture);
+                $('#ouverture').html(localObj.ouverture);
+            }
 
             //Afficher le path jusqu'au local
-            var temp = findPathForLocal(local);
-            if (temp !== null) {
-                myPath = new Path(local, temp);
+            if (localObj.hasOwnProperty("path")) {
+                myPath = new Path(local, localObj.path);
                 redrawPath(myPath, positionMarqueur);
-                console.log(temp);
             }
         };
 
@@ -432,7 +448,7 @@
                         level = etageLocal + 'e étage';
                     }
 
-                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',\'' + image + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                    elements += '<li><a href=\"javascript:afficherMarqueur(' + numeroLocal + ')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
                 }
 
                 // Ajoute le très long string qui contient toute la liste dans la fenètre modale
