@@ -961,7 +961,8 @@
     "etage": 1,
     "message": " ",
     "path": [518, 5, 6],
-         "image": "cafe1.jpg"
+         "image": "cafe1.jpg",
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul<li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 17h</li><li>7h30 à 16h</li></ul></div></div>"
 }, {
     "nom": "Local 1030",
     "local": "1030",
@@ -1109,7 +1110,8 @@
     "etage": 1,
     "message": " ",
     "path": [93, 43, 41, 6],
-         "image": "formation-continue.jpg"
+         "image": "formation-continue.jpg",
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au vendredi</li><li>Fermée</li></ul></div><div class='col-md-5'><ul><li>8h00 à 16h30</li><li>de 12h à 13h</li></ul></div></div>"
 }, {
     "nom": "Comptabilité",
     "local": "1527",
@@ -2215,7 +2217,8 @@
     "position": "[46.83017676457132,-71.22741490602493]",
     "etage": 2,
     "message": "",
-    "path": [229, 194]
+    "path": [229, 194],
+    "ouverture": "<h2>Heures d'ouverture pendant la période des fêtes</h2><div class='row'><div class='col-md-5'><ul><li>14 au 21 décembre</li><li>22 décembre</li><li>23 décembre au 3 janvier</li><li>4 au 20 janvier</li><li>21 janvier</li></ul></div><div class='col-md-5'><ul><li>7h30 à 17h</li><li>7h30 à 12h</li><li>Fermé</li><li>8h à 16h</li><li>Retour à l'horaire régulier</li></ul></div></div><h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 20h30</li><li>7h30 à 17h</li></ul></div></div>"
 }, {
     "nom": "Local 2115",
     "local": "2115",
