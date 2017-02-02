@@ -230,7 +230,7 @@
             if (temp !== null) {
                 myPath = new Path(local, temp);
                 redrawPath(myPath, positionMarqueur);
-
+                console.log(temp);
             }
         };
 
@@ -451,13 +451,10 @@
             var routes = L.imageOverlay(routesUrl, routesBounds).addTo(map);
         }); // ajax Complete(function(){})
 
-
-
            // AUDRICK CUSTOM JS
 
         // Code pour les images 360
         var divImage = document.getElementById('image360');
-
 
         $("#image-pano").click(function () {
             $("#image360").show();
@@ -476,8 +473,6 @@
                 mousewheel: false,
                 caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
             });
-
-
         });
 
         $(".fermez").click(function () {
