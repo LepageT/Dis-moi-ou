@@ -452,7 +452,7 @@
             var routes = L.imageOverlay(routesUrl, routesBounds).addTo(map);
         }); // ajax Complete(function(){})
 
-           // AUDRICK CUSTOM JS
+        // AUDRICK CUSTOM JS
 
         // Code pour les images 360
         var divImage = document.getElementById('image360');
