@@ -296,7 +296,7 @@
             color: #61a2a1;
         }
 
-.glyphicon-triangle-bottom {
+        .glyphicon-triangle-bottom {
             color: #61a2a1;
         }
 
@@ -505,72 +505,80 @@
             }
         }
 
-#adminPanel {
-    width: 430px;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    top: 50px;
-    right: 50px;
-    text-align: center;
-    color: white;
-    z-index: 1000;
-    padding: 20px;
-}
+        #adminPanel {
+            width: 430px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 50px;
+            right: 50px;
+            text-align: center;
+            color: white;
+            z-index: 1000;
+            padding: 20px;
+        }
 
-#adminPanel .row {
-    margin-left: 0;
-    margin-right: 0;
-}
+        #adminPanel .row {
+            margin-left: 0;
+            margin-right: 0;
+        }
 
-#adminPanel .col-md-4 {
-    padding: 0;
-}
+        #adminPanel .col-md-4 {
+            padding: 0;
+        }
 
-#adminPanel button {
-    width: 100%;
-    color: black;
-}
+        #adminPanel button {
+            width: 100%;
+            color: black;
+        }
 
-.green {
-    background-color: lawngreen;
-}
+        .green {
+            background-color: lawngreen;
+        }
+        /* Audrick css */
 
+        .contenu {
+            margin: 0 auto;
+        }
 
-/* Audrick css */
+        .image360 {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1500;
+            margin: 0 auto;
+        }
 
-.contenu{
-     margin: 0 auto;
-}
+        .fermez {
+            display: none;
+            position: fixed;
+            top: 40px;
+            right: 50px;
+            height: 44px;
+            width: 41px;
+            background-color: #000;
+            border-radius: 100%;
+            z-index: 1600;
+            opacity: .8;
+        }
 
-.image360{
-    display: none;
-   position:fixed;
-    top:0;
-   left:0;
-    width:100%;
-    height:100%;
-    z-index:1500;
-    margin: 0 auto;
+        .glyphicon-remove {
+            color: red;
+            font-size: 3em;
+            vertical-align: middle;
+        }
 
-}
+        .list-itineraire ol {
+            font-size: .9em;
+            text-align:left;
+            width:60%;
+            margin: 10px auto;
+            line-height: 1.2em
+        }
 
-.fermez {
-    display: none;
-    position:fixed;
-    top:40px;
-    right:50px;
-    height: 44px;
-    width: 41px;
-    background-color:#000;
-    border-radius:100%;
-    z-index:1600;
-    opacity:.8;
+        #premier-jour .glyphicon {
 
-}
-
-.glyphicon-remove{
-    color:red;
-    font-size:3em;
-    vertical-align: middle;
-
-}
+           text-align: right !important;
+        }
