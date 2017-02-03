@@ -40,7 +40,7 @@
         creatingPath = !creatingPath;
     });
 
-    $("#selectRoom").click(function() {
+    $("#selectRoom").click(function () {
         selectedRoom($("#roomList").val());
     });
     map.on("click", addMarker);
@@ -92,7 +92,7 @@
                     draggable: 'true'
                 });
                 if (etageActuel === data[i].floor) {
-                    if(show) {
+                    if (show) {
                         marker.addTo(waypointLayer);
                         marker.on("click", function () {
                             if (creatingPath) {
@@ -113,7 +113,7 @@
                 }
 
                 var waypoint = new Waypoint(marker, data[i].id, data[i].floor);
-                if(nextWaypointId < data[i].id) {
+                if (nextWaypointId < data[i].id) {
                     nextWaypointId = data[i].id;
                 }
 
@@ -130,11 +130,11 @@
             dataType: "json"
         }).success(function (data) {
             local = data;
-            for(var i = 0; i < data.length; i++) {
-                if(data[i].local.length > 0 && data[i].local !== " ") {
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].local.length > 0 && data[i].local !== " ") {
                     var optionClass = "";
-                    if(data[i].hasOwnProperty("path")) {
-                        if(data[i].path.length > 0) {
+                    if (data[i].hasOwnProperty("path")) {
+                        if (data[i].path.length > 0) {
                             optionClass = "green";
                         }
                     }
@@ -175,25 +175,28 @@
     }
 
     function drawPath(path, destination = null) {
-        var points = [];
+        if (waypoints.length > 0) {
+            var points = [];
 
-        if(destination !== null) {
-            points.push(destination);
-        }
-
-        for (var i = 0; i < path.getPoints().length; i++) {
-            var waypoint = getWaypointById(path.getPoints()[i]);
-            if (waypoint.floor == etageActuel) {
-                points.push(getWaypointById(path.getPoints()[i]).getMarker._latlng);
+            if (destination !== null) {
+                points.push(destination);
             }
+
+            for (var i = 0; i < path.getPoints().length; i++) {
+                var waypoint = getWaypointById(path.getPoints()[i]);
+                if (waypoint.floor == etageActuel) {
+                    points.push(getWaypointById(path.getPoints()[i]).getMarker._latlng);
+                }
+            }
+
+            var polyline = new L.Polyline(points, {
+                color: "red",
+                weight: 3,
+                smoothFactor: 1
+            });
+            polyline.addTo(pathLayer);
         }
 
-        var polyline = new L.Polyline(points, {
-            color: "red",
-            weight: 3,
-            smoothFactor: 1
-        });
-        polyline.addTo(pathLayer);
     }
     //End - Methods to show the path
 
