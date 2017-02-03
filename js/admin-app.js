@@ -90,6 +90,7 @@
                             if (creatingPath) {
                                 addToPath(getWaypoint(this).getId);
                                 redrawPath(path, null);
+                                console.log(path);
                             }
                         });
                         marker.on('dragend', function (event) {
@@ -129,8 +130,9 @@
                         if (data[i].path.length > 0) {
                             optionClass = "green";
                         }
+                    } else {
+                        $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>");
                     }
-                    $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>");
                 }
             }
         });

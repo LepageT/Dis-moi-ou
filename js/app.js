@@ -558,7 +558,7 @@
                         image = data[i].image;
                     }
                     // Selon chaque étage
-                    if (etageLocal == "SS") {
+                    if (etageLocal == -1) {
                         level = 'Sous-sol';
                     } else if (etageLocal == 1) {
                         level = etageLocal + 'er étage';

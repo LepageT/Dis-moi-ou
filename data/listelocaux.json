@@ -608,9 +608,8 @@
     "position": "[46.8303763278858,-71.22721575200558]",
     "etage": 1,
     "message": " ",
-    "image": "",
-    "path": [6],
-    "image": "cafeteriaQC2.jpg"
+    "image": "cafeteriaQC2.jpg",
+    "path": [6]
 }, {
     "nom": "COOP",
     "local": "1203",
@@ -3932,7 +3931,8 @@
     "local": "0430",
     "position": "[46.830239156859605,-71.22762612998486]",
     "etage": -1,
-    "message": "Accès via le stationnement"
+    "message": "Accès via le stationnement",
+    "path": [564, 565, 488, 487]
 }, {
     "nom": "Local 0425",
     "local": "0425",
@@ -3966,7 +3966,8 @@
     "local": "0406",
     "position": "[46.830203373056065,-71.22781991958618]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [489, 488, 487]
 }, {
     "nom": "Local 0404",
     "local": "0404",
@@ -3979,61 +3980,71 @@
     "local": "0422",
     "position": "[46.83034788442418,-71.22795067727566]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [494, 498, 499, 500]
 }, {
     "nom": "Local 0420",
     "local": "0420",
     "position": "[46.83037128146627,-71.22797347605228]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [495, 498, 499, 500]
 }, {
     "nom": "Local 0419",
     "local": "0419",
     "position": "[46.830398807385116,-71.22799828648567]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [496, 498, 499, 500]
 }, {
     "nom": "Local 0405",
     "local": "0405",
     "position": "[46.83042679205482,-71.22805997729301]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [500]
 }, {
     "nom": "Local 0408",
     "local": "0408",
     "position": "[46.83047175100187,-71.2280224263668]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [501, 499, 500]
 }, {
     "nom": "Local 0411",
     "local": "0411",
     "position": "[46.83046808088515,-71.22800566256046]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [501, 499, 500]
 }, {
     "nom": "Local 0409",
     "local": "0409",
     "position": "[46.830429544644495,-71.22796542942524]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [496, 498, 499, 500]
 }, {
     "nom": "Local 0407",
     "local": "0407",
     "position": "[46.830446060179604,-71.22789569199085]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [497, 496, 498, 499, 500]
 }, {
     "nom": "Local 0418",
     "local": "0418",
     "position": "[46.830441931296285,-71.22793927788734]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [496, 498, 499, 500]
 }, {
     "nom": "Local 0412",
     "local": "0412",
     "position": "[46.83041165280909,-71.22794464230537]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [496, 498, 499, 500]
 }, {
     "nom": "Vestiaire - Hommes - Piscine",
     "local": "0318",
