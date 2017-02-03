@@ -109,7 +109,11 @@
         // Fonction pour changer les plans des étages selon le besoin.
         function changerEtage(etage) {
 
-            $("#indicateurEtage").text(etage);
+            if(etage == -1) {
+                $("#indicateurEtage").text("SS");
+            } else {
+                $("#indicateurEtage").text(etage);
+            }
 
             if ($("#controlleEtage").is(":visible")) {
                 $("#controlleEtage").fadeTo(150, 0, function () {
