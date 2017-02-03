@@ -352,7 +352,7 @@
 
             if (localObj.hasOwnProperty("image360")) {
                 var divImage = document.getElementById('image360');
-
+                $("#image-pano").show();
                 $("#image-pano").click(function () {
                     $("#image360").show();
                     $(".fermez").show();
@@ -362,58 +362,18 @@
                         container: divImage,
                         time_anim: false,
                         navbar: true,
-
                         navbar_style: {
                             backgroundColor: 'rgba(58, 67, 77, 0.7)'
                         },
-                        move_speed: 2,
                         mousewheel: false,
                         caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
                     });
                 });
             }
+            else {
+                $("#image-pano").hide();
+            }
         };
-
-        $(document).ready(function () {
-
-            map.addLayer(pathLayer);
-            map.addLayer(waypointLayer);
-
-            $(".list-itineraire").hide();
-            var cacheListe = $("#premier-jour");
-            var cacheListe2 = $("#organisation");
-            var cacheListe3 = $("#inscription-gym");
-            var cacheListe4 = $("#parcoursCultu");
-
-            $("#first-day").on("click", function () {
-                cacheListe.toggle();
-                cacheListe2.hide();
-                cacheListe3.hide();
-                cacheListe4.hide();
-
-            });
-
-            $("#organiScolaire").on("click", function () {
-                cacheListe2.toggle();
-                cacheListe.hide();
-                cacheListe3.hide();
-                cacheListe4.hide();
-            });
-
-            $("#gym").on("click", function () {
-                cacheListe3.toggle();
-                cacheListe.hide();
-                cacheListe2.hide();
-                cacheListe4.hide();
-            });
-
-            $("#parcours").on("click", function () {
-                cacheListe4.toggle();
-                cacheListe.hide();
-                cacheListe2.hide();
-                cacheListe3.hide();
-            });
-        });
 
         // Document ready function
         $(function () {
@@ -582,6 +542,7 @@
                 /* console.log("TERMINER - Chargement des locaux dans la liste"); */
                 pourcentageProgres += 17;
                 progressBar.css("width", pourcentageProgres + "%");
+                loadWaypoints(false);
             }); // $ajax
 
             // Calque avec les rue autour du Cégep
@@ -589,5 +550,15 @@
             $(".fermez").click(function () {
                 $("#image360").hide();
                 $(".fermez").hide();
+            });
+
+            map.addLayer(pathLayer);
+            map.addLayer(waypointLayer);
+
+            $(".itineraire-menu").click(function(){
+                $(".list-itineraire:not(" + "#" + $(this).attr("data-toggle") + ")").hide();
+
+                $("#" + $(this).attr("data-toggle")).toggle();
+                //$(this).
             });
         }); // ajax Complete(function(){})
