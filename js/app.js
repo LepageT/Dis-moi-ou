@@ -343,7 +343,6 @@
             //source pour titre message
             $('#labelMessage').html(message);
             if (localObj.hasOwnProperty("ouverture")) {
-                console.log(localObj.ouverture);
                 $('#ouverture').html(localObj.ouverture);
             } else {
                 $("#ouverture").html("");
