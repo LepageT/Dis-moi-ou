@@ -604,7 +604,7 @@ ul li {
 .list-itineraire ol {
     font-size: .9em;
     text-align: left;
-    width: 90%;
+    width: 100%;
     margin: 10px auto;
     line-height: 1.5em
 }

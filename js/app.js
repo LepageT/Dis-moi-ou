@@ -509,6 +509,7 @@
             // Ouvre la fenêtre modale itineraire avec le bouton dans le menu de navigation
             $("#boutonItineraire").click(function (event) {
                 event.preventDefault();
+                $("#collapse1").collapse();
                 $("#modalItineraire").modal('show');
             });
 
