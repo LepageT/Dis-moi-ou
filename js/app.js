@@ -6,11 +6,20 @@
             marqueurs = "",
             libelleEtage = "",
             iconesEtage = "",
+            accessibiliteEtage = "",
+            urgenceEtage = "",
             numeroLocauxEtage = "",
             marqueur = "",
-            etageActuel = 1;
-        var listeLocauxObj = [];
-        var myPath = null;
+            etageActuel = 1,
+            waypoints = [],
+            listeLocauxObj = [],
+            myPath = null,
+            showAccessibilite = true,
+            showUrgence = true,
+            PSV = null;
+
+        var waypointLayer = L.layerGroup();
+        var pathLayer = L.layerGroup();
 
         // Limite de la carte (Déasactivé...drôle de comportement sur mobile)
         /*--------
@@ -34,49 +43,6 @@
             // Redimensionne la carte
             $("#map").height($(window).height());
         }
-
-        // Geolocalisation de l'utilisateur
-        /*lc = L.control.locate({
-            position: 'topleft', // set the location of the control
-            drawCircle: false, // controls whether a circle is drawn that shows the uncertainty about the location
-            follow: false, // follow the user's location
-            setView: true, // automatically sets the map view to the user's location, enabled if `follow` is true
-            keepCurrentZoomLevel: true, // keep the current map zoom level when displaying the user's location. (if `false`, use maxZoom)
-            stopFollowingOnDrag: true, // stop following when the map is dragged if `follow` is true (deprecated, see below)
-            remainActive: false, // if true locate control remains active on click even if the user's location is in view.
-            markerClass: L.circleMarker, // L.circleMarker or L.marker
-            circleStyle: {}, // change the style of the circle around the user's location
-            markerStyle: {},
-            followCircleStyle: {}, // set difference for the style of the circle around the user's location while following
-            followMarkerStyle: {},
-            icon: 'fa fa-map-marker', // class for icon, fa-location-arrow or fa-map-marker
-            iconLoading: 'fa fa-spinner fa-spin', // class for loading icon
-            circlePadding: [0, 0], // padding around accuracy circle, value is passed to setBounds
-            metric: true, // use metric or imperial units
-            onLocationError: function (err) {
-                alert("Impossible de déterminer votre position")
-            }, // define an error callback function
-            onLocationOutsideMapBounds: function (context) { // called when outside map boundaries
-                alert("Impossible de déterminer votre position");
-            },
-            showPopup: false, // display a popup when the user click on the inner marker
-            strings: {
-                title: "Show me where I am", // title of the locate control
-                metersUnit: "meters", // string for metric units
-                feetUnit: "feet", // string for imperial units
-                popup: "You are within {distance} {unit} from this point", // text to appear if user clicks on circle
-                outsideMapBoundsMsg: "You seem located outside the boundaries of the map" // default message for onLocationOutsideMapBounds
-            },
-            locateOptions: {
-                enableHighAccuracy: true
-            } // define location options e.g enableHighAccuracy: true or maxZoom: 10
-        });
-
-        // Ajoute le poitn bleu sur la carte
-        lc.addTo(map);
-
-        // Démare le service de gélocalisation
-        lc.start();*/
 
         /* Controlle étage version 1 */
         $("#controlleEtage ul li").click(function (event) {
@@ -103,10 +69,42 @@
             }
         };
 
+        function toggleAccessibilite() {
+            if (showAccessibilite) {
+                map.removeLayer(accessibiliteEtage);
+                showAccessibilite = false;
+                $("#imgAccess").attr("src", "images/boutons_etages/active-accessibilite.svg");
+            } else {
+                if (accessibiliteEtage !== "") {
+                    map.addLayer(accessibiliteEtage);
+                }
+                $("#imgAccess").attr("src", "images/boutons_etages/accessibilite.svg");
+                showAccessibilite = true;
+            }
+        }
+
+        function toggleUrgence() {
+            if (showUrgence) {
+                map.removeLayer(urgenceEtage);
+                showUrgence = false;
+                $("#imgFeu").attr("src", "images/boutons_etages/active-feu.svg");
+            } else {
+                if (urgenceEtage !== "") {
+                    map.addLayer(urgenceEtage);
+                }
+                $("#imgFeu").attr("src", "images/boutons_etages/feu.svg");
+                showUrgence = true;
+            }
+        }
+
         // Fonction pour changer les plans des étages selon le besoin.
         function changerEtage(etage) {
 
-            $("#indicateurEtage").text(etage);
+            if (etage == -1) {
+                $("#indicateurEtage").text("SS");
+            } else {
+                $("#indicateurEtage").text(etage);
+            }
 
             if ($("#controlleEtage").is(":visible")) {
                 $("#controlleEtage").fadeTo(150, 0, function () {
@@ -120,18 +118,24 @@
             map.removeLayer(libelleEtage);
             map.removeLayer(iconesEtage);
             map.removeLayer(numeroLocauxEtage);
+            map.removeLayer(accessibiliteEtage);
+            map.removeLayer(urgenceEtage);
             etageActuel = etage;
 
-            if (etage == "SS") {
+            if (etage == -1) {
                 imageUrl = 'images/etages/etage0_locaux.svg';
                 imageLocauxUrl = 'images/etages/etage0_numero.svg'
                 iconesEtageUrl = 'images/etages/etage0_icones.svg';
                 libelleEtageUrl = 'images/etages/etage0_libelle.svg';
+                urgenceUrl = 'images/etages/etage0_urgence.svg';
+                accessibiliteUrl = 'images/etages/etage0_accessibilite.svg';
             } else {
                 imageUrl = 'images/etages/etage' + etage + '_locaux.svg';
                 imageLocauxUrl = 'images/etages/etage' + etage + '_numero.svg'
                 iconesEtageUrl = 'images/etages/etage' + etage + '_icones.svg';
                 libelleEtageUrl = 'images/etages/etage' + etage + '_libelle.svg';
+                urgenceUrl = 'images/etages/etage' + etage + '_urgence.svg';
+                accessibiliteUrl = 'images/etages/etage' + etage + '_accessibilite.svg';
             }
 
             if (etage == -1) {
@@ -163,6 +167,17 @@
             // Ajoute et affiche l'image du sous-sol
             map.addLayer(planEtage);
 
+            urgenceEtage = L.imageOverlay(urgenceUrl, imageBounds);
+            if (showUrgence) {
+                map.addLayer(urgenceEtage);
+            }
+
+            accessibiliteEtage = L.imageOverlay(accessibiliteUrl, imageBounds);
+
+            if (showAccessibilite) {
+                map.addLayer(accessibiliteEtage);
+            }
+
             // Affiche la carte en arrière-plan de tout les autres calque. Nécésaire pour voir le point de géolocalisation après avoir changer d'étage
             planEtage.bringToBack();
             afficheLorsZoom();
@@ -176,8 +191,115 @@
         // Ca contenir la postion du marqueur en object javascript dans le format ---> [lat, long]
         var positionMarqueur = "";
 
+        //Methods to show the path the user is creating.
+        function redrawPath(path, destination = null) {
+            map.removeLayer(pathLayer);
+            pathLayer = L.layerGroup();
+            map.addLayer(pathLayer);
+            drawPath(path, destination);
+        }
+
+        function drawPath(path, destination = null) {
+            if (waypoints.length > 0 && path != null) {
+                var points = [];
+
+                if (destination !== null) {
+                    points.push(destination);
+                }
+
+                for (var i = 0; i < path.getPoints().length; i++) {
+                    var waypoint = getWaypointById(path.getPoints()[i]);
+                    if (waypoint.floor == etageActuel) {
+                        points.push(getWaypointById(path.getPoints()[i]).getMarker._latlng);
+                    }
+                }
+
+                var polyline = new L.Polyline(points, {
+                    color: "red",
+                    weight: 3,
+                    smoothFactor: 1
+                });
+                polyline.addTo(pathLayer);
+            }
+        }
+
+        function getWaypointById(id) {
+            for (var i = 0; i < waypoints.length; i++) {
+                if (waypoints[i].getId == id) {
+                    return waypoints[i];
+                }
+            }
+        }
+
+        function loadWaypoints(show = true) {
+            waypoints = [];
+
+            $.get("data/waypoints.json", function (data) {
+                map.removeLayer(waypointLayer);
+                waypointLayer = L.layerGroup();
+                map.addLayer(waypointLayer);
+
+                for (var i = 0; i < data.length; i++) {
+                    var latlng = new L.LatLng(parseFloat(data[i].latitude), parseFloat(data[i].longitude));
+
+                    marker = new L.marker(latlng, {
+                        draggable: 'true'
+                    });
+                    if (etageActuel === data[i].floor) {
+                        if (show) {
+                            marker.addTo(waypointLayer);
+                            marker.on("click", function () {
+                                if (creatingPath) {
+                                    addToPath(getWaypoint(this).getId);
+                                    redrawPath(path, null);
+                                }
+                            });
+                            marker.on('dragend', function (event) {
+                                var marker = event.target;
+                                var position = marker.getLatLng();
+                                marker.setLatLng(new L.LatLng(position.lat, position.lng), {
+                                    draggable: 'true'
+                                });
+                                map.panTo(new L.LatLng(position.lat, position.lng))
+                            });
+                            marker.bindPopup("ID: " + data[i].id);
+                        }
+                    }
+
+                    var waypoint = new Waypoint(marker, data[i].id, data[i].floor);
+                    if (show) {
+                        if (nextWaypointId < data[i].id) {
+                            nextWaypointId = data[i].id;
+                        }
+                    }
+
+                    waypoints.push(waypoint);
+                }
+                if (show) {
+                    nextWaypointId++;
+                }
+            }, 'json');
+        }
+
+        //End - Methods to show the path
+
+        function getLocalInfo(local) {
+            for (var i = 0; i < listeLocauxObj.length; i++) {
+                if (listeLocauxObj[i].local == local) {
+                    return listeLocauxObj[i];
+                }
+            }
+            return null;
+        }
+
         // Fonction appellé chaque fois que l'on veux afficher un marqueur sur la carte pour montrer l'emplacement d'un local
-        function afficherMarqueur(position, etage, message, image = "null") {
+        function afficherMarqueur(localToShow) {
+            var localObj = getLocalInfo(localToShow);
+
+            var message = "<strong>" + localObj.nom + "</strong><br>" + localObj.message,
+                position = localObj.position,
+                etage = localObj.etage,
+                local = localToShow;
 
             // Supprime le calque "marqueur" qui contient le ou les marqueurs
             map.removeLayer(marqueur);
@@ -189,9 +311,9 @@
             changerEtage(etage);
 
             // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
-            var button = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
+            var button = '<button type="button" class="btn btn-default" id="test" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
 
-            if (image == "null") {
+            if (!localObj.hasOwnProperty("image") && !localObj.hasOwnProperty("image360")) {
                 button = "";
             }
 
@@ -218,67 +340,61 @@
             // Centre le marqueur dans l'écran
             map.panTo(positionMarqueur);
 
-            // Modifie la source de l'image
-            if (image !== "null") {
-                $('#imgModal').attr("src", "images/" + image);
-            }
             //source pour titre message
             $('#labelMessage').html(message);
+            if (localObj.hasOwnProperty("ouverture")) {
+                console.log(localObj.ouverture);
+                $('#ouverture').html(localObj.ouverture);
+            } else {
+                $("#ouverture").html("");
+            }
+
+            if (localObj.hasOwnProperty("description")) {
+                $('#description').html(localObj.description);
+            } else {
+                $("#description").html("");
+            }
 
             //Afficher le path jusqu'au local
-            var temp = findPathForLocal(local);
-            if (temp !== null) {
-                myPath = new Path(local, temp);
+            if (localObj.hasOwnProperty("path")) {
+                myPath = new Path(local, localObj.path);
                 redrawPath(myPath, positionMarqueur);
-
+            } else {
+                myPath = null;
+                redrawPath(myPath, null);
             }
-        };
 
-        function findPathForLocal(local) {
-            for (var i = 0; i < listeLocauxObj.length; i++) {
-                if (listeLocauxObj[i].local == local) {
-                    return listeLocauxObj[i].path;
+            if (localObj.hasOwnProperty("image360")) {
+                var divImage = document.getElementById('image360');
+                $("#image-pano").show();
+                $("#image360").show();
+                $("#imgModal").hide();
+
+                PSV = new PhotoSphereViewer({
+                    panorama: 'images/img360/' + localObj.image360,
+                    container: divImage,
+                    autoload: false,
+                    time_anim: false,
+                    navbar: ['zoom', 'caption', 'fullscreen'],
+                    navbar_style: {
+                        backgroundColor: 'rgba(58, 67, 77, 0.7)'
+                    },
+                    mousewheel: false,
+                    mousemove: true,
+                    caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
+                    webgl: true
+                });
+            } else {
+                PSD = null;
+                $("#image-pano").hide();
+                $("#image360").hide();
+                // Modifie la source de l'image
+                if (localObj.hasOwnProperty("image")) {
+                    $('#imgModal').attr("src", "images/" + localObj.image);
+                    $("#imgModal").show();
                 }
             }
-            return null;
-        }
-
-        $(document).ready(function () {
-            $(".list-itineraire").hide();
-            var cacheListe = $("#premier-jour");
-            var cacheListe2 = $("#organisation");
-            var cacheListe3 = $("#inscription-gym");
-            var cacheListe4 = $("#parcoursCultu");
-
-            $("#first-day").on("click", function () {
-                cacheListe.toggle();
-                cacheListe2.hide();
-                cacheListe3.hide();
-                cacheListe4.hide();
-
-            });
-
-            $("#organiScolaire").on("click", function () {
-                cacheListe2.toggle();
-                cacheListe.hide();
-                cacheListe3.hide();
-                cacheListe4.hide();
-            });
-
-            $("#gym").on("click", function () {
-                cacheListe3.toggle();
-                cacheListe.hide();
-                cacheListe2.hide();
-                cacheListe4.hide();
-            });
-
-            $("#parcours").on("click", function () {
-                cacheListe4.toggle();
-                cacheListe.hide();
-                cacheListe2.hide();
-                cacheListe3.hide();
-            });
-        });
+        };
 
         // Document ready function
         $(function () {
@@ -293,6 +409,10 @@
                 }
             });
             redimensionnerCarte();
+
+            var routesUrl = 'images/etages/routes.svg';
+            var routesBounds = [[46.8274718, -71.2311092], [46.8333687, -71.2232114]];
+            var routes = L.imageOverlay(routesUrl, routesBounds).addTo(map);
 
             // Affiche le plan du 1er étage par defaut
             changerEtage(1);
@@ -431,7 +551,7 @@
                         level = etageLocal + 'e étage';
                     }
 
-                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + positionLocal + '\'' + ',' + etageLocal + ',' + '\'<strong>' + nomLocal + '</strong><br>' + message + '\',\'' + image + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + numeroLocal + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
                 }
 
                 // Ajoute le très long string qui contient toute la liste dans la fenètre modale
@@ -443,10 +563,31 @@
                 /* console.log("TERMINER - Chargement des locaux dans la liste"); */
                 pourcentageProgres += 17;
                 progressBar.css("width", pourcentageProgres + "%");
+                loadWaypoints(false);
             }); // $ajax
 
-            // Calque avec les rue autour du Cégep
-            var routesUrl = 'images/etages/routes.svg';
-            var routesBounds = [[46.8274718, -71.2311092], [46.8333687, -71.2232114]];
-            var routes = L.imageOverlay(routesUrl, routesBounds).addTo(map);
+            loadWaypoints(false);
+
+            $(".fermez").click(function () {
+                $("#image360").hide();
+                $(".fermez").hide();
+            });
+
+            $("#modalImage").on("shown.bs.modal", function() {
+                if(PSV !== null) {
+                    PSV.load();
+                }
+            });
+
+            map.addLayer(pathLayer);
+            map.addLayer(waypointLayer);
+
+            $(".itineraire-menu").click(function () {
+                $("#itineraire-title").html($(this).html() + " <span class=\"caret\">");
+                $("#collapse1").collapse('toggle');
+                $(".list-itineraire:not(" + "#" + $(this).attr("data-toggle") + ")").hide();
+
+                $("#" + $(this).attr("data-toggle")).toggle();
+                //$(this).
+            });
         }); // ajax Complete(function(){})

@@ -52,7 +52,7 @@
     "etage": 1,
     "message": "Pédagogie et international",
     "path": [506, 1, 4, 5, 6],
-         "image": "aide-pedagogique.jpg"
+    "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1407",
     "local": "1407",
@@ -60,7 +60,7 @@
     "etage": 1,
     "message": "Pédagogie et international",
     "path": [506, 1, 4, 5, 6],
-         "image": "aide-pedagogique.jpg"
+    "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1408",
     "local": "1408",
@@ -68,7 +68,7 @@
     "etage": 1,
     "message": "Pédagogie et international",
     "path": [506, 1, 4, 5, 6],
-         "image": "aide-pedagogique.jpg"
+    "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1409",
     "local": "1409",
@@ -76,7 +76,7 @@
     "etage": 1,
     "message": "Pédagogie et international",
     "path": [506, 1, 4, 5, 6],
-         "image": "aide-pedagogique.jpg"
+    "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1412",
     "local": "1412",
@@ -84,7 +84,7 @@
     "etage": 1,
     "message": "Pédagogie et international",
     "path": [506, 1, 4, 5, 6],
-         "image": "aide-pedagogique.jpg"
+    "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1413",
     "local": "1413",
@@ -92,7 +92,7 @@
     "etage": 1,
     "message": "Pédagogie et international",
     "path": [506, 1, 4, 5, 6],
-         "image": "aide-pedagogique.jpg"
+    "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1414",
     "local": "1414",
@@ -100,7 +100,7 @@
     "etage": 1,
     "message": "Pédagogie et international",
     "path": [506, 1, 4, 5, 6],
-         "image": "aide-pedagogique.jpg"
+    "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1415",
     "local": "1415",
@@ -108,7 +108,7 @@
     "etage": 1,
     "message": "Pédagogie et international",
     "path": [506, 1, 4, 5, 6],
-         "image": "aide-pedagogique.jpg"
+    "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1404",
     "local": "1404",
@@ -116,7 +116,7 @@
     "etage": 1,
     "message": "Pédagogie et international",
     "path": [506, 1, 4, 5, 6],
-         "image": "aide-pedagogique.jpg"
+    "image": "aide-pedagogique.jpg"
 }, {
     "nom": "Local 1448",
     "local": "1448",
@@ -480,7 +480,7 @@
     "etage": 1,
     "message": " ",
     "path": [30, 34, 37, 5, 6, 326, 325, 520],
-         "image": "gymnase.jpg"
+    "image": "gymnase.jpg"
 }, {
     "nom": "Foyer Desjardins",
     "local": "1333",
@@ -495,7 +495,7 @@
     "etage": 1,
     "message": "Accès via le Foyer Desjardins",
     "path": [14, 1, 4, 5, 6],
-         "image": "salle-sylvain-lelievre-int2.jpg"
+    "image": "salle-sylvain-lelievre-int2.jpg"
 }, {
     "nom": "Entrée Centre Sportif",
     "local": " ",
@@ -509,7 +509,9 @@
     "etage": 1,
     "message": " ",
     "path": [33, 34, 37, 5, 6],
-         "image": "magasin-sportif.jpg"
+    "image": "magasin-sportif.jpg",
+    "description": "<h2>Magasin sportif</h2>Que ce soit pour votre carte étudiante, pour louer un gymnase ou de l'équipement de sport, le magasin sportif est à votre disposition.",
+    "image360": "centre-sportif.jpg"
 }, {
     "nom": "Local 1317",
     "local": "1317",
@@ -601,16 +603,17 @@
     "etage": 1,
     "message": " ",
     "path": [24, 23, 20, 34, 37, 5, 6],
-         "image": "gymnase.jpg"
+    "image": "gymnase.jpg"
 }, {
     "nom": "Cafétéria",
     "local": "1121",
     "position": "[46.8303763278858,-71.22721575200558]",
     "etage": 1,
     "message": " ",
-    "image": "",
+    "image": "cafeteriaQC2.jpg",
     "path": [6],
-         "image": "cafeteriaQC2.jpg"
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 15h</li><li>7h30 à 14h30</li></ul></div></div>",
+    "description": "<h2>Information Générale</h2>Situé en face de l'escalier principal au premier étage, son vaste menu et la qualité de sa nourriture rendent la cafétéria du Cégep Limoilou un incontournable."
 }, {
     "nom": "COOP",
     "local": "1203",
@@ -618,7 +621,9 @@
     "etage": 1,
     "message": " ",
     "path": [6],
-         "image": "coop.jpg"
+    "image": "coop.jpg",
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul<li>Lundi au vendredi</li></ul></div><div class='col-md-5'><ul><li>9h à 16h</li></ul></div></div>",
+    "description": "<h2>Information Générale</h2>Pour seulement 15$, devenez membre à vie de la <span class='description'>COOP</span> du Cégep Limoilou. Vous obtiendrez des ristournes directes à l'achat pouvant atteindre 25$. Acheter à la <span class='description'>COOP</span> est donc doublement avantageux puisque votre investissement vous revient!"
 }, {
     "nom": "Local 1266",
     "local": "1266",
@@ -630,6 +635,7 @@
     "nom": "Local 1271",
     "local": "1271",
     "position": "[46.83031852341576,-71.22672088444233]",
+    "position": "[46.83031852341576,-71.22672088444233]",
     "etage": 1,
     "message": " ",
     "path": [122, 123, 43, 41, 6]
@@ -640,7 +646,7 @@
     "etage": 1,
     "message": "Studios audiovisuels",
     "path": [81, 43, 41, 6],
-         "image": "audiovisuel.jpg"
+    "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1268",
     "local": "1268",
@@ -648,7 +654,7 @@
     "etage": 1,
     "message": "Studios audiovisuels",
     "path": [81, 43, 41, 6],
-          "image": "audiovisuel.jpg"
+    "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1269",
     "local": "1269",
@@ -663,7 +669,7 @@
     "etage": 1,
     "message": "Studios audiovisuels",
     "path": [76, 43, 41, 6],
-          "image": "audiovisuel.jpg"
+    "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1257",
     "local": "1257",
@@ -671,7 +677,7 @@
     "etage": 1,
     "message": "Studios audiovisuels",
     "path": [119, 118, 123, 43, 41, 6],
-          "image": "audiovisuel.jpg"
+    "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1256",
     "local": "1256",
@@ -679,7 +685,7 @@
     "etage": 1,
     "message": "Studios audiovisuels",
     "path": [121, 123, 43, 41, 6],
-          "image": "audiovisuel.jpg"
+    "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1263",
     "local": "1263",
@@ -687,7 +693,7 @@
     "etage": 1,
     "message": "Studios audiovisuels",
     "path": [121, 123, 43, 41, 6],
-          "image": "audiovisuel.jpg"
+    "image": "audiovisuel.jpg"
 }, {
     "nom": "Local 1255",
     "local": "1255",
@@ -961,7 +967,9 @@
     "etage": 1,
     "message": " ",
     "path": [518, 5, 6],
-         "image": "cafe1.jpg"
+    "image": "cafe1.jpg",
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 17h</li><li>7h30 à 16h</li></ul></div></div>",
+    "description": "<h2>Information Générale</h2>Le <span class='description'>café étudiant du campus de Québec</span> est un lieu par excellence pour vos rencontres ou simplement pour vous détendre. Une gamme de produits est offerte à <span class='description'>petits prix</span>: muffins, galettes, sandwich-bagel, fruits, café, thé, chocolat chaud, jus, eau, etc. Ce café offre l'accès à <span class='description'>Internet</span>."
 }, {
     "nom": "Local 1030",
     "local": "1030",
@@ -1109,7 +1117,10 @@
     "etage": 1,
     "message": " ",
     "path": [93, 43, 41, 6],
-         "image": "formation-continue.jpg"
+    "image": "formation-continue.jpg",
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au vendredi</li><li>Fermée</li></ul></div><div class='col-md-5'><ul><li>8h00 à 16h30</li><li>de 12h à 13h</li></ul></div></div>",
+    "description": "<h2>Information Générale</h2>Nous formons des personnes dont la qualité des compétences et la capacité à s'intégrer rapidement en entreprise sont hautement reconnues. Nous privilégions l'intégration des compétences par des activités pédagogiques qui rejoignent les bonnes pratiques d'affaires.",
+    "image360": "formation-continue.jpg"
 }, {
     "nom": "Comptabilité",
     "local": "1527",
@@ -2215,7 +2226,9 @@
     "position": "[46.83017676457132,-71.22741490602493]",
     "etage": 2,
     "message": "",
-    "path": [229, 194]
+    "path": [229, 194],
+    "ouverture": "<h2>Heures d'ouverture pendant la période des fêtes</h2><div class='row'><div class='col-md-5'><ul><li>14 au 21 décembre</li><li>22 décembre</li><li>23 décembre au 3 janvier</li><li>4 au 20 janvier</li><li>21 janvier</li></ul></div><div class='col-md-5'><ul><li>7h30 à 17h</li><li>7h30 à 12h</li><li>Fermé</li><li>8h à 16h</li><li>Retour à l'horaire régulier</li></ul></div></div><h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 20h30</li><li>7h30 à 17h</li></ul></div></div>",
+    "image360": "biblio-etage1.jpg"
 }, {
     "nom": "Local 2115",
     "local": "2115",
@@ -2587,7 +2600,7 @@
     "etage": 2,
     "message": "",
     "path": [202, 193, 194],
-         "image": "gym.jpg"
+    "image": "gym.jpg"
 }, {
     "nom": "Salle de danse",
     "local": "2308",
@@ -2992,7 +3005,8 @@
     "position": "[46.83006803666058,-71.22751280665398]",
     "etage": 3,
     "message": "",
-    "path": [541, 368, 367, 540, 532, 194]
+    "path": [541, 368, 367, 540, 532, 194],
+    "image360": "biblio-etage2.jpg"
 }, {
     "nom": "Local 3046",
     "local": "3046",
@@ -3041,7 +3055,7 @@
     "etage": 3,
     "message": "Carrefour de l’information (Bibliothèque)",
     "path": [382, 368, 367, 540, 532, 194],
-         "image": "bibli_etage.jpg"
+    "image": "bibli_etage.jpg"
 }, {
     "nom": "Local 3043",
     "local": "3043",
@@ -3049,7 +3063,7 @@
     "etage": 3,
     "message": "Carrefour de l’information (Bibliothèque)",
     "path": [383, 382, 368, 367, 540, 532, 194],
-         "image": "bibli_etage.jpg"
+    "image": "bibli_etage.jpg"
 }, {
     "nom": "Local 3042",
     "local": "3042",
@@ -3057,7 +3071,7 @@
     "etage": 3,
     "message": "Carrefour de l’information (Bibliothèque)",
     "path": [384, 382, 368, 367, 540, 532, 194],
-         "image": "bibli_etage.jpg"
+    "image": "bibli_etage.jpg"
 }, {
     "nom": "Local 3041",
     "local": "3041",
@@ -3065,7 +3079,7 @@
     "etage": 3,
     "message": "Carrefour de l’information (Bibliothèque)",
     "path": [385, 382, 368, 367, 540, 532, 194],
-         "image": "bibli_etage.jpg"
+    "image": "bibli_etage.jpg"
 }, {
     "nom": "Local 3052",
     "local": "3052",
@@ -3929,7 +3943,8 @@
     "local": "0430",
     "position": "[46.830239156859605,-71.22762612998486]",
     "etage": -1,
-    "message": "Accès via le stationnement"
+    "message": "Accès via le stationnement",
+    "path": [564, 565, 488, 487, 511, 512, 1, 4, 5, 6]
 }, {
     "nom": "Local 0425",
     "local": "0425",
@@ -3963,7 +3978,8 @@
     "local": "0406",
     "position": "[46.830203373056065,-71.22781991958618]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [489, 488, 487, 511, 512, 1, 4, 5, 6]
 }, {
     "nom": "Local 0404",
     "local": "0404",
@@ -3976,61 +3992,71 @@
     "local": "0422",
     "position": "[46.83034788442418,-71.22795067727566]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [494, 498, 499, 500, 18, 19, 5, 6]
 }, {
     "nom": "Local 0420",
     "local": "0420",
     "position": "[46.83037128146627,-71.22797347605228]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [495, 498, 499, 500, 18, 19, 5, 6]
 }, {
     "nom": "Local 0419",
     "local": "0419",
     "position": "[46.830398807385116,-71.22799828648567]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [496, 498, 499, 500, 18, 19, 5, 6]
 }, {
     "nom": "Local 0405",
     "local": "0405",
     "position": "[46.83042679205482,-71.22805997729301]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [500, 18, 19, 5, 6]
 }, {
     "nom": "Local 0408",
     "local": "0408",
     "position": "[46.83047175100187,-71.2280224263668]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [501, 499, 500, 18, 19, 5, 6]
 }, {
     "nom": "Local 0411",
     "local": "0411",
     "position": "[46.83046808088515,-71.22800566256046]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [501, 499, 500, 18, 19, 5, 6]
 }, {
     "nom": "Local 0409",
     "local": "0409",
     "position": "[46.830429544644495,-71.22796542942524]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [496, 498, 499, 500, 18, 19, 5, 6]
 }, {
     "nom": "Local 0407",
     "local": "0407",
     "position": "[46.830446060179604,-71.22789569199085]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [497, 496, 498, 499, 500, 18, 19, 5, 6]
 }, {
     "nom": "Local 0418",
     "local": "0418",
     "position": "[46.830441931296285,-71.22793927788734]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [496, 498, 499, 500, 18, 19, 5, 6]
 }, {
     "nom": "Local 0412",
     "local": "0412",
-    "position": "[46.83041165280909,-71.22794464230537]",
+    "position": "[46.830420369345035,-71.22795738279818]",
     "etage": -1,
-    "message": " "
+    "message": " ",
+    "path": [496, 498, 499, 500, 18, 19, 5, 6]
 }, {
     "nom": "Vestiaire - Hommes - Piscine",
     "local": "0318",
@@ -4049,26 +4075,37 @@
     "position": "[46.83068828744457,-71.22812233865261]",
     "etage": -1,
     "message": "Accès via le premier étage",
-         "image": "caroussel_piscine.png"
+    "image": "caroussel_piscine.png"
 }, {
     "nom": "Kiosque d'information",
-    "local": "",
+    "local": "agora",
     "position": "[46.83019328018408,-71.22740350663662]",
     "etage": 1,
     "message": "Kiosque d'information - Agora",
-         "image": "agora.jpg"
+    "image": "agora.jpg",
+    "image360": "agora.jpg"
 }, {
     "nom": "Escalier principal",
-    "local": "",
+    "local": "escalier-2",
     "position": "[46.83027035297657,-71.2271225452423]",
     "etage": 2,
     "message": "Escalier principal - 2e étage",
-         "image": "escalier.jpg"
+    "image": "escalier.jpg",
+    "image360": "escalier.jpg"
 }, {
     "nom": "Escalier principal",
-    "local": "",
+    "local": "escalier-1",
     "position": "[46.830340085407876,-71.22719027101994]",
     "etage": 1,
     "message": "Escalier principal - 1er étage",
-         "image": "escalier.jpg"
+    "image": "escalier.jpg",
+    "image360": "escalier.jpg"
+}, {
+    "nom": "Secrétaria Pédagogique",
+    "local": "secretaria pedagogique",
+    "position": "[46.8304373436478,-71.22801035642624]",
+    "etage": 1,
+    "message": "Secrétaria Pédagogique",
+    "image360": "secretariat-pedago.jpg",
+    "path": [568, 1, 4, 5, 6]
 }]
