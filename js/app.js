@@ -69,25 +69,31 @@
         };
 
         function toggleAccessibilite() {
-            if(showAccessibilite) {
+            if (showAccessibilite) {
                 map.removeLayer(accessibiliteEtage);
                 showAccessibilite = false;
+                $("imgAccess").attr("src", "images/boutons_etages/accessibilite.svg");
             } else {
-                if(accessibiliteEtage !== "") {
+                if (accessibiliteEtage !== "") {
                     map.addLayer(accessibiliteEtage);
                 }
+                $("imgAccess").attr("src", "images/boutons_etages/active-accessibilite.svg");
+
                 showAccessibilite = true;
             }
         }
 
         function toggleUrgence() {
-            if(showUrgence) {
+            if (showUrgence) {
                 map.removeLayer(urgenceEtage);
                 showUrgence = false;
+                $("imgFeu").attr("src", "images/boutons_etages/feu.svg");
+
             } else {
-                if(urgenceEtage !== "") {
+                if (urgenceEtage !== "") {
                     map.addLayer(urgenceEtage);
                 }
+                $("imgFeu").attr("src", "images/boutons_etages/active-feu.svg");
                 showUrgence = true;
             }
         }
@@ -95,7 +101,7 @@
         // Fonction pour changer les plans des étages selon le besoin.
         function changerEtage(etage) {
 
-            if(etage == -1) {
+            if (etage == -1) {
                 $("#indicateurEtage").text("SS");
             } else {
                 $("#indicateurEtage").text(etage);
@@ -162,13 +168,13 @@
 
 
             urgenceEtage = L.imageOverlay(urgenceUrl, imageBounds);
-            if(showUrgence) {
+            if (showUrgence) {
                 map.addLayer(urgenceEtage);
             }
 
             accessibiliteEtage = L.imageOverlay(accessibiliteUrl, imageBounds);
 
-            if(showAccessibilite) {
+            if (showAccessibilite) {
                 map.addLayer(accessibiliteEtage);
             }
 
@@ -261,7 +267,7 @@
                     }
 
                     var waypoint = new Waypoint(marker, data[i].id, data[i].floor);
-                    if(show) {
+                    if (show) {
                         if (nextWaypointId < data[i].id) {
                             nextWaypointId = data[i].id;
                         }
@@ -269,7 +275,7 @@
 
                     waypoints.push(waypoint);
                 }
-                if(show) {
+                if (show) {
                     nextWaypointId++;
                 }
             }, 'json');
@@ -334,10 +340,6 @@
             // Centre le marqueur dans l'écran
             map.panTo(positionMarqueur);
 
-            // Modifie la source de l'image
-            if (localObj.hasOwnProperty("image")) {
-                $('#imgModal').attr("src", "images/" + localObj.image);
-            }
             //source pour titre message
             $('#labelMessage').html(message);
             if (localObj.hasOwnProperty("ouverture")) {
@@ -357,25 +359,32 @@
             if (localObj.hasOwnProperty("image360")) {
                 var divImage = document.getElementById('image360');
                 $("#image-pano").show();
-                $("#image-pano").click(function () {
-                    $("#image360").show();
-                    $(".fermez").show();
+                $("#image360").show();
+                $("#imgModal").hide();
 
-                    var PSV = new PhotoSphereViewer({
-                        panorama: 'images/img360/' + localObj.image360,
-                        container: divImage,
-                        time_anim: false,
-                        navbar: true,
-                        navbar_style: {
-                            backgroundColor: 'rgba(58, 67, 77, 0.7)'
-                        },
-                        mousewheel: false,
-                        caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
-                    });
+                var PSV = new PhotoSphereViewer({
+                    panorama: 'images/img360/' + localObj.image360,
+                    container: divImage,
+                    time_anim: false,
+                    navbar: ['zoom', 'caption', 'fullscreen'],
+                    navbar_style: {
+                        backgroundColor: 'rgba(58, 67, 77, 0.7)'
+                    },
+                    mousewheel: false,
+                    mousemove: true,
+                    caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
+                    webgl: true
                 });
-            }
-            else {
+
+            } else {
+                console.log("fsd");
                 $("#image-pano").hide();
+                $("#image360").hide();
+                // Modifie la source de l'image
+                if (localObj.hasOwnProperty("image")) {
+                    $('#imgModal').attr("src", "images/" + localObj.image);
+                    $("#imgModal").show();
+                }
             }
         };
 
@@ -559,7 +568,7 @@
             map.addLayer(pathLayer);
             map.addLayer(waypointLayer);
 
-            $(".itineraire-menu").click(function(){
+            $(".itineraire-menu").click(function () {
                 $("#itineraire-title").html($(this).html() + " <span class=\"caret\">");
                 $("#collapse1").collapse('toggle');
                 $(".list-itineraire:not(" + "#" + $(this).attr("data-toggle") + ")").hide();
