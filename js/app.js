@@ -6,12 +6,16 @@
             marqueurs = "",
             libelleEtage = "",
             iconesEtage = "",
+            accessibiliteEtage = "",
+            urgenceEtage = "",
             numeroLocauxEtage = "",
             marqueur = "",
             etageActuel = 1,
             waypoints = [],
             listeLocauxObj = [],
-            myPath = null;
+            myPath = null,
+            showAccessibilite = true,
+            showUrgence = true;
 
         var waypointLayer = L.layerGroup();
         var pathLayer = L.layerGroup();
@@ -39,49 +43,6 @@
             $("#map").height($(window).height());
         }
 
-        // Geolocalisation de l'utilisateur
-        /*lc = L.control.locate({
-            position: 'topleft', // set the location of the control
-            drawCircle: false, // controls whether a circle is drawn that shows the uncertainty about the location
-            follow: false, // follow the user's location
-            setView: true, // automatically sets the map view to the user's location, enabled if `follow` is true
-            keepCurrentZoomLevel: true, // keep the current map zoom level when displaying the user's location. (if `false`, use maxZoom)
-            stopFollowingOnDrag: true, // stop following when the map is dragged if `follow` is true (deprecated, see below)
-            remainActive: false, // if true locate control remains active on click even if the user's location is in view.
-            markerClass: L.circleMarker, // L.circleMarker or L.marker
-            circleStyle: {}, // change the style of the circle around the user's location
-            markerStyle: {},
-            followCircleStyle: {}, // set difference for the style of the circle around the user's location while following
-            followMarkerStyle: {},
-            icon: 'fa fa-map-marker', // class for icon, fa-location-arrow or fa-map-marker
-            iconLoading: 'fa fa-spinner fa-spin', // class for loading icon
-            circlePadding: [0, 0], // padding around accuracy circle, value is passed to setBounds
-            metric: true, // use metric or imperial units
-            onLocationError: function (err) {
-                alert("Impossible de déterminer votre position")
-            }, // define an error callback function
-            onLocationOutsideMapBounds: function (context) { // called when outside map boundaries
-                alert("Impossible de déterminer votre position");
-            },
-            showPopup: false, // display a popup when the user click on the inner marker
-            strings: {
-                title: "Show me where I am", // title of the locate control
-                metersUnit: "meters", // string for metric units
-                feetUnit: "feet", // string for imperial units
-                popup: "You are within {distance} {unit} from this point", // text to appear if user clicks on circle
-                outsideMapBoundsMsg: "You seem located outside the boundaries of the map" // default message for onLocationOutsideMapBounds
-            },
-            locateOptions: {
-                enableHighAccuracy: true
-            } // define location options e.g enableHighAccuracy: true or maxZoom: 10
-        });
-
-        // Ajoute le point bleu sur la carte
-        lc.addTo(map);
-
-        // Démare le service de gélocalisation
-        lc.start();*/
-
         /* Controlle étage version 1 */
         $("#controlleEtage ul li").click(function (event) {
             $("#controlleEtage ul li").removeClass("etageActif")
@@ -107,6 +68,26 @@
             }
         };
 
+        function toggleAccessibilite() {
+            if(showAccessibilite) {
+                map.removeLayer(accessibiliteEtage);
+                showAccessibilite = false;
+            } else {
+                map.addLayer(accessibiliteEtage);
+                showAccessibilite = true;
+            }
+        }
+
+        function toggleUrgence() {
+            if(showUrgence) {
+                map.removeLayer(urgenceEtage);
+                showUrgence = false;
+            } else {
+                map.addLayer(urgenceEtage);
+                showUrgence = true;
+            }
+        }
+
         // Fonction pour changer les plans des étages selon le besoin.
         function changerEtage(etage) {
 
@@ -128,6 +109,8 @@
             map.removeLayer(libelleEtage);
             map.removeLayer(iconesEtage);
             map.removeLayer(numeroLocauxEtage);
+            map.removeLayer(accessibiliteEtage);
+            map.removeLayer(urgenceEtage);
             etageActuel = etage;
 
             if (etage == -1) {
@@ -140,6 +123,11 @@
                 imageLocauxUrl = 'images/etages/etage' + etage + '_numero.svg'
                 iconesEtageUrl = 'images/etages/etage' + etage + '_icones.svg';
                 libelleEtageUrl = 'images/etages/etage' + etage + '_libelle.svg';
+
+                if(etage == 1 || etage == 2) {
+                    accessibiliteUrl = 'images/etages/etage' + etage + '_accessibilite.svg';
+                    urgenceUrl = 'images/etages/etage' + etage + '_urgence.svg';
+                }
             }
 
             if (etage == -1) {
@@ -170,6 +158,22 @@
             planEtage = L.imageOverlay(imageUrl, imageBounds);
             // Ajoute et affiche l'image du sous-sol
             map.addLayer(planEtage);
+
+            if(etage == 1 || etage == 2) {
+                accessibiliteEtage = L.imageOverlay(accessibiliteUrl, imageBounds);
+                urgenceEtage = L.imageOverlay(urgenceUrl, imageBounds);
+
+                if(showAccessibilite) {
+                    map.addLayer(accessibiliteEtage);
+                }
+
+                if(showUrgence) {
+                    map.addLayer(urgenceEtage);
+                }
+            } else {
+                accessibiliteEtage = "";
+                urgenceEtage = "";
+            }
 
             // Affiche la carte en arrière-plan de tout les autres calque. Nécésaire pour voir le point de géolocalisation après avoir changer d'étage
             planEtage.bringToBack();
