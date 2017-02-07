@@ -609,7 +609,8 @@
     "etage": 1,
     "message": " ",
     "image": "cafeteriaQC2.jpg",
-    "path": [6]
+    "path": [6],
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 15h</li><li>7h30 à 14h30</li></ul></div></div>"
 }, {
     "nom": "COOP",
     "local": "1203",
@@ -617,7 +618,8 @@
     "etage": 1,
     "message": " ",
     "path": [6],
-    "image": "coop.jpg"
+    "image": "coop.jpg",
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul<li>Lundi au vendredi</li></ul></div><div class='col-md-5'><ul><li>9h à 16h</li></ul></div></div>"
 }, {
     "nom": "Local 1266",
     "local": "1266",
@@ -961,7 +963,7 @@
     "message": " ",
     "path": [518, 5, 6],
     "image": "cafe1.jpg",
-    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul<li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 17h</li><li>7h30 à 16h</li></ul></div></div>"
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 17h</li><li>7h30 à 16h</li></ul></div></div>"
 }, {
     "nom": "Local 1030",
     "local": "1030",
@@ -4066,7 +4068,7 @@
     "image": "caroussel_piscine.png"
 }, {
     "nom": "Kiosque d'information",
-    "local": "",
+    "local": "agora",
     "position": "[46.83019328018408,-71.22740350663662]",
     "etage": 1,
     "message": "Kiosque d'information - Agora",
