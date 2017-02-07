@@ -44,6 +44,7 @@
     <script src="js/l.control.locate.js"></script>
     <script src="js/three.min.js"></script>
     <script src="js/photo-sphere-viewer.min.js"></script>
+    <script src="js/jquery-pano.js"></script>
 
     <!--[if lte IE 8]><link rel="stylesheet" href="libs/leaflet.ie.css" /><![endif]-->
     <!-- Latest compiled and minified CSS -->
@@ -203,6 +204,12 @@
 
                     <ul id="controlleEtage">
                         <li>
+                            <a href="javascript:toggleAccessibilite()"><img id="imgAccess" src="images/boutons_etages/accessibilite.svg"></a>
+                        </li>
+                        <li>
+                            <a href="javascript:toggleUrgence()"><img id="imgFeu" src="images/boutons_etages/feu.svg"></a>
+                        </li>
+                        <li>
                             <a href="javascript:changerEtage(5)"><img src="images/boutons_etages/5.svg"></a>
                         </li>
                         <li>
@@ -274,7 +281,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a data-toggle="collapse" href="#collapse1">Options <span class="caret"></span></a>
+                                                <a data-toggle="collapse" href="#collapse1" id="itineraire-title">Itinéraire <span class="caret"></span></a>
                                             </h4>
                                         </div>
                                         <div id="collapse1" class="panel-collapse collapse">
@@ -300,8 +307,6 @@
                                                 <h3 class="nomLocal">Départ: Escalier principal</h3>
                                                 <br>
                                                 <h5 class="etage">1er étage</h5>
-
-
                                                 <ol>
                                                     <li> Dirigez-vous vers la droite <i class="glyphicon glyphicon-arrow-right"></i> </li>
                                                     <li>Continuez sur 17m <i class="glyphicon glyphicon-arrow-up"></i> </li>
@@ -315,7 +320,6 @@
                                                 <h3 class="nomLocal">Kiosque d’information - Agora</h3>
                                                 <br>
                                                 <h5 class="etage">1er étage</h5>
-
                                                 <ol>
                                                     <li>Revenir vers l'escalier principal<i class="glyphicon glyphicon-arrow-up"></i> </li>
                                                     <li>Continuez sur 30m <i class="glyphicon glyphicon-arrow-up"></i> </li>
@@ -324,8 +328,8 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="javascript:afficherMarqueur('1320')">
-                                                <h3 class="nomLocal">Magasin Sportif</h3>
+                                            <a href="javascript:afficherMarqueur('1203')">
+                                                <h3 class="nomLocal">COOP </h3>
                                                 <br>
                                                 <h5 class="etage">1er étage</h5>
                                                 <ol>
@@ -334,14 +338,14 @@
                                                     <li>Continuez sur 75m<i class="glyphicon glyphicon-arrow-up"></i> </li>
                                                     <li>Arrivé au magasin sportif <i class="glyphicon glyphicon-ok-circle"></i> </li>
                                                 </ol>
-                                          </a>
+                                            </a>
                                         </li>
                                         <li>
-                                            <a href="javascript:afficherMarqueur('1203')">
-                                                <h3 class="nomLocal">COOP </h3>
+                                            <a href="javascript:afficherMarqueur('1320')">
+                                                <h3 class="nomLocal">Magasin Sportif</h3>
                                                 <br>
-                                                <h6 class="etage">1er étage</h6>
-                                            </a>
+                                                <h5 class="etage">1er étage</h5>
+                                          </a>
                                         </li>
                                     </ol>
                                     <ol class="list list-itineraire" id="organisation">
@@ -398,13 +402,12 @@
                                                     <li>Arrivé au magasin sportif <i class="glyphicon glyphicon-ok-circle"></i> </li>
                                                 </ol>
                                             </a>
-
                                         </li>
                                         <li>
                                             <a href="javascript:afficherMarqueur('1320')">
                                                 <h3 class="nomLocal">Magasin Sportif</h3>
                                                 <br>
-                                                <h6 class="etage">1er étage</h6>
+                                                <h5 class="etage">1er étage</h5>
                                                 <ol>
                                                     <li>Direction salle d'entraînement 2e étage<i class="glyphicon glyphicon-arrow-up"></i> </li>
                                                     <li>Continuez sur 4m et prendre l'escalier <i class="glyphicon glyphicon-arrow-right"></i> </li>
@@ -412,7 +415,6 @@
                                                     <li>Arrivé à la salle d'entraînement<i class="glyphicon glyphicon-ok-circle"></i> </li>
                                                 </ol>
                                             </a>
-
                                         </li>
                                         <li>
                                             <a href="javascript:afficherMarqueur('2302')">
@@ -645,10 +647,9 @@
                     <div class="modal-body">
                         <div class="contenu">
                             <img src="" id="imgModal" />
+                            <div id="image360"></div>
                             <br>
-                            <a href="javascript:;" id="image-pano">
-                                <img src="images/icon-360.png" alt="icone 360" height="80" width="80">
-                            </a>
+                            <img src="images/icon-360.png" id="image-pano" alt="icone 360" height="40" width="40">
                             <div id="ouverture"></div>
                             <div id="description"></div>
                         </div>
@@ -656,9 +657,6 @@
                     <div class="modal-footer"></div>
                 </div>
             </div>
-            <div id="image360" class="image360">
-            </div>
-            <a href="javascript:;" id="fermez" class="fermez"><i class="glyphicon glyphicon-remove"></i>  </a>
         </div>
     </div>
     <!--------  .modal  -------->

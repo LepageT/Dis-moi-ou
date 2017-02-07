@@ -15,7 +15,8 @@
             listeLocauxObj = [],
             myPath = null,
             showAccessibilite = true,
-            showUrgence = true;
+            showUrgence = true,
+            PSV = null;
 
         var waypointLayer = L.layerGroup();
         var pathLayer = L.layerGroup();
@@ -72,8 +73,12 @@
             if (showAccessibilite) {
                 map.removeLayer(accessibiliteEtage);
                 showAccessibilite = false;
+                $("#imgAccess").attr("src", "images/boutons_etages/active-accessibilite.svg");
             } else {
-                map.addLayer(accessibiliteEtage);
+                if (accessibiliteEtage !== "") {
+                    map.addLayer(accessibiliteEtage);
+                }
+                $("#imgAccess").attr("src", "images/boutons_etages/accessibilite.svg");
                 showAccessibilite = true;
             }
         }
@@ -82,8 +87,12 @@
             if (showUrgence) {
                 map.removeLayer(urgenceEtage);
                 showUrgence = false;
+                $("#imgFeu").attr("src", "images/boutons_etages/active-feu.svg");
             } else {
-                map.addLayer(urgenceEtage);
+                if (urgenceEtage !== "") {
+                    map.addLayer(urgenceEtage);
+                }
+                $("#imgFeu").attr("src", "images/boutons_etages/feu.svg");
                 showUrgence = true;
             }
         }
@@ -123,11 +132,8 @@
                 imageLocauxUrl = 'images/etages/etage' + etage + '_numero.svg'
                 iconesEtageUrl = 'images/etages/etage' + etage + '_icones.svg';
                 libelleEtageUrl = 'images/etages/etage' + etage + '_libelle.svg';
-
-                if (etage == 1 || etage == 2) {
-                    accessibiliteUrl = 'images/etages/etage' + etage + '_accessibilite.svg';
-                    urgenceUrl = 'images/etages/etage' + etage + '_urgence.svg';
-                }
+                urgenceUrl = 'images/etages/etage' + etage + '_urgence.svg';
+                accessibiliteUrl = 'images/etages/etage' + etage + '_accessibilite.svg';
             }
 
             if (etage == -1) {
@@ -159,20 +165,15 @@
             // Ajoute et affiche l'image du sous-sol
             map.addLayer(planEtage);
 
-            if (etage == 1 || etage == 2) {
-                accessibiliteEtage = L.imageOverlay(accessibiliteUrl, imageBounds);
-                urgenceEtage = L.imageOverlay(urgenceUrl, imageBounds);
+            urgenceEtage = L.imageOverlay(urgenceUrl, imageBounds);
+            if (showUrgence) {
+                map.addLayer(urgenceEtage);
+            }
 
-                if (showAccessibilite) {
-                    map.addLayer(accessibiliteEtage);
-                }
+            accessibiliteEtage = L.imageOverlay(accessibiliteUrl, imageBounds);
 
-                if (showUrgence) {
-                    map.addLayer(urgenceEtage);
-                }
-            } else {
-                accessibiliteEtage = "";
-                urgenceEtage = "";
+            if (showAccessibilite) {
+                map.addLayer(accessibiliteEtage);
             }
 
             // Affiche la carte en arrière-plan de tout les autres calque. Nécésaire pour voir le point de géolocalisation après avoir changer d'étage
@@ -197,7 +198,7 @@
         }
 
         function drawPath(path, destination = null) {
-            if (waypoints.length > 0) {
+            if (waypoints.length > 0 && path != null) {
                 var points = [];
 
                 if (destination !== null) {
@@ -218,7 +219,6 @@
                 });
                 polyline.addTo(pathLayer);
             }
-
         }
 
         function getWaypointById(id) {
@@ -309,7 +309,7 @@
             changerEtage(etage);
 
             // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
-            var button = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
+            var button = '<button type="button" class="btn btn-default" id="test" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
 
             if (!localObj.hasOwnProperty("image")) {
                 button = "";
@@ -338,10 +338,6 @@
             // Centre le marqueur dans l'écran
             map.panTo(positionMarqueur);
 
-            // Modifie la source de l'image
-            if (localObj.hasOwnProperty("image")) {
-                $('#imgModal').attr("src", "images/" + localObj.image);
-            }
             //source pour titre message
             $('#labelMessage').html(message);
             if (localObj.hasOwnProperty("ouverture")) {
@@ -353,34 +349,44 @@
                 $('#description').html(localObj.description);
             }
 
-
             //Afficher le path jusqu'au local
             if (localObj.hasOwnProperty("path")) {
                 myPath = new Path(local, localObj.path);
                 redrawPath(myPath, positionMarqueur);
+            } else {
+                myPath = null;
+                redrawPath(myPath, null);
             }
 
             if (localObj.hasOwnProperty("image360")) {
                 var divImage = document.getElementById('image360');
                 $("#image-pano").show();
-                $("#image-pano").click(function () {
-                    $("#image360").show();
-                    $(".fermez").show();
+                $("#image360").show();
+                $("#imgModal").hide();
 
-                    var PSV = new PhotoSphereViewer({
-                        panorama: 'images/img360/' + localObj.image360,
-                        container: divImage,
-                        time_anim: false,
-                        navbar: true,
-                        navbar_style: {
-                            backgroundColor: 'rgba(58, 67, 77, 0.7)'
-                        },
-                        mousewheel: false,
-                        caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
-                    });
+                PSV = new PhotoSphereViewer({
+                    panorama: 'images/img360/' + localObj.image360,
+                    container: divImage,
+                    autoload: false,
+                    time_anim: false,
+                    navbar: ['zoom', 'caption', 'fullscreen'],
+                    navbar_style: {
+                        backgroundColor: 'rgba(58, 67, 77, 0.7)'
+                    },
+                    mousewheel: false,
+                    mousemove: true,
+                    caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
+                    webgl: true
                 });
             } else {
+                PSD = null;
                 $("#image-pano").hide();
+                $("#image360").hide();
+                // Modifie la source de l'image
+                if (localObj.hasOwnProperty("image")) {
+                    $('#imgModal').attr("src", "images/" + localObj.image);
+                    $("#imgModal").show();
+                }
             }
         };
 
@@ -561,10 +567,18 @@
                 $(".fermez").hide();
             });
 
+            $("#modalImage").on("shown.bs.modal", function() {
+                if(PSV !== null) {
+                    PSV.load();
+                }
+            });
+
             map.addLayer(pathLayer);
             map.addLayer(waypointLayer);
 
             $(".itineraire-menu").click(function () {
+                $("#itineraire-title").html($(this).html() + " <span class=\"caret\">");
+                $("#collapse1").collapse('toggle');
                 $(".list-itineraire:not(" + "#" + $(this).attr("data-toggle") + ")").hide();
 
                 $("#" + $(this).attr("data-toggle")).toggle();
