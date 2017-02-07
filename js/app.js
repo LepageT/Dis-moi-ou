@@ -8,9 +8,13 @@
             iconesEtage = "",
             numeroLocauxEtage = "",
             marqueur = "",
-            etageActuel = 1;
-        var listeLocauxObj = [];
-        var myPath = null;
+            etageActuel = 1,
+            waypoints = [],
+            listeLocauxObj = [],
+            myPath = null;
+
+        var waypointLayer = L.layerGroup();
+        var pathLayer = L.layerGroup();
 
         // Limite de la carte (Déasactivé...drôle de comportement sur mobile)
         /*--------
@@ -72,7 +76,7 @@
             } // define location options e.g enableHighAccuracy: true or maxZoom: 10
         });
 
-        // Ajoute le poitn bleu sur la carte
+        // Ajoute le point bleu sur la carte
         lc.addTo(map);
 
         // Démare le service de gélocalisation
@@ -106,7 +110,11 @@
         // Fonction pour changer les plans des étages selon le besoin.
         function changerEtage(etage) {
 
-            $("#indicateurEtage").text(etage);
+            if(etage == -1) {
+                $("#indicateurEtage").text("SS");
+            } else {
+                $("#indicateurEtage").text(etage);
+            }
 
             if ($("#controlleEtage").is(":visible")) {
                 $("#controlleEtage").fadeTo(150, 0, function () {
@@ -175,6 +183,99 @@
 
         // Ca contenir la postion du marqueur en object javascript dans le format ---> [lat, long]
         var positionMarqueur = "";
+
+        //Methods to show the path the user is creating.
+        function redrawPath(path, destination = null) {
+            map.removeLayer(pathLayer);
+            pathLayer = L.layerGroup();
+            map.addLayer(pathLayer);
+            drawPath(path, destination);
+        }
+
+        function drawPath(path, destination = null) {
+            if (waypoints.length > 0) {
+                var points = [];
+
+                if (destination !== null) {
+                    points.push(destination);
+                }
+
+                for (var i = 0; i < path.getPoints().length; i++) {
+                    var waypoint = getWaypointById(path.getPoints()[i]);
+                    if (waypoint.floor == etageActuel) {
+                        points.push(getWaypointById(path.getPoints()[i]).getMarker._latlng);
+                    }
+                }
+
+                var polyline = new L.Polyline(points, {
+                    color: "red",
+                    weight: 3,
+                    smoothFactor: 1
+                });
+                polyline.addTo(pathLayer);
+            }
+
+        }
+
+        function getWaypointById(id) {
+            for (var i = 0; i < waypoints.length; i++) {
+                if (waypoints[i].getId == id) {
+                    return waypoints[i];
+                }
+            }
+        }
+
+        function loadWaypoints(show = true) {
+            waypoints = [];
+
+            $.get("data/waypoints.json", function (data) {
+                map.removeLayer(waypointLayer);
+                waypointLayer = L.layerGroup();
+                map.addLayer(waypointLayer);
+
+                for (var i = 0; i < data.length; i++) {
+                    var latlng = new L.LatLng(parseFloat(data[i].latitude), parseFloat(data[i].longitude));
+
+                    marker = new L.marker(latlng, {
+                        draggable: 'true'
+                    });
+                    if (etageActuel === data[i].floor) {
+                        if (show) {
+                            marker.addTo(waypointLayer);
+                            marker.on("click", function () {
+                                if (creatingPath) {
+                                    addToPath(getWaypoint(this).getId);
+                                    redrawPath(path, null);
+                                }
+                            });
+                            marker.on('dragend', function (event) {
+                                var marker = event.target;
+                                var position = marker.getLatLng();
+                                marker.setLatLng(new L.LatLng(position.lat, position.lng), {
+                                    draggable: 'true'
+                                });
+                                map.panTo(new L.LatLng(position.lat, position.lng))
+                            });
+                            marker.bindPopup("ID: " + data[i].id);
+                        }
+                    }
+
+                    var waypoint = new Waypoint(marker, data[i].id, data[i].floor);
+                    if(show) {
+                        if (nextWaypointId < data[i].id) {
+                            nextWaypointId = data[i].id;
+                        }
+                    }
+
+                    waypoints.push(waypoint);
+                }
+                if(show) {
+                    nextWaypointId++;
+                }
+            }, 'json');
+        }
+
+        //End - Methods to show the path
 
         function getLocalInfo(local) {
             for (var i = 0; i < listeLocauxObj.length; i++) {
@@ -252,7 +353,7 @@
 
             if (localObj.hasOwnProperty("image360")) {
                 var divImage = document.getElementById('image360');
-
+                $("#image-pano").show();
                 $("#image-pano").click(function () {
                     $("#image360").show();
                     $(".fermez").show();
@@ -262,54 +363,18 @@
                         container: divImage,
                         time_anim: false,
                         navbar: true,
-
                         navbar_style: {
                             backgroundColor: 'rgba(58, 67, 77, 0.7)'
                         },
-                        move_speed: 2,
                         mousewheel: false,
                         caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
                     });
                 });
             }
+            else {
+                $("#image-pano").hide();
+            }
         };
-
-        $(document).ready(function () {
-            $(".list-itineraire").hide();
-            var cacheListe = $("#premier-jour");
-            var cacheListe2 = $("#organisation");
-            var cacheListe3 = $("#inscription-gym");
-            var cacheListe4 = $("#parcoursCultu");
-
-            $("#first-day").on("click", function () {
-                cacheListe.toggle();
-                cacheListe2.hide();
-                cacheListe3.hide();
-                cacheListe4.hide();
-
-            });
-
-            $("#organiScolaire").on("click", function () {
-                cacheListe2.toggle();
-                cacheListe.hide();
-                cacheListe3.hide();
-                cacheListe4.hide();
-            });
-
-            $("#gym").on("click", function () {
-                cacheListe3.toggle();
-                cacheListe.hide();
-                cacheListe2.hide();
-                cacheListe4.hide();
-            });
-
-            $("#parcours").on("click", function () {
-                cacheListe4.toggle();
-                cacheListe.hide();
-                cacheListe2.hide();
-                cacheListe3.hide();
-            });
-        });
 
         // Document ready function
         $(function () {
@@ -458,7 +523,7 @@
                         image = data[i].image;
                     }
                     // Selon chaque étage
-                    if (etageLocal == "SS") {
+                    if (etageLocal == -1) {
                         level = 'Sous-sol';
                     } else if (etageLocal == 1) {
                         level = etageLocal + 'er étage';
@@ -478,12 +543,23 @@
                 /* console.log("TERMINER - Chargement des locaux dans la liste"); */
                 pourcentageProgres += 17;
                 progressBar.css("width", pourcentageProgres + "%");
+                loadWaypoints(false);
             }); // $ajax
 
-            // Calque avec les rue autour du Cégep
+            loadWaypoints(false);
 
             $(".fermez").click(function () {
                 $("#image360").hide();
                 $(".fermez").hide();
+            });
+
+            map.addLayer(pathLayer);
+            map.addLayer(waypointLayer);
+
+            $(".itineraire-menu").click(function(){
+                $(".list-itineraire:not(" + "#" + $(this).attr("data-toggle") + ")").hide();
+
+                $("#" + $(this).attr("data-toggle")).toggle();
+                //$(this).
             });
         }); // ajax Complete(function(){})

@@ -1,14 +1,6 @@
     //Toggle to know if the user add waypoints or he's creating a path.
     var creatingPath = false;
 
-    //All the waypoints are added to this layer.
-    var waypointLayer = L.layerGroup();
-    map.addLayer(waypointLayer);
-
-    //The path that the user create is added to this layer.
-    var pathLayer = L.layerGroup();
-    map.addLayer(pathLayer);
-
     //List of waypoints added by the user.
     var waypoints = [];
     var nextWaypointId = 1;
@@ -98,6 +90,7 @@
                             if (creatingPath) {
                                 addToPath(getWaypoint(this).getId);
                                 redrawPath(path, null);
+                                console.log(path);
                             }
                         });
                         marker.on('dragend', function (event) {
@@ -137,8 +130,9 @@
                         if (data[i].path.length > 0) {
                             optionClass = "green";
                         }
+                    } else {
+                        $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>");
                     }
-                    $('#roomList').append("<option class=\"" + optionClass + "\"value=" + data[i].local + ">" + data[i].local + "</option>");
                 }
             }
         });
@@ -166,52 +160,10 @@
     }
     //End - Methods to export
 
-    //Methods to show the path the user is creating.
-    function redrawPath(path, destination = null) {
-        map.removeLayer(pathLayer);
-        pathLayer = L.layerGroup();
-        map.addLayer(pathLayer);
-        drawPath(path, destination);
-    }
-
-    function drawPath(path, destination = null) {
-        if (waypoints.length > 0) {
-            var points = [];
-
-            if (destination !== null) {
-                points.push(destination);
-            }
-
-            for (var i = 0; i < path.getPoints().length; i++) {
-                var waypoint = getWaypointById(path.getPoints()[i]);
-                if (waypoint.floor == etageActuel) {
-                    points.push(getWaypointById(path.getPoints()[i]).getMarker._latlng);
-                }
-            }
-
-            var polyline = new L.Polyline(points, {
-                color: "red",
-                weight: 3,
-                smoothFactor: 1
-            });
-            polyline.addTo(pathLayer);
-        }
-
-    }
-    //End - Methods to show the path
-
     //Utility methods
     function getWaypoint(marker) {
         for (var i = 0; i < waypoints.length; i++) {
             if (waypoints[i].getMarker._leaflet_id == marker._leaflet_id) {
-                return waypoints[i];
-            }
-        }
-    }
-
-    function getWaypointById(id) {
-        for (var i = 0; i < waypoints.length; i++) {
-            if (waypoints[i].getId == id) {
                 return waypoints[i];
             }
         }
