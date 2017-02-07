@@ -127,6 +127,8 @@
                 imageLocauxUrl = 'images/etages/etage0_numero.svg'
                 iconesEtageUrl = 'images/etages/etage0_icones.svg';
                 libelleEtageUrl = 'images/etages/etage0_libelle.svg';
+                urgenceUrl = 'images/etages/etage0_urgence.svg';
+                accessibiliteUrl = 'images/etages/etage0_accessibilite.svg';
             } else {
                 imageUrl = 'images/etages/etage' + etage + '_locaux.svg';
                 imageLocauxUrl = 'images/etages/etage' + etage + '_numero.svg'
@@ -311,7 +313,7 @@
             // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
             var button = '<button type="button" class="btn btn-default" id="test" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
 
-            if (!localObj.hasOwnProperty("image")) {
+            if (!localObj.hasOwnProperty("image") && !localObj.hasOwnProperty("image360")) {
                 button = "";
             }
 
@@ -343,10 +345,14 @@
             if (localObj.hasOwnProperty("ouverture")) {
                 console.log(localObj.ouverture);
                 $('#ouverture').html(localObj.ouverture);
+            } else {
+                $("#ouverture").html("");
             }
 
             if (localObj.hasOwnProperty("description")) {
                 $('#description').html(localObj.description);
+            } else {
+                $("#description").html("");
             }
 
             //Afficher le path jusqu'au local

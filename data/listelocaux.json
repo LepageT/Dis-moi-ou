@@ -510,7 +510,8 @@
     "message": " ",
     "path": [33, 34, 37, 5, 6],
     "image": "magasin-sportif.jpg",
-    "description": "Que ce soit pour votre carte étudiante, pour louer un gymnase ou de l'équipement de sport, le magasin sportif est à votre disposition."
+    "description": "<h2>Magasin sportif</h2>Que ce soit pour votre carte étudiante, pour louer un gymnase ou de l'équipement de sport, le magasin sportif est à votre disposition.",
+    "image360": "centre-sportif.jpg"
 }, {
     "nom": "Local 1317",
     "local": "1317",
@@ -1118,7 +1119,8 @@
     "path": [93, 43, 41, 6],
     "image": "formation-continue.jpg",
     "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au vendredi</li><li>Fermée</li></ul></div><div class='col-md-5'><ul><li>8h00 à 16h30</li><li>de 12h à 13h</li></ul></div></div>",
-    "description": "<h2>Information Générale</h2>Nous formons des personnes dont la qualité des compétences et la capacité à s'intégrer rapidement en entreprise sont hautement reconnues. Nous privilégions l'intégration des compétences par des activités pédagogiques qui rejoignent les bonnes pratiques d'affaires."
+    "description": "<h2>Information Générale</h2>Nous formons des personnes dont la qualité des compétences et la capacité à s'intégrer rapidement en entreprise sont hautement reconnues. Nous privilégions l'intégration des compétences par des activités pédagogiques qui rejoignent les bonnes pratiques d'affaires.",
+    "image360": "formation-continue.jpg"
 }, {
     "nom": "Comptabilité",
     "local": "1527",
@@ -2225,7 +2227,8 @@
     "etage": 2,
     "message": "",
     "path": [229, 194],
-    "ouverture": "<h2>Heures d'ouverture pendant la période des fêtes</h2><div class='row'><div class='col-md-5'><ul><li>14 au 21 décembre</li><li>22 décembre</li><li>23 décembre au 3 janvier</li><li>4 au 20 janvier</li><li>21 janvier</li></ul></div><div class='col-md-5'><ul><li>7h30 à 17h</li><li>7h30 à 12h</li><li>Fermé</li><li>8h à 16h</li><li>Retour à l'horaire régulier</li></ul></div></div><h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 20h30</li><li>7h30 à 17h</li></ul></div></div>"
+    "ouverture": "<h2>Heures d'ouverture pendant la période des fêtes</h2><div class='row'><div class='col-md-5'><ul><li>14 au 21 décembre</li><li>22 décembre</li><li>23 décembre au 3 janvier</li><li>4 au 20 janvier</li><li>21 janvier</li></ul></div><div class='col-md-5'><ul><li>7h30 à 17h</li><li>7h30 à 12h</li><li>Fermé</li><li>8h à 16h</li><li>Retour à l'horaire régulier</li></ul></div></div><h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 20h30</li><li>7h30 à 17h</li></ul></div></div>",
+    "image360": "biblio-etage1.jpg"
 }, {
     "nom": "Local 2115",
     "local": "2115",
@@ -3002,7 +3005,8 @@
     "position": "[46.83006803666058,-71.22751280665398]",
     "etage": 3,
     "message": "",
-    "path": [541, 368, 367, 540, 532, 194]
+    "path": [541, 368, 367, 540, 532, 194],
+    "image360": "biblio-etage2.jpg"
 }, {
     "nom": "Local 3046",
     "local": "3046",
@@ -4078,7 +4082,8 @@
     "position": "[46.83019328018408,-71.22740350663662]",
     "etage": 1,
     "message": "Kiosque d'information - Agora",
-    "image": "agora.jpg"
+    "image": "agora.jpg",
+    "image360": "agora.jpg"
 }, {
     "nom": "Escalier principal",
     "local": "escalier-2",
@@ -4094,5 +4099,12 @@
     "etage": 1,
     "message": "Escalier principal - 1er étage",
     "image": "escalier.jpg",
-    "image360": "centre-sportif.jpg"
+    "image360": "escalier.jpg"
+}, {
+    "nom": "Secrétaria Pédagogique",
+    "local": "escalier-1",
+    "position": "[46.830340085407876,-71.22719027101994]",
+    "etage": 1,
+    "message": "Secrétaria Pédagogique",
+    "image360": "secretariat-pedago.jpg"
 }]
