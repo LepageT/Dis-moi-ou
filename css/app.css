@@ -582,3 +582,10 @@
 
            float: right !important;
         }
+.list-itineraire {
+    display: none;
+}
+
+#image-pano {
+    display: none;
+}
