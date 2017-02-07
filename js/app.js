@@ -165,7 +165,6 @@
             // Ajoute et affiche l'image du sous-sol
             map.addLayer(planEtage);
 
-
             urgenceEtage = L.imageOverlay(urgenceUrl, imageBounds);
             if (showUrgence) {
                 map.addLayer(urgenceEtage);
@@ -344,6 +343,10 @@
             if (localObj.hasOwnProperty("ouverture")) {
                 console.log(localObj.ouverture);
                 $('#ouverture').html(localObj.ouverture);
+            }
+
+            if (localObj.hasOwnProperty("description")) {
+                $('#description').html(localObj.description);
             }
 
             //Afficher le path jusqu'au local

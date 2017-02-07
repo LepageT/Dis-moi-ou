@@ -509,7 +509,8 @@
     "etage": 1,
     "message": " ",
     "path": [33, 34, 37, 5, 6],
-    "image": "magasin-sportif.jpg"
+    "image": "magasin-sportif.jpg",
+    "description": "Que ce soit pour votre carte étudiante, pour louer un gymnase ou de l'équipement de sport, le magasin sportif est à votre disposition."
 }, {
     "nom": "Local 1317",
     "local": "1317",
@@ -609,7 +610,9 @@
     "etage": 1,
     "message": " ",
     "image": "cafeteriaQC2.jpg",
-    "path": [6]
+    "path": [6],
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 15h</li><li>7h30 à 14h30</li></ul></div></div>",
+    "description": "<h2>Information Générale</h2>Situé en face de l'escalier principal au premier étage, son vaste menu et la qualité de sa nourriture rendent la cafétéria du Cégep Limoilou un incontournable."
 }, {
     "nom": "COOP",
     "local": "1203",
@@ -617,7 +620,9 @@
     "etage": 1,
     "message": " ",
     "path": [6],
-    "image": "coop.jpg"
+    "image": "coop.jpg",
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul<li>Lundi au vendredi</li></ul></div><div class='col-md-5'><ul><li>9h à 16h</li></ul></div></div>",
+    "description": "<h2>Information Générale</h2>Pour seulement 15$, devenez membre à vie de la <span class='description'>COOP</span> du Cégep Limoilou. Vous obtiendrez des ristournes directes à l'achat pouvant atteindre 25$. Acheter à la <span class='description'>COOP</span> est donc doublement avantageux puisque votre investissement vous revient!"
 }, {
     "nom": "Local 1266",
     "local": "1266",
@@ -628,6 +633,7 @@
 }, {
     "nom": "Local 1271",
     "local": "1271",
+    "position": "[46.83031852341576,-71.22672088444233]",
     "position": "[46.83031852341576,-71.22672088444233]",
     "etage": 1,
     "message": " ",
@@ -961,7 +967,8 @@
     "message": " ",
     "path": [518, 5, 6],
     "image": "cafe1.jpg",
-    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul<li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 17h</li><li>7h30 à 16h</li></ul></div></div>"
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au jeudi</li><li>Vendredi</li></ul></div><div class='col-md-5'><ul><li>7h30 à 17h</li><li>7h30 à 16h</li></ul></div></div>",
+    "description": "<h2>Information Générale</h2>Le <span class='description'>café étudiant du campus de Québec</span> est un lieu par excellence pour vos rencontres ou simplement pour vous détendre. Une gamme de produits est offerte à <span class='description'>petits prix</span>: muffins, galettes, sandwich-bagel, fruits, café, thé, chocolat chaud, jus, eau, etc. Ce café offre l'accès à <span class='description'>Internet</span>."
 }, {
     "nom": "Local 1030",
     "local": "1030",
@@ -1110,7 +1117,8 @@
     "message": " ",
     "path": [93, 43, 41, 6],
     "image": "formation-continue.jpg",
-    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au vendredi</li><li>Fermée</li></ul></div><div class='col-md-5'><ul><li>8h00 à 16h30</li><li>de 12h à 13h</li></ul></div></div>"
+    "ouverture": "<h2>Heures régulières d'ouverture</h2><div class='row'><div class='col-md-5'><ul><li>Lundi au vendredi</li><li>Fermée</li></ul></div><div class='col-md-5'><ul><li>8h00 à 16h30</li><li>de 12h à 13h</li></ul></div></div>",
+    "description": "<h2>Information Générale</h2>Nous formons des personnes dont la qualité des compétences et la capacité à s'intégrer rapidement en entreprise sont hautement reconnues. Nous privilégions l'intégration des compétences par des activités pédagogiques qui rejoignent les bonnes pratiques d'affaires."
 }, {
     "nom": "Comptabilité",
     "local": "1527",
