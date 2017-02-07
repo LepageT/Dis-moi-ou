@@ -15,7 +15,8 @@
             listeLocauxObj = [],
             myPath = null,
             showAccessibilite = true,
-            showUrgence = true;
+            showUrgence = true,
+            PSV = null;
 
         var waypointLayer = L.layerGroup();
         var pathLayer = L.layerGroup();
@@ -309,7 +310,7 @@
             changerEtage(etage);
 
             // Crée un marqueur et le fait rebondir selon les paramètres "duration" et "height"
-            var button = '<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
+            var button = '<button type="button" class="btn btn-default" id="test" data-toggle="modal" data-target="#modalImage"><i class="material-icons">&#xE410;</i></button> <br><br>';
 
             if (!localObj.hasOwnProperty("image")) {
                 button = "";
@@ -360,9 +361,10 @@
                 $("#image360").show();
                 $("#imgModal").hide();
 
-                var PSV = new PhotoSphereViewer({
+                PSV = new PhotoSphereViewer({
                     panorama: 'images/img360/' + localObj.image360,
                     container: divImage,
+                    autoload: false,
                     time_anim: false,
                     navbar: ['zoom', 'caption', 'fullscreen'],
                     navbar_style: {
@@ -373,9 +375,8 @@
                     caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
                     webgl: true
                 });
-
             } else {
-                console.log("fsd");
+                PSD = null;
                 $("#image-pano").hide();
                 $("#image360").hide();
                 // Modifie la source de l'image
@@ -561,6 +562,12 @@
             $(".fermez").click(function () {
                 $("#image360").hide();
                 $(".fermez").hide();
+            });
+
+            $("#modalImage").on("shown.bs.modal", function() {
+                if(PSV !== null) {
+                    PSV.load();
+                }
             });
 
             map.addLayer(pathLayer);
