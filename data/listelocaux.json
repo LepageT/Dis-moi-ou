@@ -4102,9 +4102,10 @@
     "image360": "escalier.jpg"
 }, {
     "nom": "Secrétaria Pédagogique",
-    "local": "escalier-1",
-    "position": "[46.830340085407876,-71.22719027101994]",
+    "local": "secretaria pedagogique",
+    "position": "[46.8304373436478,-71.22801035642624]",
     "etage": 1,
     "message": "Secrétaria Pédagogique",
-    "image360": "secretariat-pedago.jpg"
+    "image360": "secretariat-pedago.jpg",
+    "path": [568, 1, 4, 5, 6]
 }]
