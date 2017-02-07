@@ -72,13 +72,12 @@
             if (showAccessibilite) {
                 map.removeLayer(accessibiliteEtage);
                 showAccessibilite = false;
-                $("imgAccess").attr("src", "images/boutons_etages/accessibilite.svg");
+                $("#imgAccess").attr("src", "images/boutons_etages/active-accessibilite.svg");
             } else {
                 if (accessibiliteEtage !== "") {
                     map.addLayer(accessibiliteEtage);
                 }
-                $("imgAccess").attr("src", "images/boutons_etages/active-accessibilite.svg");
-
+                $("#imgAccess").attr("src", "images/boutons_etages/accessibilite.svg");
                 showAccessibilite = true;
             }
         }
@@ -87,13 +86,12 @@
             if (showUrgence) {
                 map.removeLayer(urgenceEtage);
                 showUrgence = false;
-                $("imgFeu").attr("src", "images/boutons_etages/feu.svg");
-
+                $("#imgFeu").attr("src", "images/boutons_etages/active-feu.svg");
             } else {
                 if (urgenceEtage !== "") {
                     map.addLayer(urgenceEtage);
                 }
-                $("imgFeu").attr("src", "images/boutons_etages/active-feu.svg");
+                $("#imgFeu").attr("src", "images/boutons_etages/feu.svg");
                 showUrgence = true;
             }
         }
