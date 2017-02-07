@@ -473,6 +473,10 @@
             border-radius: 50%;
         }
 
+.description {
+    color: #e26d4d;
+}
+
         ul li {
             list-style: none;
         }

@@ -69,7 +69,7 @@
         };
 
         function toggleAccessibilite() {
-            if(showAccessibilite) {
+            if (showAccessibilite) {
                 map.removeLayer(accessibiliteEtage);
                 showAccessibilite = false;
             } else {
@@ -79,7 +79,7 @@
         }
 
         function toggleUrgence() {
-            if(showUrgence) {
+            if (showUrgence) {
                 map.removeLayer(urgenceEtage);
                 showUrgence = false;
             } else {
@@ -91,7 +91,7 @@
         // Fonction pour changer les plans des étages selon le besoin.
         function changerEtage(etage) {
 
-            if(etage == -1) {
+            if (etage == -1) {
                 $("#indicateurEtage").text("SS");
             } else {
                 $("#indicateurEtage").text(etage);
@@ -124,7 +124,7 @@
                 iconesEtageUrl = 'images/etages/etage' + etage + '_icones.svg';
                 libelleEtageUrl = 'images/etages/etage' + etage + '_libelle.svg';
 
-                if(etage == 1 || etage == 2) {
+                if (etage == 1 || etage == 2) {
                     accessibiliteUrl = 'images/etages/etage' + etage + '_accessibilite.svg';
                     urgenceUrl = 'images/etages/etage' + etage + '_urgence.svg';
                 }
@@ -159,15 +159,15 @@
             // Ajoute et affiche l'image du sous-sol
             map.addLayer(planEtage);
 
-            if(etage == 1 || etage == 2) {
+            if (etage == 1 || etage == 2) {
                 accessibiliteEtage = L.imageOverlay(accessibiliteUrl, imageBounds);
                 urgenceEtage = L.imageOverlay(urgenceUrl, imageBounds);
 
-                if(showAccessibilite) {
+                if (showAccessibilite) {
                     map.addLayer(accessibiliteEtage);
                 }
 
-                if(showUrgence) {
+                if (showUrgence) {
                     map.addLayer(urgenceEtage);
                 }
             } else {
@@ -265,7 +265,7 @@
                     }
 
                     var waypoint = new Waypoint(marker, data[i].id, data[i].floor);
-                    if(show) {
+                    if (show) {
                         if (nextWaypointId < data[i].id) {
                             nextWaypointId = data[i].id;
                         }
@@ -273,7 +273,7 @@
 
                     waypoints.push(waypoint);
                 }
-                if(show) {
+                if (show) {
                     nextWaypointId++;
                 }
             }, 'json');
@@ -349,6 +349,11 @@
                 $('#ouverture').html(localObj.ouverture);
             }
 
+            if (localObj.hasOwnProperty("description")) {
+                $('#description').html(localObj.description);
+            }
+
+
             //Afficher le path jusqu'au local
             if (localObj.hasOwnProperty("path")) {
                 myPath = new Path(local, localObj.path);
@@ -374,8 +379,7 @@
                         caption: 'Dis-moi où <b>&copy; Guillaume Bernier</b>',
                     });
                 });
-            }
-            else {
+            } else {
                 $("#image-pano").hide();
             }
         };
@@ -560,7 +564,7 @@
             map.addLayer(pathLayer);
             map.addLayer(waypointLayer);
 
-            $(".itineraire-menu").click(function(){
+            $(".itineraire-menu").click(function () {
                 $(".list-itineraire:not(" + "#" + $(this).attr("data-toggle") + ")").hide();
 
                 $("#" + $(this).attr("data-toggle")).toggle();
