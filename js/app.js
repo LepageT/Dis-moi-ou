@@ -73,7 +73,9 @@
                 map.removeLayer(accessibiliteEtage);
                 showAccessibilite = false;
             } else {
-                map.addLayer(accessibiliteEtage);
+                if(accessibiliteEtage !== "") {
+                    map.addLayer(accessibiliteEtage);
+                }
                 showAccessibilite = true;
             }
         }
@@ -83,7 +85,9 @@
                 map.removeLayer(urgenceEtage);
                 showUrgence = false;
             } else {
-                map.addLayer(urgenceEtage);
+                if(urgenceEtage !== "") {
+                    map.addLayer(urgenceEtage);
+                }
                 showUrgence = true;
             }
         }
@@ -197,7 +201,7 @@
         }
 
         function drawPath(path, destination = null) {
-            if (waypoints.length > 0) {
+            if (waypoints.length > 0 && path != null) {
                 var points = [];
 
                 if (destination !== null) {
@@ -218,7 +222,6 @@
                 });
                 polyline.addTo(pathLayer);
             }
-
         }
 
         function getWaypointById(id) {
@@ -353,6 +356,9 @@
             if (localObj.hasOwnProperty("path")) {
                 myPath = new Path(local, localObj.path);
                 redrawPath(myPath, positionMarqueur);
+            } else {
+                myPath = null;
+                redrawPath(myPath, null);
             }
 
             if (localObj.hasOwnProperty("image360")) {

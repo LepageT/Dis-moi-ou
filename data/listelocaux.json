@@ -4066,7 +4066,7 @@
     "image": "caroussel_piscine.png"
 }, {
     "nom": "Kiosque d'information",
-    "local": "",
+    "local": "agora",
     "position": "[46.83019328018408,-71.22740350663662]",
     "etage": 1,
     "message": "Kiosque d'information - Agora",
