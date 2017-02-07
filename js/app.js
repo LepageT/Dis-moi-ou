@@ -567,6 +567,8 @@
             map.addLayer(waypointLayer);
 
             $(".itineraire-menu").click(function(){
+                $("#itineraire-title").html($(this).html() + " <span class=\"caret\">");
+                $("#collapse1").collapse('toggle');
                 $(".list-itineraire:not(" + "#" + $(this).attr("data-toggle") + ")").hide();
 
                 $("#" + $(this).attr("data-toggle")).toggle();
