@@ -127,11 +127,8 @@
                 imageLocauxUrl = 'images/etages/etage' + etage + '_numero.svg'
                 iconesEtageUrl = 'images/etages/etage' + etage + '_icones.svg';
                 libelleEtageUrl = 'images/etages/etage' + etage + '_libelle.svg';
-
-                if(etage == 1 || etage == 2) {
-                    accessibiliteUrl = 'images/etages/etage' + etage + '_accessibilite.svg';
-                    urgenceUrl = 'images/etages/etage' + etage + '_urgence.svg';
-                }
+                urgenceUrl = 'images/etages/etage' + etage + '_urgence.svg';
+                accessibiliteUrl = 'images/etages/etage' + etage + '_accessibilite.svg';
             }
 
             if (etage == -1) {
@@ -163,20 +160,16 @@
             // Ajoute et affiche l'image du sous-sol
             map.addLayer(planEtage);
 
-            if(etage == 1 || etage == 2) {
-                accessibiliteEtage = L.imageOverlay(accessibiliteUrl, imageBounds);
-                urgenceEtage = L.imageOverlay(urgenceUrl, imageBounds);
 
-                if(showAccessibilite) {
-                    map.addLayer(accessibiliteEtage);
-                }
+            urgenceEtage = L.imageOverlay(urgenceUrl, imageBounds);
+            if(showUrgence) {
+                map.addLayer(urgenceEtage);
+            }
 
-                if(showUrgence) {
-                    map.addLayer(urgenceEtage);
-                }
-            } else {
-                accessibiliteEtage = "";
-                urgenceEtage = "";
+            accessibiliteEtage = L.imageOverlay(accessibiliteUrl, imageBounds);
+
+            if(showAccessibilite) {
+                map.addLayer(accessibiliteEtage);
             }
 
             // Affiche la carte en arrière-plan de tout les autres calque. Nécésaire pour voir le point de géolocalisation après avoir changer d'étage
