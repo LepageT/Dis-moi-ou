@@ -8,9 +8,10 @@
             iconesEtage = "",
             numeroLocauxEtage = "",
             marqueur = "",
-            etageActuel = 1;
-        var listeLocauxObj = [];
-        var myPath = null;
+            etageActuel = 1,
+            waypoints = [],
+            listeLocauxObj = [],
+            myPath = null;
 
         var waypointLayer = L.layerGroup();
         var pathLayer = L.layerGroup();
@@ -545,7 +546,7 @@
                 loadWaypoints(false);
             }); // $ajax
 
-            // Calque avec les rue autour du Cégep
+            loadWaypoints(false);
 
             $(".fermez").click(function () {
                 $("#image360").hide();
