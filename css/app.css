@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'BebasNeue';
+    font-family: 'Bebas Neue';
     src: url('../fonts/bebasneue/bebasneue_regular-webfont.eot');
     src: url('../fonts/bebasneue/bebasneue_regular-webfont.eot?#iefix') format('embedded-opentype'),
          url('../fonts/bebasneue/bebasneue_regular-webfont.woff2') format('woff2'),
@@ -16,7 +16,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    src: local('Roboto'), local('Roboto-Regular'), url(../fonts/roboto/roboto_400.woff2) format('woff2');
+    src: url('../fonts/roboto/roboto_400.woff2') format('woff2');
     unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 
@@ -27,7 +27,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    src: local('Roboto'), local('Roboto-Regular'), url(../fonts/roboto/roboto_400.woff2) format('woff2');
+    src: url('../fonts/roboto/roboto_400.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
@@ -38,7 +38,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 900;
-    src: local('Roboto Black'), local('Roboto-Black'), url(../fonts/roboto/roboto_900.woff2) format('woff2');
+    src: url('../fonts/roboto/roboto_900.woff2') format('woff2');
     unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 
@@ -49,7 +49,7 @@
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 900;
-    src: local('Roboto Black'), local('Roboto-Black'), url(../fonts/roboto/roboto_900.woff2) format('woff2');
+    src: url('../fonts/roboto/roboto_900.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
@@ -61,8 +61,8 @@
   src: url(../fonts/material-icons/MaterialIcons-Regular.eot); /* For IE6-8 */
 
 
-/* src: local('Material Icons'),
-  local('MaterialIcons-Regular'),
+/* src: url('Material Icons'),
+  url('MaterialIcons-Regular'),
   url(../fonts/material-icons/MaterialIcons-Regular.woff2) format('woff2'),
   url(../fonts/material-icons/MaterialIcons-Regular.woff) format('woff'),
   url(../fonts/material-icons/MaterialIcons-Regular.ttf) format('truetype');
