@@ -106,11 +106,11 @@
                 $("#indicateurEtage").text(etage);
             }
 
-            if ($("#controlleEtage").is(":visible")) {
-                $("#controlleEtage").fadeTo(150, 0, function () {
-                    $(this).hide();
-                });
-            }
+//            if ($("#controlleEtage").is(":visible")) {
+//                $("#controlleEtage").fadeTo(150, 0, function () {
+//                    $(this).hide();
+//                });
+//            }
 
             // Efface la calque qui contient l'image du plan de l'étage
             map.removeLayer(marqueur);
@@ -399,16 +399,6 @@
 
         // Document ready function
         $(function () {
-            $("#boutonAfficherEtage").click(function () {
-                if ($("#controlleEtage").is(":visible")) {
-                    $("#controlleEtage").fadeTo(150, 0, function () {
-                        $(this).hide();
-                    });
-                } else {
-                    $(this).show();
-                    $("#controlleEtage").fadeTo(150, 1);
-                }
-            });
             redimensionnerCarte();
 
             var routesUrl = 'images/etages/routes.svg';
