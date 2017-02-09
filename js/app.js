@@ -106,11 +106,11 @@
                 $("#indicateurEtage").text(etage);
             }
 
-//            if ($("#controlleEtage").is(":visible")) {
-//                $("#controlleEtage").fadeTo(150, 0, function () {
-//                    $(this).hide();
-//                });
-//            }
+            if ($("#controlleEtage").is(":visible")) {
+                $("#controlleEtage").fadeTo(150, 0, function () {
+                    $(this).hide();
+                });
+            }
 
             // Efface la calque qui contient l'image du plan de l'étage
             map.removeLayer(marqueur);
@@ -399,6 +399,16 @@
 
         // Document ready function
         $(function () {
+            $("#boutonAfficherEtage").click(function () {
+                if ($("#controlleEtage").is(":visible")) {
+                    $("#controlleEtage").fadeTo(150, 0, function () {
+                        $(this).hide();
+                    });
+                } else {
+                    $(this).show();
+                    $("#controlleEtage").fadeTo(150, 1);
+                }
+            });
             redimensionnerCarte();
 
             var routesUrl = 'images/etages/routes.svg';
@@ -543,7 +553,7 @@
                         level = etageLocal + 'e étage';
                     }
 
-                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + numeroLocal + '\') title=\'Affiche marqueur\'">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + numeroLocal + '\')\" title=\'Affiche marqueur\'>' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
                 }
 
                 // Ajoute le très long string qui contient toute la liste dans la fenètre modale
