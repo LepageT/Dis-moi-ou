@@ -390,6 +390,8 @@
                 // Modifie la source de l'image
                 if (localObj.hasOwnProperty("image")) {
                     $('#imgModal').attr("src", "images/" + localObj.image);
+                    $('#imgModal').attr("alt", localObj.nom);
+                    $('#imgModal').attr("title", localObj.nom);
                     $("#imgModal").show();
                 }
             }
@@ -551,7 +553,7 @@
                         level = etageLocal + 'e étage';
                     }
 
-                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + numeroLocal + '\')">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
+                    elements += '<li><a href=\"javascript:afficherMarqueur(\'' + numeroLocal + '\') title=\'Affiche marqueur\'">' + '<h3 class="nomLocal">' + nomLocal + '</h3><br><h6 class="etage">' + level + '</h6><span class="codeLocalQ">Q' + numeroLocal + '</span><i class="material-icons pull-right">&#xE55E;</i></a></li>';
                 }
 
                 // Ajoute le très long string qui contient toute la liste dans la fenètre modale
